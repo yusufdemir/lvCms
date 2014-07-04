@@ -19,7 +19,8 @@ var neonLogin = neonLogin || {};
 		neonLogin.$container.validate({
 			rules: {
 				username: {
-					required: true	
+					required: true,
+					email: true
 				},
 				
 				password: {
@@ -61,7 +62,7 @@ var neonLogin = neonLogin || {};
 											
 					// Send data to the server
 					$.ajax({
-						url: baseurl + 'data/sample-login-form.php',
+						url: baseurl,
 						method: 'POST',
 						dataType: 'json',
 						data: {
