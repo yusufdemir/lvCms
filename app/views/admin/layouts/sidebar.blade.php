@@ -5,8 +5,8 @@
 
             <!-- logo -->
             <div class="logo">
-                <a href="{{ URL::to('admin') }}">
-                <img src="assets/images/logo@2x.png" width="120" alt="" />
+                <a href="{{ URL::route('dashboard') }}">
+                <img src="{{ asset('assets/images/logo@2x.png') }}" width="120" alt="" />
                 </a>
             </div>
 
@@ -31,10 +31,28 @@
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <li>
-                <a href="{{ URL::to('admin') }}">
+                <a href="{{ URL::route('dashboard') }}">
                 <i class="entypo-gauge"></i>
                 <span>Anasayfa</span>
                 </a>
+            </li>
+            <li>
+                <a href="{{ URL::route('post-create') }}">
+                <i class="entypo-doc-text-inv"></i>
+                <span>Yazılar</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::route('post-list') }}">
+                            <span>Tüm Yazılar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::route('post-create') }}">
+                            <span>Yazı Ekle</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
 

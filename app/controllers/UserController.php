@@ -44,7 +44,7 @@ class UserController extends \BaseController
                 
                 Session::flash('message', array('text'=>'Giriş Başarılı','type'=>'success') );
                 $response['login_status'] = "success"; 
-                $response['redirect_url'] = URL::to('admin');
+                $response['redirect_url'] = URL::route('dashboard');
             } else {
                 $response['login_status'] = "invalid";             
             }

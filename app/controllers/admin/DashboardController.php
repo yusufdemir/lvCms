@@ -8,7 +8,7 @@ class DashboardController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function getIndex()
+	public function index()
 	{
 		return View::make('admin.dashboard');
 	}

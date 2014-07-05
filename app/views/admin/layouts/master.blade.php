@@ -41,7 +41,7 @@ function getRandomInt(min, max) {
                 <!-- Profile Info -->
                 <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
+                <img src="{{ asset('assets/images/thumb-1@2x.png') }}" alt="" class="img-circle" width="44" />
                 {{ Auth::user()->email }}
                 </a>
                 <ul class="dropdown-menu">
@@ -68,7 +68,7 @@ function getRandomInt(min, max) {
     <div class="col-md-6 col-sm-4 clearfix hidden-xs">
         <ul class="list-inline links-list pull-right">
             <li>
-                <a href="extra-login.html">
+                <a href="{{ URL::route('logout') }}">
                 Çıkış Yap <i class="entypo-logout right"></i>
                 </a>
             </li>

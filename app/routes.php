@@ -40,7 +40,26 @@ Route::any('logout', array('as' => 'logout','uses'=>'UserController@anyLogout'))
 |---------------------------------------------------------------------------------------------
 */
 Route::group(array('before' => 'doLogin'), function() {
-    Route::controller('admin', 'DashboardController');
+    Route::resource('admin/dashboard', 'DashboardController',
+        array(
+            'names'=>array(
+                'index'=>'dashboard'
+                )
+            )
+        );
+
+    Route::resource('admin/post', 'PostController',
+        array(
+            'names'=>array(
+                'index'     =>'post-list',
+                'create'    =>'post-create'
+                )
+            )
+        );
+
+
+    //Route::resource('admin', 'DashboardController');
+    Route::get('admin', function() {return Redirect::route('dashboard'); });
 });
 
 
