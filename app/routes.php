@@ -19,13 +19,36 @@ Route::get('/', function()
 /*
 Route::get('login', function() {
 	return View::make('admin.auth.login');
-});*/
+});
+*/
 
+/*
+|---------------------------------------------------------------------------------------------
+| AUTH
+|---------------------------------------------------------------------------------------------
+*/
 Route::group(array('before' => 'toLogin'), function() {
-	Route::controller('login', 'UserController', array('postIndex'=>'login'));
-	Route::post('login', array('as' => 'postLogin','uses'=>'UserController@postIndex'));
+	//Route::controller('login', 'UserController');
+    Route::get('login', array('as' => 'login','uses'=>'UserController@index'));
+	Route::post('login', array('as' => 'postLogin','uses'=>'UserController@login'));
+});
+Route::any('logout', array('as' => 'logout','uses'=>'UserController@anyLogout'));
+
+/*
+|---------------------------------------------------------------------------------------------
+| DASHBOARD
+|---------------------------------------------------------------------------------------------
+*/
+Route::group(array('before' => 'doLogin'), function() {
+    Route::controller('admin', 'DashboardController');
 });
 
+
+/*
+|---------------------------------------------------------------------------------------------
+| ROUTE Filters
+|---------------------------------------------------------------------------------------------
+*/
 Route::filter('toLogin', function () {
     
     if (Auth::check()) {

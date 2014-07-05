@@ -10,7 +10,7 @@
 
 	@section('body')
 	<script type="text/javascript">
-		var baseurl = '{{ URL::to('login') }}';
+		var baseurl = '{{ URL::route('login') }}';
 	</script>
 
 <div class="login-container">
@@ -55,7 +55,7 @@
 							<i class="entypo-user"></i>
 						</div>
 						
-						<input type="text" class="form-control" name="username" id="username" placeholder="E-mail" autocomplete="off" />
+						<input type="text" class="form-control" name="email" id="email" placeholder="E-mail" autocomplete="off" />
 					</div>
 					
 				</div>
