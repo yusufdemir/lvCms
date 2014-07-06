@@ -41,7 +41,7 @@ function getRandomInt(min, max) {
                 <!-- Profile Info -->
                 <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('assets/images/thumb-1@2x.png') }}" alt="" class="img-circle" width="44" />
+                <img src="{{ Auth::user()->gravatar() }}" alt="" class="img-circle" width="44" />
                 {{ Auth::user()->email }}
                 </a>
                 <ul class="dropdown-menu">

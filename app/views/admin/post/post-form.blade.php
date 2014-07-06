@@ -75,7 +75,7 @@
 		</div>
 		
 		<div class="col-sm-10">
-			<input type="text" class="form-control input-lg" name="post_title" placeholder="Başlık" />
+			<input type="text" class="form-control input-lg" name="post_title" placeholder="Başlık" required />
 		</div>
 	</div>
 	
@@ -109,15 +109,15 @@
 				<div class="panel-body">
 					
 					<div class="checkbox checkbox-replace">
-						<input type="checkbox" id="chk-1" checked>
-						<label>Anasayfada Göster</label>
+						<input type="checkbox" id="chk-1" name="post_slider" checked>
+						<label>Slider'da Göster</label>
 					</div>
 					
 					<br />
 			
 					<p>Yayınlanma Tarihi</p>
 					<div class="input-group">
-						<input type="text" class="form-control datepicker" value="" data-format="dd/mm/yyyy">
+						<input type="text" name="publish_date" class="form-control datepicker" value="" data-format="dd/mm/yyyy">
 						
 						<div class="input-group-addon">
 							<a href="#"><i class="entypo-calendar"></i></a>
@@ -186,7 +186,7 @@
 		
 				<div class="panel-heading">
 					<div class="panel-title">
-						Categories
+						Kategoriler
 					</div>
 					
 					<div class="panel-options">
@@ -196,18 +196,14 @@
 				
 				<div class="panel-body" style="text-align:center;min-width: 330px !important;">
 					
-					<select multiple="multiple" name="categories[]" class="form-control multi-select">
-						<option value="elem_1">Art</option>
-						<option value="elem_2" selected>Entertainment</option>
-						<option value="elem_3">Sports</option>
-						<option value="elem_4">Gaming</option>
-						<option value="elem_5" selected>Abstraction</option>
-						<option value="elem_6">Nature</option>
-						<option value="elem_7">Summer</option>
-						<option value="elem_8">Adventures</option>
-						<option value="elem_9">Movies</option>
-						<option value="elem_10">Music</option>
-						<option value="elem_11">Technology</option>
+					<select multiple="multiple" name="categories[]" class="form-control multi-select" require>
+						@foreach ($cat as $c) 
+							@if($c->id == 1)
+							<option value="{{ $c->id }}" selected > {{ $c->name }} </option>
+							@else
+							<option value="{{ $c->id }}"> {{ $c->name }} </option>
+							@endif
+						@endforeach
 					</select>
 					
 				</div>

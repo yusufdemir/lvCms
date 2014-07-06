@@ -51,6 +51,7 @@
 </div>
 <!--END STATS BOX-->
 <hr>
+<img src="{{-- $gravatar --}}" alt="" class="img-circle" width="44" />
 <!--LAST POSTS -->
 <div class="row">
     <div class="col-sm-12">

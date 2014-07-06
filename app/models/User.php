@@ -23,4 +23,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+	public function gravatar(){
+		return $gravatar = "http://www.gravatar.com/avatar/".md5(strtolower(trim( Auth::user()->email )));
+	}
+
 }

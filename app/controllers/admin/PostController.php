@@ -22,7 +22,8 @@ class PostController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.post.post-form');
+		$cat=Cat::all();
+		return View::make('admin.post.post-form',compact('cat'));
 	}
 
 	/**
