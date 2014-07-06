@@ -10,8 +10,6 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
-		
-
 		$post_count=Post::all()->count();
 		$user_count=User::all()->count();
 		$all_post=Post::take(5)->get();

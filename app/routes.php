@@ -52,7 +52,8 @@ Route::group(array('before' => 'doLogin'), function() {
         array(
             'names'=>array(
                 'index'     =>'post-list',
-                'create'    =>'post-create'
+                'create'    =>'post-create',
+                'store'     =>'post-store'
                 )
             )
         );

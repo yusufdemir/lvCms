@@ -34,7 +34,8 @@ class PostController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+
+		return var_dump(Input::all());
 	}
 
 	/**

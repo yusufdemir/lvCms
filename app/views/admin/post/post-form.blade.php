@@ -9,7 +9,7 @@
 @stop
 
 @section('custom-css')
-<link rel="stylesheet" href="{{ asset('assets/js/selectboxit/jquery.selectBoxIt.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/js/selectboxit/jquery.selectBoxIt.css') }}">
 @stop
 
 @section('custom-js')
@@ -64,7 +64,7 @@
 }
 </style>
 
-<form method="get" action="" >
+<form method="post"  action="{{ URL::route('post-store') }}" >
 	
 	<!-- Title and Publish Buttons -->	<div class="row">
 		<div class="col-sm-2 post-save-changes">
@@ -75,7 +75,15 @@
 		</div>
 		
 		<div class="col-sm-10">
-			<input type="text" class="form-control input-lg" name="post_title" placeholder="Başlık" required />
+			<input type="text" class="form-control input-lg" name="head" value='{{ Input::old('head','') }}' placeholder="Başlık" required />
+			{{-- Form::text( 'head', Input::old('head',''), 
+				array(
+					'placeholder'=>'Başlık',
+					'class'=>'form-control input-lg',
+					'required'=>''
+					)
+				)
+			--}}
 		</div>
 	</div>
 	
@@ -83,7 +91,7 @@
 	
 	<!-- WYSIWYG - Content Editor -->	<div class="row">
 		<div class="col-sm-12">
-			<textarea class="form-control ckeditor" name="post_content" id="post_content"></textarea>
+			<textarea class="form-control ckeditor" name="text" id="post_content">{{ Input::old('content','') }}</textarea>
 		</div>
 	</div>
 	
@@ -109,7 +117,7 @@
 				<div class="panel-body">
 					
 					<div class="checkbox checkbox-replace">
-						<input type="checkbox" id="chk-1" name="post_slider" checked>
+						<input type="checkbox" id="chk-1" name="slider" checked>
 						<label>Slider'da Göster</label>
 					</div>
 					
@@ -117,7 +125,7 @@
 			
 					<p>Yayınlanma Tarihi</p>
 					<div class="input-group">
-						<input type="text" name="publish_date" class="form-control datepicker" value="" data-format="dd/mm/yyyy">
+						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date','') }}" data-format="dd/mm/yyyy">
 						
 						<div class="input-group-addon">
 							<a href="#"><i class="entypo-calendar"></i></a>
@@ -166,7 +174,7 @@
 							<span class="btn btn-white btn-file">
 								<span class="fileinput-new">Resim Seç</span>
 								<span class="fileinput-exists">Değiştir</span>
-								<input type="file" name="..." accept="image/*">
+								<input type="file" name="file" accept="image/*">
 							</span>
 							<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Sil</a>
 						</div>
@@ -199,12 +207,14 @@
 					<select multiple="multiple" name="categories[]" class="form-control multi-select" require>
 						@foreach ($cat as $c) 
 							@if($c->id == 1)
-							<option value="{{ $c->id }}" selected > {{ $c->name }} </option>
+								<option value="{{ $c->id }}" selected > {{ $c->name }} </option>
 							@else
-							<option value="{{ $c->id }}"> {{ $c->name }} </option>
+								<option value="{{ $c->id }}"> {{ $c->name }} </option>
 							@endif
 						@endforeach
 					</select>
+
+					{{-- Form::select('categories[]',$cat, Input::old('category_id'),array('class'=>'form-control multi-select') ) --}}
 					
 				</div>
 			
