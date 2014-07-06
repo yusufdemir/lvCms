@@ -60,7 +60,7 @@ class UserController extends \BaseController
      */
     public function anyLogout() {
         Auth::logout();
-        return 'Logout Success';//Redirect::to('login');
+        return Redirect::to('login');
     }
 
     /**

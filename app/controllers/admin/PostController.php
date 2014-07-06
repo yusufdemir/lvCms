@@ -10,8 +10,8 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$allpost=Post::all();
-		return View::make('admin.post.post-list', compact('allpost'));
+		$all_post=Post::all();
+		return View::make('admin.post.post-list', compact('all_post'));
 	}
 
 	/**

@@ -1,7 +1,7 @@
 @extends ('admin.layouts.auth.master')
 	
 	@section('title')
-		test
+		Giriş Yap
 	@stop
 
 	@section('extend_js')

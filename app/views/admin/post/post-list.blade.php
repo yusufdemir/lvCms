@@ -5,7 +5,7 @@
 @stop
 
 @section('notification')
-	toastr.info("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", opts);
+	toastr.success("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", opts);
 @stop
 
 @section('custom-js')
@@ -23,6 +23,8 @@
 		//$('.inlinebar, .inlinebar-2, .inlinebar-3').sparkline('html', {type: 'pie', barColor: '#ff6264'} );
 	});
 </script>
+
+<h2>Yazılarınız</h2>
 
 <table class="table table-bordered datatable" id="table-3">
 	<thead>
@@ -43,7 +45,7 @@
 	</thead>
 	<tbody>
 
-		@foreach ($allpost as $p)
+		@foreach ($all_post as $p)
 			<tr class="gradeX">
 				<td>{{ $p->head }}</td>
 				<td>{{ $p->slug }}</td>

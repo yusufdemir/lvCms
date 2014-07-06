@@ -8,7 +8,7 @@
 	<meta name="description" content="Neon Admin Panel" />
 	<meta name="author" content="" />
 	
-	<title> @yield('DASHBOARD') - STATIC TITLE </title>
+	<title> @yield('title') - STATIC TITLE </title>
 	
 
 	<link rel="stylesheet" href="{{ asset('assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css') }}">

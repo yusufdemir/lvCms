@@ -19,7 +19,7 @@
     <div class="col-sm-3">
         <div class="tile-stats tile-red">
             <div class="icon"><i class="entypo-users"></i></div>
-            <div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+            <div class="num" data-start="0" data-end="{{ $user_count }}" data-postfix="" data-duration="1500" data-delay="0">0</div>
             <h3>Kayıtlı Kullanıcı Sayısı</h3>
             <p>so far in our blog, and our website.</p>
         </div>
@@ -35,7 +35,7 @@
     <div class="col-sm-3">
         <div class="tile-stats tile-aqua">
             <div class="icon"><i class="entypo-mail"></i></div>
-            <div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+            <div class="num" data-start="0" data-end="{{ $post_count }}" data-postfix="" data-duration="1500" data-delay="1200">0</div>
             <h3>New Messages</h3>
             <p>messages per day.</p>
         </div>
@@ -74,24 +74,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Art Ramadani</td>
-                        <td>CEO</td>
-                        <td class="text-center"><span class="inlinebar">4,3,5,4,5,6</span></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Filan Fisteku</td>
-                        <td>Member</td>
-                        <td class="text-center"><span class="inlinebar-2">1,3,4,5,3,5</span></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Arlind Nushi</td>
-                        <td>Co-founder</td>
-                        <td class="text-center"><span class="inlinebar-3">5,3,2,5,4,5</span></td>
-                    </tr>
+                    @foreach ($all_post as $p)
+                        <tr>
+                            <td>{{ $p->id }}</td>
+                            <td>{{ $p->slug }}</td>
+                            <td>{{ $p->publish_date }}</td>
+                            <td class="text-center"><span class="inlinebar">4,3,5,4,5,6</span></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
