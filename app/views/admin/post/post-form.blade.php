@@ -141,7 +141,7 @@
 			
 					<p>Yayınlanma Tarihi</p>
 					<div class="input-group">
-						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date','') }}" data-format="dd/mm/yyyy">
+						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date',date('Y-m-d')) }}" data-format="yyyy-mm-dd">
 						
 						<div class="input-group-addon">
 							<a href="#"><i class="entypo-calendar"></i></a>

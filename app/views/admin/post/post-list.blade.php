@@ -13,7 +13,6 @@
 @stop
 
 @section('custom-js')
-
 <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/js/datatables/TableTools.min.js') }}"></script>
 <script src="{{ asset('assets/js/dataTables.bootstrap.js') }}"></script>
@@ -33,17 +32,13 @@
 <table class="table table-bordered datatable" id="table-3">
 	<thead>
 		<tr class="replace-inputs">
+			<th>#ID</th>
 			<th>Başlık</th>
-			<th>Seo Link</th>
+			<th>Kategori</th>
+			<th>Son Güncelleme</th>
 			<th>Yayın Tarihi</th>
 			<th>Ekleyen</th>
-			<th>İşlemler</th>
-		</tr>
-		<tr>
-			<th>Başlık</th>
-			<th>Seo Link</th>
-			<th>Yayın Tarihi</th>
-			<th>Ekleyen</th>
+			<th>Durum</th>
 			<th>İşlemler</th>
 		</tr>
 	</thead>
@@ -51,21 +46,42 @@
 
 		@foreach ($all_post as $p)
 			<tr class="gradeX">
+				<td>{{ $p->id }}</td>
 				<td>{{ $p->head }}</td>
-				<td>{{ $p->slug }}</td>
-				<td>{{ $p->publish_date }}</td>
-				<td class="center">GET AUTHOR</td>
-				<td class="center">{{ $p->active }}</td>
+				<td>{{ $p->cat_id }}</td>
+				<td>{{ date("Y-m-d H:i",strtotime($p->updated_at)) }}</td>
+				<td>{{ date("Y-m-d",strtotime($p->publish_date)) }}</td>
+				<td class="center">admin</td>
+				<td class="center">
+					{{ $p->active==1?'<div class="label label-success">Aktif</div>':'<div class="label label-danger">Pasif</div>' }}
+				</td>
+					<td>
+					<!--EDIT-->
+					<a href="{{URL::action('post-edit', $p->id)}}">
+						<button type="button" class="btn btn-info btn-sm">
+							<i class="entypo-pencil"></i>
+						</button>
+					</a>
+					<!--END EDIT-->
+					<!--DELETED-->
+					<button type="button" class="btn btn-danger btn-sm">
+						<i class="entypo-trash"></i>
+					</button>
+					<!--END DELETED-->
+				</td>
 			</tr>
 		@endforeach
 
 	</tbody>
 	<tfoot>
 		<tr>
+			<th>#ID</th>
 			<th>Başlık</th>
-			<th>Seo Link</th>
+			<th>Kategori</th>
+			<th>Son Güncelleme</th>
 			<th>Yayın Tarihi</th>
 			<th>Ekleyen</th>
+			<th>Durum</th>
 			<th>İşlemler</th>
 		</tr>
 	</tfoot>
@@ -81,9 +97,9 @@
 			"bStateSave": true
 		});
 		
-		table.columnFilter({
+		/*table.columnFilter({
 			"sPlaceHolder" : "head:after"
-		});
+		});*/
 	});
 </script>
 

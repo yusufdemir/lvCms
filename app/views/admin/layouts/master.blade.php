@@ -71,6 +71,22 @@ function getRandomInt(min, max) {
     <!-- Raw Links -->
     <div class="col-md-6 col-sm-4 clearfix hidden-xs">
         <ul class="list-inline links-list pull-right">
+
+            <li>
+                <a href="{{ URL::route('post-create') }}">
+                <button type="button" class="btn btn-white btn-sm"><i class="entypo-doc-text"></i> Yeni Yazı</button>
+                </a>
+            </li>
+            <li>
+                <a href="{{ URL::route('post-list') }}">
+                <button type="button" class="btn btn-white btn-sm"><i class="entypo-docs"></i> Yeni Sayfa</button>
+                </a>
+            </li>
+            <li>
+                <a href="{{ URL::route('post-list') }}">
+                <button type="button" class="btn btn-white btn-sm"><i class="entypo-clock"></i> Yeni Etkinlik</button>
+                </a>
+            </li>
             <li>
                 <a href="{{ URL::route('logout') }}">
                 Çıkış Yap <i class="entypo-logout right"></i>

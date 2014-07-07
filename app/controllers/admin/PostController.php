@@ -42,7 +42,7 @@ class PostController extends \BaseController {
 		*/
 		$rules=array(
 			'head'=>'required',
-			'publish_date'=>'required'
+			'publish_date'=>'required|date_format:Y-m-d'
 			);
 		$messages=array(
 			'head.required'=>'Başlık Girilmemiş',
@@ -104,7 +104,7 @@ class PostController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return "Edit Page";
 	}
 
 	/**
