@@ -47,7 +47,9 @@
 		@foreach ($all_post as $p)
 			<tr class="gradeX">
 				<td>{{ $p->id }}</td>
-				<td>{{ $p->head }}</td>
+				<td>
+					{{ $p->head }}<img src="{{ $p->media!=null?asset($p->media):"" }}" alt="" class="img-thumb" width="22"> 
+				</td>
 				<td>{{ $p->cat_id }}</td>
 				<td>{{ date("Y-m-d H:i",strtotime($p->updated_at)) }}</td>
 				<td>{{ date("Y-m-d",strtotime($p->publish_date)) }}</td>

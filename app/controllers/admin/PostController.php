@@ -60,16 +60,16 @@ class PostController extends \BaseController {
 			$post->slug= Str::slug(Input::get('head'));
 			$post->content= Input::get('content');
 			$post->user_id=Auth::id();
-			$post->cat_id=Input::get('cat');
+			$post->cat_id=Input::get('cat_id');
 			$post->active=Input::get('active');
 			$post->publish_date=Input::get('publish_date');
-			$post->slider=Input::get('slider');
+			$post->slider=(Input::get('slider')==true?1:0);
 
 			if (Input::hasFile('media')) {
 				$file            = Input::file('media');
 				$desinationFolder= '/_uploads/';
 		        $destinationPath = public_path().$desinationFolder;
-		        $filename        = date('dd/mm/yyy').'_'.str_random(6) . '_' . $file->getClientOriginalName();
+		        $filename        = date('Ymd').'_'.str_random(6) . '_' . Str::slug($file->getClientOriginalName(), '_');
 		        $filelink		 = $desinationFolder.$filename;
 		        $uploadSuccess   = $file->move($destinationPath, $filename);
 		        $post->media=$filelink;
@@ -104,7 +104,10 @@ class PostController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return "Edit Page";
+		$post = Post::find($id);
+		$cat=Cat::all();
+		// show the edit form and pass the nerd
+		return View::make('admin.post.post-edit',compact('cat'))->with('post',$post);
 	}
 
 	/**
@@ -116,7 +119,49 @@ class PostController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules=array(
+			'head'=>'required',
+			'publish_date'=>'required|date_format:Y-m-d'
+			);
+		$messages=array(
+			'head.required'=>'Başlık Girilmemiş',
+			'publish_date.required'=>'Yayınlanma Tarihi Boş Girilmiş.',
+			'publish_date.date_format'=>'Yayınlanma tarihi hatalı bir formatta girilmiş.'
+			);
+		$validator = Validator::make(Input::all(), $rules, $messages);
+		if ($validator->fails()) {
+			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Form Hatalı Dolduruldu.','type'=>'error'));
+			return Redirect::route('post-create')->withErrors($validator)->withInput();
+		}else{
+			$post = Post::find($id);
+			$post->head= Input::get('head');
+			$post->slug= Str::slug(Input::get('head'));
+			$post->content= Input::get('content');
+			$post->cat_id=Input::get('cat_id');
+			$post->active=Input::get('active');
+			$post->publish_date=Input::get('publish_date');
+			$post->slider=(Input::get('slider')==true?1:0);
+
+			if(Input::get('del-pic')==true){
+				$post->media="";
+			}else{
+				if (Input::hasFile('media')) {
+					$file            = Input::file('media');
+					$desinationFolder= '/_uploads/';
+			        $destinationPath = public_path().$desinationFolder;
+			        $filename        = date('Ymd').'_'.str_random(6) . '_' . Str::slug($file->getClientOriginalName(), '_');
+			        $filelink		 = $desinationFolder.$filename;
+			        $uploadSuccess   = $file->move($destinationPath, $filename);
+			        $post->media=$filelink;
+				}
+			}
+
+
+			$post->save();
+			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Güncellendi...','type'=>'info'));
+			return Redirect::route('post-list');
+
+		}
 	}
 
 	/**

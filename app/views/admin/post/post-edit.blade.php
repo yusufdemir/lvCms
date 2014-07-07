@@ -36,7 +36,7 @@
 
 </script>
 
-<h1 class="margin-bottom">Yeni Yazı Ekle</h1>
+<h1 class="margin-bottom">Yazıyı Düzenle</h1>
 			<ol class="breadcrumb 2">
 						<li>
 				<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
@@ -81,18 +81,19 @@
 @endif
 
 <!--<form enctype="multipart/form-data"  action="{{ URL::route('post-store') }}" method="post"  >-->
-{{ Form::open(array('url' => URL::route('post-store'), 'files' => true, 'method' => 'post')) }}	
+
+{{ Form::model($post, array('route' => array('post-update', $post->id),'method'=> 'PUT','files' => true)) }}
 	<!-- Title and Publish Buttons -->	
 	<div class="row">
 		<div class="col-sm-2 post-save-changes">
 			<button type="submit" class="btn btn-green btn-lg btn-block btn-icon">
-				Yayınla
+				Güncelle
 				<i class="entypo-check"></i>
 			</button>
 		</div>
 		
 		<div class="col-sm-10">
-			{{ Form::text( 'head', Input::old('head',''), 
+			{{ Form::text( 'head', Input::old('head',null), 
 				array(
 					'placeholder'=>'Başlık',
 					'class'=>'form-control input-lg',
@@ -109,7 +110,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			
-			{{ Form::textarea( 'content', Input::old('content',''), 
+			{{ Form::textarea( 'content', Input::old('content',null), 
 				array(
 					'class'=>'form-control ckeditor'
 					)
@@ -141,7 +142,7 @@
 				<div class="panel-body">
 					
 					<div class="checkbox checkbox-replace">
-						<input type="checkbox" id="slider" name="slider" checked>
+						<input type="checkbox" id="slider" name="slider" {{ $post->slider==1?"checked":"" }}>
 
 						<label>Slider'da Göster</label>
 					</div>
@@ -150,8 +151,15 @@
 			
 					<p>Yayınlanma Tarihi</p>
 					<div class="input-group">
-						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date',date('Y-m-d')) }}" data-format="yyyy-mm-dd">
-						
+
+						{{ Form::text( 'publish_date', Input::old('publish_date',date("Y-m-d",strtotime($post->publish_date))), 
+							array(
+								'class'=>'form-control datepicker',
+								'data-format'=>'yyyy-mm-dd',
+								'required'=>''
+								)
+							)
+						}}
 						<div class="input-group-addon">
 							<a href="#"><i class="entypo-calendar"></i></a>
 						</div>
@@ -162,8 +170,8 @@
 					<p>Yayınlanma Durumu</p>
 					<select name="active" class="selectboxit">
 						<optgroup label="DURUM:">
-							<option value="1">Yayında</option>
-							<option value="0">Pasif</option>
+							<option value="1" {{ $post->active==1?"selected":""}}>Yayında</option>
+							<option value="0" {{ $post->active==0?"selected":""}}>Pasif</option>
 						</optgroup>
 					</select>
 					
@@ -190,10 +198,13 @@
 				</div>
 				
 				<div class="panel-body" style="text-align:center;">
-					
+					<div class="checkbox checkbox-replace">
+						<input type="checkbox" id="del-pic" name="del-pic">
+						<label>Resmi Kaldır</label>
+					</div>
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-new thumbnail" style="max-width: 310px; height: 160px;" data-trigger="fileinput">
-							<img src="{{ Input::old('media','http://placehold.it/320x160') }}" alt="...">
+							<img src="{{ $post->media!=null?asset($post->media):'http://placehold.it/320x160' }}" alt="...">
 						</div>
 						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px"></div>
 						<div>
@@ -233,7 +244,7 @@
 						<ul class="icheck-list">
 							@foreach ($cat as $c) 
 								<li>
-									{{ Form::radio('cat_id', $c->id, (Input::old('cat_id','1') == $c->id) ? true : false, array('id'=>'minimal-radio-1-11', 'class'=>'icheck-11')) }}
+									{{ Form::radio('cat_id', $c->id, (Input::old('cat_id',null) == $post->cat_id) ? true : false, array('id'=>'minimal-radio-1-11', 'class'=>'icheck-11')) }}
 							        <label for="minimal-radio-1-11">{{ $c->name }}</label>
 							    </li>
 							@endforeach
