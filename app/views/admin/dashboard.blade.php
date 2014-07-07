@@ -78,7 +78,7 @@
                     @foreach ($all_post as $p)
                         <tr>
                             <td>{{ $p->id }}</td>
-                            <td>{{ $p->slug }}</td>
+                            <td>{{ $p->head }}</td>
                             <td>{{ $p->publish_date }}</td>
                             <td class="text-center"><span class="inlinebar">4,3,5,4,5,6</span></td>
                         </tr>

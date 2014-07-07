@@ -5,7 +5,11 @@
 @stop
 
 @section('notification')
-	toastr.success("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", opts);
+	opts = {
+	"hideDuration": "0",
+	"timeOut": "0"
+	};
+	//toastr.info("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", opts);
 @stop
 
 @section('custom-js')

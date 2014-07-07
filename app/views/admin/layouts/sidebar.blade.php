@@ -54,6 +54,24 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="{{-- URL::route('page-create') --}}">
+                <i class="entypo-doc-text-inv"></i>
+                <span>Sayfalar</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{-- URL::route('page-list') --}}">
+                            <span>Tüm Sayfalar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{-- URL::route('page-create') --}}">
+                            <span>Sayfa Ekle</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
 
     </div>

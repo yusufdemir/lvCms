@@ -5,11 +5,13 @@
 @stop
 
 @section('notification')
-	toastr.info("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", opts);
+	
 @stop
 
 @section('custom-css')
 	<link rel="stylesheet" href="{{ asset('assets/js/selectboxit/jquery.selectBoxIt.css') }}">
+
+	<link rel="stylesheet" href="{{ asset('assets/js/icheck/skins/square/_all.css') }}">
 @stop
 
 @section('custom-js')
@@ -19,16 +21,22 @@
 <script src="{{ asset('assets/js/selectboxit/jquery.selectBoxIt.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('assets/js/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/js/icheck/icheck.min.js') }}"></script>
 @stop
 
 @section('body')
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		//$('.inlinebar, .inlinebar-2, .inlinebar-3').sparkline('html', {type: 'pie', barColor: '#ff6264'} );
+		$('input.icheck-11').iCheck({
+			checkboxClass: 'icheckbox_square-blue',
+			radioClass: 'iradio_square-yellow'
+		});
 	});
+
 </script>
 
-<h1 class="margin-bottom">Yeni [Yazı] Ekle</h1>
+<h1 class="margin-bottom">Yeni [Yazı] Ekle {{ Auth::id() }} </h1>
 			<ol class="breadcrumb 2">
 						<li>
 				<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
@@ -64,8 +72,16 @@
 }
 </style>
 
-<form method="post"  action="{{ URL::route('post-store') }}" >
-	
+@if($errors->has())
+	<div class="col-md-12">
+		<div class="alert alert-danger"><strong>Hatalar:</strong><br>
+			{{ HTML::ul($errors->all()) }}
+		</div>
+	</div>
+@endif
+
+<!--<form enctype="multipart/form-data"  action="{{ URL::route('post-store') }}" method="post"  >-->
+{{ Form::open(array('url' => URL::route('post-store'), 'files' => true, 'method' => 'post')) }}	
 	<!-- Title and Publish Buttons -->	<div class="row">
 		<div class="col-sm-2 post-save-changes">
 			<button type="submit" class="btn btn-green btn-lg btn-block btn-icon">
@@ -91,7 +107,7 @@
 	
 	<!-- WYSIWYG - Content Editor -->	<div class="row">
 		<div class="col-sm-12">
-			<textarea class="form-control ckeditor" name="text" id="post_content">{{ Input::old('content','') }}</textarea>
+			<textarea class="form-control ckeditor" name="content" id="content">{{ Input::old('content','') }}</textarea>
 		</div>
 	</div>
 	
@@ -117,7 +133,7 @@
 				<div class="panel-body">
 					
 					<div class="checkbox checkbox-replace">
-						<input type="checkbox" id="chk-1" name="slider" checked>
+						<input type="checkbox" id="slider" name="slider" checked>
 						<label>Slider'da Göster</label>
 					</div>
 					
@@ -135,7 +151,7 @@
 					<br />
 					
 					<p>Yayınlanma Durumu</p>
-					<select name="publish" class="selectboxit">
+					<select name="active" class="selectboxit">
 						<optgroup label="DURUM:">
 							<option value="1">Yayında</option>
 							<option value="0">Pasif</option>
@@ -149,7 +165,8 @@
 		</div>
 		
 		
-		<!-- Metabox :: Featured Image -->		<div class="col-sm-4">
+		<!-- Metabox :: Featured Image -->		
+		<div class="col-sm-4">
 			
 			<div class="panel panel-primary" data-collapsed="0">
 		
@@ -174,7 +191,7 @@
 							<span class="btn btn-white btn-file">
 								<span class="fileinput-new">Resim Seç</span>
 								<span class="fileinput-exists">Değiştir</span>
-								<input type="file" name="file" accept="image/*">
+								<input type="file" name="media" accept="image/*">
 							</span>
 							<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Sil</a>
 						</div>
@@ -202,18 +219,24 @@
 					</div>
 				</div>
 				
-				<div class="panel-body" style="text-align:center;min-width: 330px !important;">
-					
-					<select multiple="multiple" name="categories[]" class="form-control multi-select" require>
-						@foreach ($cat as $c) 
-							@if($c->id == 1)
-								<option value="{{ $c->id }}" selected > {{ $c->name }} </option>
-							@else
-								<option value="{{ $c->id }}"> {{ $c->name }} </option>
-							@endif
-						@endforeach
-					</select>
-
+				<div class="panel-body" style="min-width: 330px !important;">
+					<div class="scrollable" data-height="200">
+						<ul class="icheck-list">
+							@foreach ($cat as $c) 
+								@if($c->id == 1)
+								<li>
+							        <input class="icheck-11" type="radio" id="minimal-radio-1-11" value="{{ $c->id }}" name="cat" checked>
+							        <label for="minimal-radio-1-11">{{ $c->name }}</label>
+							    </li>
+								@else
+								<li>
+							        <input class="icheck-11" type="radio" id="minimal-radio-1-11" value="{{ $c->id }}" name="cat">
+							        <label for="minimal-radio-1-11">{{ $c->name }}</label>
+							    </li>
+								@endif
+							@endforeach
+						</ul>
+					</div>
 					{{-- Form::select('categories[]',$cat, Input::old('category_id'),array('class'=>'form-control multi-select') ) --}}
 					
 				</div>

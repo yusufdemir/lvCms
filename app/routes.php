@@ -48,6 +48,9 @@ Route::group(array('before' => 'doLogin'), function() {
             )
         );
 
+    //Route::get('admin/page', array('as'=>'page-list','uses'=>'PostController@pageList') );
+    //Route::get('admin/page/create',array('as'=>'page-create','uses'=>'PostController@createPage') );
+
     Route::resource('admin/post', 'PostController',
         array(
             'names'=>array(
