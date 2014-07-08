@@ -43,11 +43,11 @@
 			</li>
 					<li>
 			
-							<a href=" {{ URL::route('post-list') }} ">Yazılar</a>
+							<a href="#">{{ $t['name'] }}</a>
 					</li>
 				<li class="active">
 			
-							<strong>Yeni Yazı Ekle</strong>
+							<strong>Yeni {{ $t['name'] }} Ekle</strong>
 					</li>
 					</ol>
 			

@@ -19,13 +19,17 @@ class CreatePostsTable extends Migration {
 			$table->string('slug');
 			$table->string('media')->nullable();
 			$table->text('content')->nullable();
+			$enumAllow=array('post','page','event');
+			$table->enum('type', $enumAllow)->default('post');
+			$table->timestamp('event_start')->nullable();
+			$table->timestamp('event_end')->nullable();
 			$table->integer('user_id')->unsigned();
 			$table->integer('cat_id')->unsigned()->default(1);
 			$table->boolean('active')->default(true);
 			$table->boolean('deleted')->default(false);
-			$table->timestamp('publish_date');
 			$table->boolean('slider')->default(false);
 			$table->boolean('sidebar')->default(true);
+			$table->timestamp('publish_date');
 			$table->timestamps();
 		});
 	}
