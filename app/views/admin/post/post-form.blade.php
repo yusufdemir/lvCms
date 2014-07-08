@@ -32,24 +32,29 @@
 			checkboxClass: 'icheckbox_square-blue',
 			radioClass: 'iradio_square-yellow'
 		});
+			$("#event-cb").change(function() {
+			    if(this.checked) {
+			        $('#dp2').show();
+			    }else{
+			    	$('#dp2').hide();
+			    }
+			});
 	});
 
 </script>
 
 <h1 class="margin-bottom">Yeni {{ $t['name'] }} Ekle  </h1>
-			<ol class="breadcrumb 2">
-						<li>
-				<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
-			</li>
-					<li>
-			
-							<a href="#">{{ $t['name'] }}</a>
-					</li>
-				<li class="active">
-			
-							<strong>Yeni {{ $t['name'] }} Ekle</strong>
-					</li>
-					</ol>
+<ol class="breadcrumb 2">
+	<li>
+		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
+	</li>
+	<li>
+		<a href="#">{{ $t['name'] }}</a>
+	</li>
+	<li class="active">
+		<strong>Yeni {{ $t['name'] }} Ekle</strong>
+	</li>
+</ol>
 			
 <br />
 
@@ -81,7 +86,8 @@
 @endif
 
 <!--<form enctype="multipart/form-data"  action="{{ URL::route('post-store') }}" method="post"  >-->
-{{ Form::open(array('url' => URL::route('post-store'), 'files' => true, 'method' => 'post')) }}	
+{{ Form::open(array('url' => URL::route('post-store'), 'files' => true, 'method' => 'post')) }}
+{{ Form::hidden('type', $t['action'] ) }}
 	<!-- Title and Publish Buttons -->	
 	<div class="row">
 		<div class="col-sm-2 post-save-changes">
@@ -122,62 +128,11 @@
 	
 	<!-- Metaboxes -->	
 	<div class="row">
-		
-		<!-- Metabox :: Publish Settings -->		
-		<div class="col-sm-4">
-			
-			<div class="panel panel-primary" data-collapsed="0">
-		
-				<div class="panel-heading">
-					<div class="panel-title">
-						Yayın Ayarları
-					</div>
-					
-					<div class="panel-options">
-						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-					</div>
-				</div>
-				
-				<div class="panel-body">
-					
-					<div class="checkbox checkbox-replace">
-						<input type="checkbox" id="slider" name="slider" checked>
 
-						<label>Slider'da Göster</label>
-					</div>
-					
-					<br />
-			
-					<p>Yayınlanma Tarihi</p>
-					<div class="input-group">
-						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date',date('Y-m-d')) }}" data-format="yyyy-mm-dd">
-						
-						<div class="input-group-addon">
-							<a href="#"><i class="entypo-calendar"></i></a>
-						</div>
-					</div>
-						
-					<br />
-					
-					<p>Yayınlanma Durumu</p>
-					<select name="active" class="selectboxit">
-						<optgroup label="DURUM:">
-							<option value="1">Yayında</option>
-							<option value="0">Pasif</option>
-						</optgroup>
-					</select>
-					
-				</div>
-			
-			</div>
-			
-		</div>
-		
-		
 		<!-- Metabox :: Featured Image -->		
 		<div class="col-sm-4">
 			
-			<div class="panel panel-primary" data-collapsed="0">
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -211,12 +166,108 @@
 			</div>
 			
 		</div>
+
+@if($t['action']=="event")
 		
+		<div class="col-sm-4">
+			
+			<div class="panel panel-gray" data-collapsed="0">
 		
+				<div class="panel-heading">
+					<div class="panel-title">
+						Etkinlik Ayarları
+					</div>
+					
+					<div class="panel-options">
+						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<div class="checkbox checkbox-replace">
+						<input type="checkbox" id="event-cb" name="event-cb">
+						<label>Bir günden uzun</label>
+					</div>
+					<br>
+					<p>Başlangıç Tarihi:</p>
+					{{ Form::text( 'event_start', Input::old('event_start',date('Y-m-d')), 
+						array(
+							'class'=>'form-control datepicker',
+							'data-format'=>'yyyy-mm-dd'
+							)
+						)
+					}}
+					<br>
+					<div id="dp2">
+						<p>Bitiş Tarihi:</p>
+						{{ Form::text( 'event_end', Input::old('event_end',date('Y-m-d')), 
+							array(
+								'class'=>'form-control datepicker',
+								'data-format'=>'yyyy-mm-dd'
+								)
+							)
+						}}
+					</div>
+				</div>
+			</div>
+		</div>
+		@endif
+
+		<!-- Metabox :: Publish Settings -->		
+		<div class="col-sm-4">
+			
+			<div class="panel panel-gray" data-collapsed="0">
+		
+				<div class="panel-heading">
+					<div class="panel-title">
+						Yayın Ayarları
+					</div>
+					
+					<div class="panel-options">
+						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+					</div>
+				</div>
+				
+				<div class="panel-body">
+					@if($t['action']=="post")
+					<div class="checkbox checkbox-replace">
+						<input type="checkbox" id="slider" name="slider" checked>
+
+						<label>Slider'da Göster</label>
+					</div>
+					
+					<br />
+			
+					<p>Yayınlanma Tarihi</p>
+					<div class="input-group">
+						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date',date('Y-m-d')) }}" data-format="yyyy-mm-dd">
+						
+						<div class="input-group-addon">
+							<a href="#"><i class="entypo-calendar"></i></a>
+						</div>
+					</div>
+						
+					<br />
+					@endif
+					<p>Yayınlanma Durumu</p>
+					<select name="active" class="selectboxit">
+						<optgroup label="DURUM:">
+							<option value="1">Yayında</option>
+							<option value="0">Pasif</option>
+						</optgroup>
+					</select>
+					
+				</div>
+			
+			</div>
+			
+		</div>
+		
+		@if($t['action']=="post")
 		<!-- Metabox :: Categories -->		
 		<div class="col-sm-4">
 			
-			<div class="panel panel-primary" data-collapsed="0">
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -228,7 +279,7 @@
 					</div>
 				</div>
 				
-				<div class="panel-body" style="min-width: 330px !important;">
+				<div class="panel-body" style="">
 					<div class="scrollable" data-height="200">
 						<ul class="icheck-list">
 							@foreach ($cat as $c) 
@@ -245,12 +296,13 @@
 			
 		</div>
 		
-		<div class="clear"></div>
+		@endif
 		
+
 		<!-- Metabox :: Tags -->		
-		<div class="col-sm-12">
+		<div class="col-sm-4">
 			
-			<div class="panel panel-primary" data-collapsed="0">
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -265,14 +317,23 @@
 				<div class="panel-body">
 					
 					<p>Yazınıza ait etiketleri ekleyin</p>
-					<input type="text" name="tags" value="örnek, yaz sıcağı" class="form-control tagsinput" />
-					
+					<!--<input type="text" name="tags" value="" class="form-control tagsinput" />-->
+					{{ Form::text( 'tags', Input::old('tags',''), 
+						array(
+							'placeholder'=>'Etiketler',
+							'class'=>'form-control tagsinput'
+							)
+						)
+					}}
 				</div>
 			
 			</div>
 			
 		</div>
-		
+
+
+
+
 	</div>
 	
 </form>
