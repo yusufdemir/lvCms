@@ -2183,3 +2183,45 @@ function hide_loading_bar()
 	$loading_bar.addClass('progress-is-hidden');
 	$pct.width(0).data('pct');
 }
+
+
+
+/*
+|--------------------------------------------------------------------------------------------
+|	CUSTOM NOTIFICATION OPTIONS {liteTop,liteFull,liteBottom/full,top,bottom}
+|--------------------------------------------------------------------------------------------
+*/
+
+		var lite = {
+			"closeButton": true,
+			"debug": false,
+			"positionClass": "toast-top-right",//toast-top-full-width,toast-top-right
+			"onclick": null,
+			"showDuration": "300",
+			"hideDuration": "1000",
+			"timeOut": "5000",//5000
+			"extendedTimeOut": "1000",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"
+		};
+
+		var liteFull = {
+			"closeButton": true,
+			"debug": false,
+			"positionClass": "toast-top-full-width",//toast-top-full-width,toast-top-right
+			"timeOut": "5000"
+		};
+		var wait = {
+			"closeButton": true,
+			"debug": false,
+			"positionClass": "toast-top-right",//toast-top-full-width,toast-top-right
+			"timeOut": "0"
+		};
+		var waitFull = {
+			"closeButton": true,
+			"debug": false,
+			"positionClass": "toast-top-full-width",//toast-top-full-width,toast-top-right
+			"timeOut": "0"
+		};

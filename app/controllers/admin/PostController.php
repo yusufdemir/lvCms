@@ -10,7 +10,7 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$all_post=Post::all();
+		$all_post=Post::where('deleted','=','0')->get();
 		return View::make('admin.post.post-list', compact('all_post'));
 	}
 
@@ -20,11 +20,21 @@ class PostController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($type=null)
 	{
-		
+		$t['action']=($type==null?"post":$type);
+		if($t['action']=="post"){
+			$t['name']="Yazı";
+			}elseif ($t['action']=="page") {
+				$t['name']="Sayfa";
+				}elseif ($t['action']=="event") {
+					$t['name']="Etkinlik";
+					}else{
+						$t['action']="post";
+						$t['name']="Yazı";
+						}
 		$cat=Cat::all();
-		return View::make('admin.post.post-form',compact('cat'));
+		return View::make('admin.post.post-form',compact('cat','t'));
 	}
 
 	/**
@@ -76,7 +86,7 @@ class PostController extends \BaseController {
 			}
 
 			$post->save();
-			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Eklendi','type'=>'success'));
+			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Eklendi','type'=>'success','position'=>'full'));
 			return Redirect::route('post-list');
 		}
 
@@ -173,7 +183,11 @@ class PostController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$post = Post::find($id);
+		$post->deleted=1;
+		$post->save();
+		Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Gönderi Başarıyla Çöp Kutusuna Gönderildi.','type'=>'info'));
+		return Redirect::route('post-list');
 	}
 
 }

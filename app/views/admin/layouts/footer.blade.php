@@ -6,7 +6,6 @@
 	<script src="{{ asset('assets/js/resizeable.js') }}"></script>
 	<script src="{{ asset('assets/js/neon-api.js') }}"></script>
 	<script src="{{ asset('assets/js/neon-custom.js') }}"></script>
-	<script src="{{ asset('assets/js/neon-demo.js') }}"></script>
 	<script src="{{ asset('assets/js/toastr.js') }}"></script>
 	@yield('custom-js')
 </body>

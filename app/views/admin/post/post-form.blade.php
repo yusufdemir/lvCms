@@ -36,7 +36,7 @@
 
 </script>
 
-<h1 class="margin-bottom">Yeni Yazı Ekle</h1>
+<h1 class="margin-bottom">Yeni {{ $t['name'] }} Ekle  </h1>
 			<ol class="breadcrumb 2">
 						<li>
 				<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>

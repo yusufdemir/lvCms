@@ -5,11 +5,7 @@
 @stop
 
 @section('notification')
-	opts = {
-	"hideDuration": "0",
-	"timeOut": "0"
-	};
-	//toastr.info("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", opts);
+	//toastr.info("Buradan Yeni Yazı yada Sayfalarını Oluşturup Yayınlayabilirsin ...", "Bilgilendirme Mesajı", waitFull);
 @stop
 
 @section('custom-js')
@@ -17,16 +13,10 @@
 <script src="{{ asset('assets/js/datatables/TableTools.min.js') }}"></script>
 <script src="{{ asset('assets/js/dataTables.bootstrap.js') }}"></script>
 <script src="{{ asset('assets/js/datatables/jquery.dataTables.columnFilter.js') }}"></script>
-
+<script src="{{ asset('assets/js/jquery.popconfirm.js') }}"></script>
 @stop
 
 @section('body')
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		//$('.inlinebar, .inlinebar-2, .inlinebar-3').sparkline('html', {type: 'pie', barColor: '#ff6264'} );
-	});
-</script>
-
 <h2>Yazılarınız</h2>
 
 <table class="table table-bordered datatable" id="table-3">
@@ -60,15 +50,22 @@
 					<td>
 					<!--EDIT-->
 					<a href="{{URL::action('post-edit', $p->id)}}">
-						<button type="button" class="btn btn-info btn-sm">
+						<button type="button" class="btn btn-info btn-xs">
 							<i class="entypo-pencil"></i>
 						</button>
 					</a>
 					<!--END EDIT-->
+					<!--PREVIEW BUTTON-->
+						<button type="button" class="btn btn-orange btn-xs">
+							<i class="entypo-eye"></i>
+						</button>
+					<!--END PREVIEW BUTTON-->
 					<!--DELETED-->
-					<button type="button" class="btn btn-danger btn-sm">
+				{{ Form::open(array('route' => array('post-delete', $p->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
+					<button type="submit" class="btn btn-danger btn-xs" id="delcontent">
 						<i class="entypo-trash"></i>
 					</button>
+				{{ Form::close() }}
 					<!--END DELETED-->
 				</td>
 			</tr>
@@ -90,8 +87,7 @@
 </table>
 
 <script type="text/javascript">
-	jQuery(document).ready(function($)
-	{
+	$(document).ready(function() {
 		var table = $("#table-3").dataTable({
 			"sPaginationType": "bootstrap",
 			"displayLength": 20,
@@ -102,7 +98,14 @@
 		/*table.columnFilter({
 			"sPlaceHolder" : "head:after"
 		});*/
+
+		$('.comfrim').submit(function(event) {
+			/* Act on the event */
+			alert('Event 2');
+		});
 	});
+
+
 </script>
 
 @stop <!--END BODY SECTION-->

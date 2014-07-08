@@ -7,26 +7,13 @@ jQuery(document).ready(function($)
 	// Sample Toastr Notification
 	setTimeout(function()
 	{			
-		var opts = {
-			"closeButton": true,
-			"debug": false,
-			"positionClass": "toast-top-right",//toast-top-full-width,toast-top-right
-			//"toastClass": "black",
-			"onclick": null,
-			"showDuration": "300",
-			"hideDuration": "1000",
-			"timeOut": "0",//5000
-			"extendedTimeOut": "1000",
-			"showEasing": "swing",
-			"hideEasing": "linear",
-			"showMethod": "fadeIn",
-			"hideMethod": "fadeOut"
-		};
+
+
 		@yield('notification')
 		//toastr.success("Deneme Mesajı...!", "Başarılı Uyarı", opts);
 		//toastr.error("Sıkıntı Var!", "Account Subcription Updated", opts);
         @if (Session::has('notification'))
-            toastr.{{ Session::get('notification.type') }} ( "{{ Session::get('notification.text') }}", "{{ Session::get('notification.head') }}", opts);
+            toastr.{{ Session::get('notification.type') }} ( "{{ Session::get('notification.text') }}", "{{ Session::get('notification.head') }}", {{ Session::get('notification.position')==null?'lite':Session::get('notification.position') }});
         @endif
 
 	}, 1000);

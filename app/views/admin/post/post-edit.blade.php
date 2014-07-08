@@ -37,19 +37,17 @@
 </script>
 
 <h1 class="margin-bottom">Yazıyı Düzenle</h1>
-			<ol class="breadcrumb 2">
-						<li>
-				<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
-			</li>
-					<li>
-			
-							<a href=" {{ URL::route('post-list') }} ">Yazılar</a>
-					</li>
-				<li class="active">
-			
-							<strong>Yeni Yazı Ekle</strong>
-					</li>
-					</ol>
+<ol class="breadcrumb 2">
+	<li>
+		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
+	</li>
+	<li>
+		<a href=" {{ URL::route('post-list') }} ">Yazılar</a>
+	</li>
+	<li class="active">
+		<strong>Yeni Yazı Ekle</strong>
+	</li>
+</ol>
 			
 <br />
 
