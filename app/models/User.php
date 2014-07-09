@@ -27,4 +27,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $gravatar = "http://www.gravatar.com/avatar/".md5(strtolower(trim( Auth::user()->email )));
 	}
 
+	public function post(){
+		return $this->hasMany('Post');
+	}
 }

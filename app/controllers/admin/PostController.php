@@ -10,8 +10,17 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$all_post=Post::where('deleted','=','0')->get();
-		return View::make('admin.post.post-list', compact('all_post'));
+		$page['name']='Yazı';
+		$all_post=Post::where('deleted','=','0')->where('type','=','post')->get();
+		return View::make('admin.post.post-list', compact('all_post','page'));
+	}
+
+
+	public function pageindex()
+	{	
+		$page['name']='Sayfa';
+		$all_post=Post::where('deleted','=','0')->where('type','=','page')->get();
+		return View::make('admin.post.post-list', compact('all_post','page'));
 	}
 
 	/**
@@ -27,12 +36,10 @@ class PostController extends \BaseController {
 			$t['name']="Yazı";
 			}elseif ($t['action']=="page") {
 				$t['name']="Sayfa";
-				}elseif ($t['action']=="event") {
-					$t['name']="Etkinlik";
-					}else{
-						$t['action']="post";
-						$t['name']="Yazı";
-						}
+				}else{
+					$t['action']="post";
+					$t['name']="Yazı";
+					}
 		$cat=Cat::all();
 		return View::make('admin.post.post-form',compact('cat','t'));
 	}
@@ -52,12 +59,14 @@ class PostController extends \BaseController {
 		*/
 		$rules=array(
 			'head'=>'required',
-			'publish_date'=>'required|date_format:Y-m-d'
+			'publish_date'=>'required|date_format:Y-m-d',
+			'type'=>'required|in:post,page'
 			);
 		$messages=array(
 			'head.required'=>'Başlık Girilmemiş',
 			'publish_date.required'=>'Yayınlanma Tarihi Boş Girilmiş.',
-			'publish_date.date_format'=>'Yayınlanma tarihi hatalı bir formatta girilmiş.'
+			'publish_date.date_format'=>'Yayınlanma tarihi hatalı bir formatta girilmiş.',
+			'type.in'=>'Form Kodlarında Değişim Tespit Edildi. Tekrar Deneyiniz.'
 			);
 		$validator = Validator::make(Input::all(), $rules, $messages);
 		if ($validator->fails()) {
@@ -66,14 +75,17 @@ class PostController extends \BaseController {
 		}else{
 			//add to db
 			$post = new Post;
+			$post->type=Input::get('type');
 			$post->head= Input::get('head');
 			$post->slug= Str::slug(Input::get('head'));
 			$post->content= Input::get('content');
 			$post->user_id=Auth::id();
-			$post->cat_id=Input::get('cat_id');
+			$post->cat_id=(Input::get('cat_id')==null?2:Input::get('cat_id'));
 			$post->active=Input::get('active');
 			$post->publish_date=Input::get('publish_date');
 			$post->slider=(Input::get('slider')==true?1:0);
+			$post->tags=Input::get('tags');
+
 
 			if (Input::hasFile('media')) {
 				$file            = Input::file('media');
@@ -102,7 +114,8 @@ class PostController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$post = Post::find($id);
+		return View::make('admin.post.post-detail',compact('post'));
 	}
 
 	/**

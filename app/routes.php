@@ -52,6 +52,7 @@ Route::group(array('before' => 'doLogin'), function() {
     //Route::get('admin/page/create',array('as'=>'page-create','uses'=>'PostController@createPage') );
 
     Route::get('admin/post/create/{type?}', array('as' => 'post-create', 'uses' => 'PostController@create'));
+    Route::get('admin/post/page/{type?}', array('as' => 'page-list', 'uses' => 'PostController@pageindex'));
     Route::resource('admin/post', 'PostController',
         array(
             'names'=>array(
@@ -60,7 +61,8 @@ Route::group(array('before' => 'doLogin'), function() {
                 'store'     =>'post-store',
                 'edit'      =>'post-edit',
                 'update'    =>'post-update',
-                'destroy'   =>'post-delete'
+                'destroy'   =>'post-delete',
+                'show'      =>'post-show'
                 )
             )
         );

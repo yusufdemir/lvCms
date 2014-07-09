@@ -36,7 +36,7 @@
                 <span>Anasayfa</span>
                 </a>
             </li>
-            <li>
+            <li class="opened">
                 <a href="{{ URL::route('post-create') }}">
                 <i class="entypo-doc-text-inv"></i>
                 <span>Yazılar</span>
@@ -54,19 +54,19 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="opened">
                 <a href="{{-- URL::route('page-create') --}}">
                 <i class="entypo-doc-text-inv"></i>
                 <span>Sayfalar</span>
                 </a>
                 <ul>
                     <li>
-                        <a href="{{-- URL::route('page-list') --}}">
+                        <a href="{{ URL::route('page-list') }}">
                             <span>Tüm Sayfalar</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{-- URL::route('page-create') --}}">
+                    <li class="active">
+                        <a href="{{URL::to('admin/post/create/page') }}">
                             <span>Sayfa Ekle</span>
                         </a>
                     </li>

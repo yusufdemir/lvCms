@@ -17,7 +17,7 @@
 @stop
 
 @section('body')
-<h2>Yazılarınız</h2>
+<h2> {{$page['name']}}larınız</h2>
 
 <table class="table table-bordered datatable" id="table-3">
 	<thead>
@@ -38,7 +38,8 @@
 			<tr class="gradeX">
 				<td>{{ $p->id }}</td>
 				<td>
-					{{ $p->head }}<img src="{{ $p->media!=null?asset($p->media):"" }}" alt="" class="img-thumb" width="22"> 
+					{{ $p->head }}
+					<!--<img src="{{ $p->media!=null?asset($p->media):"" }}" alt="" class="img-thumb" width="22">--> 
 				</td>
 				<td>{{ $p->cat_id }}</td>
 				<td>{{ date("Y-m-d H:i",strtotime($p->updated_at)) }}</td>
@@ -56,9 +57,11 @@
 					</a>
 					<!--END EDIT-->
 					<!--PREVIEW BUTTON-->
+					<a href="{{URL::action('post-show', $p->id)}}">
 						<button type="button" class="btn btn-orange btn-xs">
 							<i class="entypo-eye"></i>
 						</button>
+					</a>
 					<!--END PREVIEW BUTTON-->
 					<!--DELETED-->
 				{{ Form::open(array('route' => array('post-delete', $p->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}

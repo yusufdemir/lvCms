@@ -36,7 +36,15 @@
 
 </script>
 
-<h1 class="margin-bottom">Yazıyı Düzenle</h1>
+<h1 class="margin-bottom">Yazıyı Düzenle
+		<!--PREVIEW BUTTON-->
+		<a href="{{URL::action('post-show', $post->id)}}">
+			<button type="button" class="btn btn-orange btn-md">
+				<i class="entypo-eye"></i> Yazıyı Önizle
+			</button>
+		</a>
+		<!--END PREVIEW BUTTON-->
+</h1>
 <ol class="breadcrumb 2">
 	<li>
 		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
@@ -274,7 +282,13 @@
 				<div class="panel-body">
 					
 					<p>Yazınıza ait etiketleri ekleyin</p>
-					<input type="text" name="tags" value="örnek, yaz sıcağı" class="form-control tagsinput" />
+					{{ Form::text( 'tags', Input::old('tags',null), 
+						array(
+							'placeholder'=>'Etiketler',
+							'class'=>'form-control tagsinput'
+							)
+						)
+					}}
 					
 				</div>
 			

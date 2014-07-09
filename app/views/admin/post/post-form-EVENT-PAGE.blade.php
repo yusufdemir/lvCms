@@ -32,6 +32,13 @@
 			checkboxClass: 'icheckbox_square-blue',
 			radioClass: 'iradio_square-yellow'
 		});
+			$("#event-cb").change(function() {
+			    if(this.checked) {
+			        $('#dp2').show();
+			    }else{
+			    	$('#dp2').hide();
+			    }
+			});
 	});
 
 </script>
@@ -41,11 +48,9 @@
 	<li>
 		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
 	</li>
-
 	<li>
 		<a href="#">{{ $t['name'] }}</a>
 	</li>
-
 	<li class="active">
 		<strong>Yeni {{ $t['name'] }} Ekle</strong>
 	</li>
@@ -123,10 +128,11 @@
 	
 	<!-- Metaboxes -->	
 	<div class="row">
+
 		<!-- Metabox :: Featured Image -->		
 		<div class="col-sm-4">
 			
-			<div class="panel panel-gray panel-shadow" data-collapsed="0">
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -141,7 +147,7 @@
 				<div class="panel-body" style="text-align:center;">
 					
 					<div class="fileinput fileinput-new" data-provides="fileinput">
-						<div class="fileinput-new thumbnail" style="" data-trigger="fileinput">
+						<div class="fileinput-new thumbnail" style="max-width: 310px; height: 160px;" data-trigger="fileinput">
 							<img src="{{ Input::old('media','http://placehold.it/320x160') }}" alt="...">
 						</div>
 						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px"></div>
@@ -161,10 +167,56 @@
 			
 		</div>
 
+@if($t['action']=="event")
+		
+		<div class="col-sm-4">
+			
+			<div class="panel panel-gray" data-collapsed="0">
+		
+				<div class="panel-heading">
+					<div class="panel-title">
+						Etkinlik Ayarları
+					</div>
+					
+					<div class="panel-options">
+						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<div class="checkbox checkbox-replace">
+						<input type="checkbox" id="event-cb" name="event-cb">
+						<label>Bir günden uzun</label>
+					</div>
+					<br>
+					<p>Başlangıç Tarihi:</p>
+					{{ Form::text( 'event_start', Input::old('event_start',date('Y-m-d')), 
+						array(
+							'class'=>'form-control datepicker',
+							'data-format'=>'yyyy-mm-dd'
+							)
+						)
+					}}
+					<br>
+					<div id="dp2">
+						<p>Bitiş Tarihi:</p>
+						{{ Form::text( 'event_end', Input::old('event_end',date('Y-m-d')), 
+							array(
+								'class'=>'form-control datepicker',
+								'data-format'=>'yyyy-mm-dd'
+								)
+							)
+						}}
+					</div>
+				</div>
+			</div>
+		</div>
+		@endif
+
 		<!-- Metabox :: Publish Settings -->		
 		<div class="col-sm-4">
 			
-			<div class="panel panel-gray panel-shadow" data-collapsed="0">
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -177,7 +229,7 @@
 				</div>
 				
 				<div class="panel-body">
-					@if( $t['action'] =='post')
+					@if($t['action']=="post")
 					<div class="checkbox checkbox-replace">
 						<input type="checkbox" id="slider" name="slider" checked>
 
@@ -185,7 +237,7 @@
 					</div>
 					
 					<br />
-					@endif
+			
 					<p>Yayınlanma Tarihi</p>
 					<div class="input-group">
 						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date',date('Y-m-d')) }}" data-format="yyyy-mm-dd">
@@ -196,7 +248,7 @@
 					</div>
 						
 					<br />
-					
+					@endif
 					<p>Yayınlanma Durumu</p>
 					<select name="active" class="selectboxit">
 						<optgroup label="DURUM:">
@@ -211,11 +263,11 @@
 			
 		</div>
 		
-		
+		@if($t['action']=="post")
 		<!-- Metabox :: Categories -->		
 		<div class="col-sm-4">
-		@if($t['action']=='post')
-			<div class="panel panel-gray panel-shadow" data-collapsed="0">
+			
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -241,13 +293,16 @@
 				</div>
 			
 			</div>
-		@endif	
-		<!-- </div>
-
-		Metabox :: Tags 	
-		<div class="col-sm-4">-->	
 			
-			<div class="panel panel-gray panel-shadow" data-collapsed="0">
+		</div>
+		
+		@endif
+		
+
+		<!-- Metabox :: Tags -->		
+		<div class="col-sm-4">
+			
+			<div class="panel panel-gray" data-collapsed="0">
 		
 				<div class="panel-heading">
 					<div class="panel-title">
@@ -262,6 +317,7 @@
 				<div class="panel-body">
 					
 					<p>Yazınıza ait etiketleri ekleyin</p>
+					<!--<input type="text" name="tags" value="" class="form-control tagsinput" />-->
 					{{ Form::text( 'tags', Input::old('tags',''), 
 						array(
 							'placeholder'=>'Etiketler',
@@ -269,13 +325,15 @@
 							)
 						)
 					}}
-					
 				</div>
 			
 			</div>
 			
 		</div>
-		
+
+
+
+
 	</div>
 	
 </form>
