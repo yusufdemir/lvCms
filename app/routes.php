@@ -51,9 +51,11 @@ Route::group(array('before' => 'doLogin'), function() {
     //Route::get('admin/page', array('as'=>'page-list','uses'=>'PostController@pageList') );
     //Route::get('admin/page/create',array('as'=>'page-create','uses'=>'PostController@createPage') );
 
-    Route::get('admin/post/create/{type?}', array('as' => 'post-create', 'uses' => 'PostController@create'));
-    Route::get('admin/post/page/{type?}', array('as' => 'page-list', 'uses' => 'PostController@pageindex'));
-    Route::resource('admin/post', 'PostController',
+    Route::get('admin/posts/create/{type?}', array('as' => 'post-create', 'uses' => 'PostController@create'));
+    Route::get('admin/posts/page/', array('as' => 'page-list', 'uses' => 'PostController@pageindex'));
+    Route::get('admin/posts/trash/', array('as' => 'post-trash', 'uses' => 'PostController@trashindex'));
+    Route::get('admin/posts/trash/{id}', array('as' => 'post-recovery', 'uses' => 'PostController@postRecovery'));
+    Route::resource('admin/posts', 'PostController',
         array(
             'names'=>array(
                 'index'     =>'post-list',

@@ -21,9 +21,13 @@
 		
 		<div class="blog-post-single">
 			
-			<a href="#" class="image">
-				<img src="{{ asset($post->media) }}" class="img-responsive img-rounded">
-			</a>
+			
+			@if($post->media!=null)
+				<a href="#" class="image">
+					<img src="{{ asset($post->media) }}" class="img-responsive img-rounded">
+				</a>
+			@endif
+			
 									
 			<div class="post-details">
 				
@@ -69,6 +73,7 @@
 			
 			<!-- panel body -->
 			<div class="panel-body">
+			@if($post->deleted==0)
 					<!--DELETED-->
 				{{ Form::open(array('route' => array('post-delete', $post->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
 					<button type="submit" class="btn btn-danger btn-xs" id="delcontent">
@@ -83,7 +88,13 @@
 						</button>
 					</a>
 					<!--END EDIT-->
-
+			@else
+					<a href="{{URL::action('post-recovery', $post->id)}}">
+					<button type="submit" class="btn btn-info btn-lg" id="delcontent">
+						<i class="entypo-ccw"></i> Çöp Kutusundan Çıkar
+					</button>
+					</a>
+			@endif
 
 			</div>
 			

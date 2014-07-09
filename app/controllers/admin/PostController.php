@@ -23,6 +23,12 @@ class PostController extends \BaseController {
 		return View::make('admin.post.post-list', compact('all_post','page'));
 	}
 
+	public function trashindex()
+	{	
+		$page['name']='Silinmişler';
+		$all_post=Post::where('deleted','=','1')->get();
+		return View::make('admin.post.post-list-deleted', compact('all_post','page'));
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /post/create
@@ -203,4 +209,13 @@ class PostController extends \BaseController {
 		return Redirect::route('post-list');
 	}
 
+
+	public function postRecovery($id)
+	{
+		$post = Post::find($id);
+		$post->deleted=0;
+		$post->save();
+		Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Gönderi Başarıyla Geri Getirildi.','type'=>'success'));
+		return Redirect::route('post-trash');
+	}
 }

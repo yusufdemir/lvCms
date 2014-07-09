@@ -66,11 +66,17 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{URL::to('admin/post/create/page') }}">
+                        <a href="{{URL::to('admin/posts/create/page') }}">
                             <span>Sayfa Ekle</span>
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="{{ URL::route('post-trash') }}">
+                <i class="entypo-gauge"></i>
+                <span>Çöp Kutusu</span>
+                </a>
             </li>
         </ul>
 
