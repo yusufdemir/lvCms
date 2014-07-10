@@ -72,6 +72,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="opened">
+                <a href="{{-- URL::to('admin/events') --}}">
+                <i class="entypo-doc-text-inv"></i>
+                <span>Etkinlikler</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::to('admin/event') }}">
+                            <span>Tüm Etkinlikler</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{URL::to('admin/event/create') }}">
+                            <span>Etkinlik Ekle</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="{{ URL::route('post-trash') }}">
                 <i class="entypo-gauge"></i>

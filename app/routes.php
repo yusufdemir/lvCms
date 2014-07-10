@@ -47,9 +47,14 @@ Route::group(array('before' => 'doLogin'), function() {
                 )
             )
         );
+    //Route::resource('admin', 'DashboardController');
+    Route::get('admin', function() {return Redirect::route('dashboard'); });
 
-    //Route::get('admin/page', array('as'=>'page-list','uses'=>'PostController@pageList') );
-    //Route::get('admin/page/create',array('as'=>'page-create','uses'=>'PostController@createPage') );
+/*
+|---------------------------------------------------------------------------------------------
+| POST & PAGE
+|---------------------------------------------------------------------------------------------
+*/
 
     Route::get('admin/posts/create/{type?}', array('as' => 'post-create', 'uses' => 'PostController@create'));
     Route::get('admin/posts/page/', array('as' => 'page-list', 'uses' => 'PostController@pageindex'));
@@ -69,9 +74,15 @@ Route::group(array('before' => 'doLogin'), function() {
             )
         );
 
+/*
+|---------------------------------------------------------------------------------------------
+| Event
+|---------------------------------------------------------------------------------------------
+*/
 
-    //Route::resource('admin', 'DashboardController');
-    Route::get('admin', function() {return Redirect::route('dashboard'); });
+Route::resource('admin/event', 'EventController');
+
+
 });
 
 
