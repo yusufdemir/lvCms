@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('defaultPosts');
         $this->command->info('default Posts created :) !');
+
+        $this->call('defaultActivty');
+        $this->command->info('default Activty created :) !');
+        
 	}
 
 }
@@ -101,6 +105,29 @@ class defaultPosts extends Seeder{
                 'user_id'	=> 2,
                 'cat_id'	=> 2,
                 'publish_date' => date('Y-m-d')
+            )
+        ));
+
+    }
+
+}
+
+class defaultActivty extends Seeder{
+
+    public function run(){
+        // Tabloyu Temizler
+        DB::table('actives')->delete();
+        // tabloya girilecek veriler
+        DB::table('actives')->insert(array(
+            array(
+                'name'=>'Deneme Etkinliği',
+                'link'=>'http://test.com',
+                'event_start'=>date('Y-m-d')
+            ),
+            array(
+                'name'=>'Deneme Etkinliği 2',
+                'link'=>'http://test2.com',
+                'event_start'=>date('Y-m-d')
             )
         ));
 

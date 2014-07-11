@@ -20,10 +20,8 @@ class CreatePostsTable extends Migration {
 			$table->string('media')->nullable();
 			$table->text('content')->nullable();
 			$table->string('tags')->nullable();
-			$enumAllow=array('post','page','event');
+			$enumAllow=array('post','page');
 			$table->enum('type', $enumAllow)->default('post');
-			$table->timestamp('event_start')->nullable();
-			$table->timestamp('event_end')->nullable();
 			$table->integer('user_id')->unsigned();
 			$table->integer('cat_id')->unsigned()->default(1);
 			$table->boolean('active')->default(true);

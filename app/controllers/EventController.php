@@ -10,7 +10,8 @@ class EventController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('admin.event.event-create');
+		$actives=Active::where('deleted','=','0')->get();
+		return View::make('admin.event.event-list',compact('actives'));
 	}
 
 	/**
@@ -21,7 +22,7 @@ class EventController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.event.event-create');
 	}
 
 	/**
@@ -40,14 +41,29 @@ class EventController extends \BaseController {
 			);
 
 		$messages=array(
-			'name.required'=>'Etkinlik Adı Boş Geçilemez!'
+			'name.required'=>'Etkinlik Adı Boş Geçilemez!',
+			'link.required'=>'Etkinlik Linki boş geçilemez.',
+			'event_start.required'=>'Etkinlik Tarihi Boş Geçilemez.',
+			'event_start.date_format'=>'Etkinlik Başlangıç Tarihi Geçerli Formatta Değil.',
+			'event_end.date_format'=>'Etkinlik Bitiş Tarihi Geçerli Formatta Değil.'
 			);
 		$validator = Validator::make(Input::all(), $rules, $messages);
 		if ($validator->fails()) {
 			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Form Hatalı Dolduruldu.','type'=>'error'));
 			return Redirect::to('admin/event')->withErrors($validator)->withInput();
 		}else{
-			return "hata yok";
+			$active=new Active;
+			$active->name=Input::get('name');
+			$active->link=Input::get('link');
+			$active->user_id=Auth::id();
+			$active->event_start=Input::get('event_start');
+
+			$active->more_day=(Input::get('event_cb')==true?1:0);
+			if (Input::get('event_cb')==true) {
+				$active->event_end=Input::get('event_end');
+			}
+			$active->save();
+			return Redirect::to('admin/event');
 		}
 	}
 

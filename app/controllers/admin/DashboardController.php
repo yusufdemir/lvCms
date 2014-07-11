@@ -10,7 +10,7 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
-		$post_count=Post::all()->count();
+		$post_count=Post::where('type','=','post')->count();
 		$user_count=User::all()->count();
 		$all_post=Post::take(5)->get();
 		return View::make('admin.dashboard', compact('all_post','post_count','user_count','gravatar') );
