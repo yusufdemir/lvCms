@@ -36,7 +36,7 @@
 
 </script>
 
-<h1 class="margin-bottom">Yeni Etkinlik Ekle  </h1>
+<h1 class="margin-bottom">Etkinliği Düzenle  </h1>
 <ol class="breadcrumb 2">
 	<li>
 		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
@@ -47,7 +47,7 @@
 	</li>
 
 	<li class="active">
-		<strong>Yeni Etkinlik Ekle</strong>
+		<strong>Etkinliği Düzenle</strong>
 	</li>
 </ol>
 			
@@ -80,7 +80,8 @@
 	</div>
 @endif
 
-{{ Form::open(array('url' => URL::to('admin/event'), 'files' => true, 'method' => 'post')) }}
+
+{{ Form::model($actives, array('url' => 'admin/event/'.$actives->id,'method'=> 'PUT')) }}
 	<div class="row">
 		<div class="col-md-6">
 			<div class="panel panel-gradient" data-collapsed="0">
@@ -95,7 +96,6 @@
 					{{ Form::submit('Etkinlik Ekle',array('class'=>'btn')) }}
 				</div>
 			</div>
-			
 		</div>
 
 		<div class="col-md-6">

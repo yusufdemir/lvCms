@@ -32,7 +32,8 @@
 				<br>
 
 				<div class="checkbox checkbox-replace">
-					<input type="checkbox" id="event-cb" name="event-cb">
+					
+					{{ Form::checkbox('more_day',null,null,array('id'=>'event-cb')) }}
 					<label>Bir günden uzun</label>
 				</div>
 				<br>

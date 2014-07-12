@@ -102,7 +102,15 @@
                             <td>{{ $active->name }}</td>
                             <td>{{ $active->link }}</td>
                             <td>{{ $active->event_start }}</td>
-                            <td>{{ $active->event_end }}</td>
+                            <td>
+                            @if($active->more_day==true)
+                            	{{ $active->event_end }}
+							@else
+								{{ $active->event_start }}
+								<br>
+								<small>Aynı Gün Bitiyor</small>
+							@endif
+                            </td>
                             <td>
 								<!--EDIT-->
 								<a href="{{URL::to('admin/event/'.$active->id.'/edit') }}">
