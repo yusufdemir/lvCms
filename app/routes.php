@@ -82,6 +82,7 @@ Route::group(array('before' => 'doLogin'), function() {
 
 Route::resource('admin/event', 'EventController');
 
+Route::controller('admin/media', 'MediaController');
 
 });
 

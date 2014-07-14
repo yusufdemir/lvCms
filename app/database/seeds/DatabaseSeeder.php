@@ -23,7 +23,15 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('defaultActivty');
         $this->command->info('default Activty created :) !');
-        
+
+        $this->call('defaultAlbumsinfo');
+        $this->command->info('defaultAlbumsinfo created :) !');
+
+        $this->call('defaultPhotos');
+        $this->command->info('defaultPhotos created :) !');
+
+        $this->call('defaultAlbums');
+        $this->command->info('defaultAlbums created :) !');
 	}
 
 }
@@ -128,6 +136,84 @@ class defaultActivty extends Seeder{
                 'name'=>'Deneme Etkinliği 2',
                 'link'=>'http://test2.com',
                 'event_start'=>date('Y-m-d')
+            )
+        ));
+
+    }
+
+}
+
+
+class defaultAlbumsinfo extends Seeder{
+
+    public function run(){
+        // Tabloyu Temizler
+        DB::table('Albumsinfos')->delete();
+        // tabloya girilecek veriler
+        DB::table('Albumsinfos')->insert(array(
+            array(
+                'name'=>'Albüm 1',
+                'description'=>'açıklama 1',
+                'user_id'=>1
+            ),
+            array(
+                'name'=>'Albüm 2',
+                'description'=>'açıklama 2',
+                'user_id'=>2
+            )
+        ));
+
+    }
+
+}
+
+class defaultPhotos extends Seeder{
+
+    public function run(){
+        // Tabloyu Temizler
+        DB::table('photos')->delete();
+        // tabloya girilecek veriler
+        DB::table('photos')->insert(array(
+            array(
+                'link'=>'_uploads/media/test1.jpg',
+                'name'=>'Resim 1',
+                'user_id'=>1,
+                'alt'=> 'Açıklama 1'
+            ),
+            array(
+                'link'=>'_uploads/media/test1.jpg',
+                'name'=>'Resim 2',
+                'user_id'=>2,
+                'alt'=> 'Açıklama 2'
+            )
+        ));
+
+    }
+
+}
+
+class defaultAlbums extends Seeder{
+
+    public function run(){
+        // Tabloyu Temizler
+        DB::table('albums')->delete();
+        // tabloya girilecek veriler
+        DB::table('albums')->insert(array(
+            array(
+                'albumsinfo_id'=>1,
+                'photo_id'=>1
+            ),
+            array(
+                'albumsinfo_id'=>1,
+                'photo_id'=>2
+            ),
+            array(
+                'albumsinfo_id'=>2,
+                'photo_id'=>1
+            ),
+            array(
+                'albumsinfo_id'=>2,
+                'photo_id'=>2
             )
         ));
 
