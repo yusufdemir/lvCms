@@ -8,9 +8,15 @@ class MediaController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function getIndex($a,$b,$c,$d,$e)
+	public function getIndex()
 	{
-		return "Test :D --> ".$a.$b.$c.$d.$e;
+		$sonuc=Album::find(1);
+		return View::make('admin.media.media-single-album', compact('sonuc') );
+	}
+
+	public function getShowalbum($first){
+		$sonuc=Album::find($first);
+		return View::make('admin.media.media-single-album', compact('sonuc') );
 	}
 
 	/**

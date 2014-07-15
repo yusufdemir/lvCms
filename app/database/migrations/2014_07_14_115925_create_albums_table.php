@@ -15,7 +15,7 @@ class CreateAlbumsTable extends Migration {
 		Schema::create('albums', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('albumsinfo_id')->unsigned()->index();
+			$table->integer('albuminfo_id')->unsigned()->index();
 			$table->integer('photo_id')->unsigned()->index();
 			$table->boolean('deleted')->default(false);
 			$table->timestamps();

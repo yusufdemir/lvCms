@@ -148,9 +148,9 @@ class defaultAlbumsinfo extends Seeder{
 
     public function run(){
         // Tabloyu Temizler
-        DB::table('Albumsinfos')->delete();
+        DB::table('Albuminfos')->delete();
         // tabloya girilecek veriler
-        DB::table('Albumsinfos')->insert(array(
+        DB::table('Albuminfos')->insert(array(
             array(
                 'name'=>'Albüm 1',
                 'description'=>'açıklama 1',
@@ -200,19 +200,19 @@ class defaultAlbums extends Seeder{
         // tabloya girilecek veriler
         DB::table('albums')->insert(array(
             array(
-                'albumsinfo_id'=>1,
+                'albuminfo_id'=>1,
                 'photo_id'=>1
             ),
             array(
-                'albumsinfo_id'=>1,
+                'albuminfo_id'=>1,
                 'photo_id'=>2
             ),
             array(
-                'albumsinfo_id'=>2,
+                'albuminfo_id'=>2,
                 'photo_id'=>1
             ),
             array(
-                'albumsinfo_id'=>2,
+                'albuminfo_id'=>2,
                 'photo_id'=>2
             )
         ));
