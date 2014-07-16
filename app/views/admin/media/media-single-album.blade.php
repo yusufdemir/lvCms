@@ -29,32 +29,54 @@ jQuery(document).ready(function($)
 {
 	$(".gallery-env").on("click", ".image-thumb .image-options a.delete", function(ev)
 	{
+
 		ev.preventDefault();
-		
+		//alert( $(this).attr("data-id") );
 		
 		var $image = $(this).closest('[data-tag]');
-			
-		var t = new TimelineLite({
-			onComplete: function()
-			{
-				$image.slideUp(function()
-				{
-					$image.remove();
-					alert('silindi.');
-				});
-			}
+		var formData = {_method:"PUT",id:$(this).attr("data-id")}; //Array 
+		$.ajax({
+		    url : "{{ URL::to('admin/media/delphoto')}}",
+		    type: "GET",
+		    dataType: 'JSON',
+		    data : formData,
+		    success: function(data)
+		    {		    	
+		    	var t = new TimelineLite({
+		    		onComplete: function(){
+		    			$image.slideUp(function(){
+		    				$image.remove();
+		    			});
+		    	}});
+				$image.addClass('no-animation');
+				
+				t.append( TweenMax.to($image, .2, {css: {scale: 0.95}}) );
+				t.append( TweenMax.to($image, .5, {css: {autoAlpha: 0, transform: "translateX(100px) scale(.95)"}}) );
+		        if (data.status==true) {
+		        	
+		        }else{
+		        	alert('Hata Oluştu');
+		        }
+		    },
+		    error: function (data)
+		    {
+		 		alert('ERROR DELETE');
+		    }
 		});
-		
-		$image.addClass('no-animation');
-		
-		t.append( TweenMax.to($image, .2, {css: {scale: 0.95}}) );
-		t.append( TweenMax.to($image, .5, {css: {autoAlpha: 0, transform: "translateX(100px) scale(.95)"}}) );
-		
+		/*
+		var t = new TimelineLite({onComplete: function(){$image.slideUp(function(){$image.remove();});}});
+		*/
+
+
+
 	}).on("click", ".image-thumb .image-options a.edit", function(ev)
 	{
 		ev.preventDefault();
 		
 		// This will open sample modal
+		$(this).hide('400', function() {
+			
+		});
 		$("#album-image-options").modal('show');
 		
 		
@@ -87,7 +109,13 @@ jQuery(document).ready(function($)
 });
 </script>
 
-<h1 class="margin-bottom">Albüm Düzenle  </h1>
+<h1 class="margin-bottom">{{ $album->name }} 
+				<a href="#" onclick="jQuery('#album-cover-options').modal('show');" class="btn btn-default btn-sm btn-icon icon-left">
+					<i class="entypo-cog"></i>
+					Albüm Düzenle
+				</a>
+</h1>
+
 <ol class="breadcrumb 2">
 	<li>
 		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
@@ -104,7 +132,6 @@ jQuery(document).ready(function($)
 	</li>
 </ol>
 			
-<br />
 
 <style>
 .ms-container .ms-list {
@@ -136,126 +163,35 @@ jQuery(document).ready(function($)
 
 <div class="row">
 	
-<div class="gallery-env">
+	<div class="gallery-env">
 
-	<div class="row">
-	
-		<div class="col-sm-12">
-			
-			<h3>
-				Album Title
-				&nbsp;
-				<a href="#" onclick="jQuery('#album-cover-options').modal('show');" class="btn btn-default btn-sm btn-icon icon-left">
-					<i class="entypo-cog"></i>
-					Edit Album
-				</a>
-			</h3>
-			
-			<hr />
-			<!--
-			<div class="image-categories">
-				<span>Filter Images:</span>
-				<a href="#" class="active" data-filter="all">Show All</a> /
-				<a href="#" data-filter="1d">Taken today</a> /
-				<a href="#" data-filter="3d">Taken three days ago</a> /
-				<a href="#" data-filter="1w">Taken a week ago</a>
-			</div>
-			-->
-		</div>
-	
+		{{-- var_dump($images) --}}
+		@for ($i=0; $i < 10; $i++) 
+			@foreach ($images as $image )
+				<div class="col-sm-2 col-xs-4" data-tag="1d">
+
+					<article class="image-thumb">
+						
+						<a href="#" class="image">
+							<img src="{{ asset($image->photo->link) }}" />
+						</a>
+						
+						<div class="image-options">
+							<a href="#" class="edit" data-id="{{ $image->id }}"><i class="entypo-pencil"></i></a>
+							<a href="#" class="delete" data-id="{{ $image->id }}"><i class="entypo-cancel"></i></a>
+						</div>
+						
+					</article>
+				
+				</div>
+			@endforeach
+		@endfor
 	</div>
+</div><!--END ROW-->
 
+<div class="clear"></div>
 
-		<div class="col-sm-2 col-xs-4" data-tag="1d">
-			
-			<article class="image-thumb">
-				
-				<a href="#" class="image">
-					<img src="{{ asset('assets/images/album-image.jpg') }}" />
-				</a>
-				
-				<div class="image-options">
-					<a href="#" class="edit"><i class="entypo-pencil"></i></a>
-					<a href="#" class="delete"><i class="entypo-cancel"></i></a>
-				</div>
-				
-			</article>
-		
-		</div>
-	
-		<div class="col-sm-2 col-xs-4" data-tag="3d">
-			
-			<article class="image-thumb">
-				
-				<a href="#" class="image">
-					<img src="{{ asset('assets/images/album-image.jpg') }}" />
-				</a>
-				
-				<div class="image-options">
-					<a href="#" class="edit"><i class="entypo-pencil"></i></a>
-					<a href="#" class="delete"><i class="entypo-cancel"></i></a>
-				</div>
-				
-			</article>
-		
-		</div>
-	
-		<div class="col-sm-2 col-xs-4" data-tag="3d">
-			
-			<article class="image-thumb">
-				
-				<a href="#" class="image">
-					<img src="{{ asset('assets/images/album-image.jpg') }}" />
-				</a>
-				
-				<div class="image-options">
-					<a href="#" class="edit"><i class="entypo-pencil"></i></a>
-					<a href="#" class="delete"><i class="entypo-cancel"></i></a>
-				</div>
-				
-			</article>
-		
-		</div>
-	
-		<div class="col-sm-2 col-xs-4" data-tag="1d">
-			
-			<article class="image-thumb">
-				
-				<a href="#" class="image">
-					<img src="{{ asset('assets/images/album-image.jpg') }}" />
-				</a>
-				
-				<div class="image-options">
-					<a href="#" class="edit"><i class="entypo-pencil"></i></a>
-					<a href="#" class="delete"><i class="entypo-cancel"></i></a>
-				</div>
-				
-			</article>
-		
-		</div>
-	
-		<div class="col-sm-2 col-xs-4" data-tag="1d">
-			
-			<article class="image-thumb">
-				
-				<a href="#" class="image">
-					<img src="{{ asset('assets/images/album-image.jpg') }}" />
-				</a>
-				
-				<div class="image-options">
-					<a href="#" class="edit"><i class="entypo-pencil"></i></a>
-					<a href="#" class="delete"><i class="entypo-cancel"></i></a>
-				</div>
-				
-			</article>
-		
-		</div>
-		
-		</div>
-
-
-
-<hr />
+	<hr />
 
 		<h3>
 			Albüme Resim Yükle
@@ -298,6 +234,8 @@ jQuery(document).ready(function($)
 				</table>
 			</div>
 		</div>
+
+
 
 <!--MODALS-->
 
@@ -418,7 +356,7 @@ jQuery(document).ready(function($)
 
 <!--MODAL END-->
 
-</div><!--END ROW-->
+
 	
 
 @stop <!--END BODY SECTION-->

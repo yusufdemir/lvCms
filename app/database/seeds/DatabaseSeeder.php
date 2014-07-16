@@ -181,7 +181,7 @@ class defaultPhotos extends Seeder{
                 'alt'=> 'Açıklama 1'
             ),
             array(
-                'link'=>'_uploads/media/test1.jpg',
+                'link'=>'_uploads/media/test2.jpg',
                 'name'=>'Resim 2',
                 'user_id'=>2,
                 'alt'=> 'Açıklama 2'

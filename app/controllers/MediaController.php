@@ -10,13 +10,14 @@ class MediaController extends \BaseController {
 	 */
 	public function getIndex()
 	{
-		$sonuc=Album::find(1);
-		return View::make('admin.media.media-single-album', compact('sonuc') );
+		$images=Album::find(1)->get();
+		return View::make('admin.media.media-single-album', compact('images') );
 	}
 
 	public function getShowalbum($first){
-		$sonuc=Album::find($first);
-		return View::make('admin.media.media-single-album', compact('sonuc') );
+		$images=Album::where('albuminfo_id','=',$first)->where('deleted','=',0)->get();
+		$album=Albuminfo::find($first);
+		return View::make('admin.media.media-single-album', compact('images','album') );
 	}
 
 	/**
@@ -72,6 +73,21 @@ class MediaController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
+	public function getDelphoto(){
+		if (Input::get('_method')=="PUT" && Input::get('id')!=null) {
+			$delete=Album::find(Input::get('id'));
+			$delete->deleted=1;
+			$delete->save();
+			$response['status']=true;
+		}else{
+			$response['status']=false;
+		}
+
+		return json_encode($response);
+		
+	}
+
 	public function update($id)
 	{
 		//

@@ -26,7 +26,6 @@ var neonLogin = neonLogin || {};
 				password: {
 					required: true
 				},
-				
 			},
 			
 			highlight: function(element){
