@@ -10,8 +10,8 @@ class MediaController extends \BaseController {
 	 */
 	public function getIndex()
 	{
-		$images=Album::find(1)->get();
-		return View::make('admin.media.media-single-album', compact('images') );
+		$albums=Albuminfo::all();
+		return View::make('admin.media.media-list', compact('albums') );
 	}
 
 	public function getShowalbum($first){

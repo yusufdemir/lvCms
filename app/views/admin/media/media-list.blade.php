@@ -89,22 +89,23 @@
             <table class="table table-bordered table-responsive">
                 <thead>
                     <tr>
-                        <th>Etkinlik Adı</th>
-                        <th>Etkinlik Linki</th>
-                        <th>Başlangıç Tarihi</th>
-                        <th>Bitiş Tarihi Tarihi</th>
-                        <th>İşlemler</th>
+                        <th>ID</th>
+                        <th>ALBÜM ADI</th>
+                        <th>RESİM SAYISI</th>
+                        <th>DURUM</th>
+                        <th>İŞLEMLER</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
+                   @foreach ($albums as $album) 
                         <tr>
-                            <td>{{ var_dump($sonuc->albuminfo) }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $album->id }}</td>
+                            <td>{{ $album->name }}</td>
+                            <td>{{ $album->photocount }}</td>
                             <td></td>
                             <td></td>
                         </tr>
+                	@endforeach
                 </tbody>
             </table>
 

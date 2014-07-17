@@ -7,4 +7,8 @@ class Albuminfo extends \Eloquent {
 		return $this->hasMany('Album');
 	}
 
+	public function photocount(){
+		$count=$this->album()->where('deleted','=','0')->selectRaw('count(*) as count');
+		return $count;
+	}
 }
