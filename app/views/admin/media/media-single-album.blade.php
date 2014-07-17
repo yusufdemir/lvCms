@@ -80,47 +80,59 @@ jQuery(document).ready(function($)
 		 		alert('ERROR DELETE');
 		    }
 		});
-		/*
-		var t = new TimelineLite({onComplete: function(){$image.slideUp(function(){$image.remove();});}});
-		*/
-
-
 
 	}).on("click", ".image-thumb .image-options a.edit", function(ev)
 	{
 		ev.preventDefault();
 		
-		// This will open sample modal
-		$(this).hide('400', function() {
-			
+		$.ajax({
+		    url : "{{ URL::to('admin/media/photoinfo')}}",
+		    type: "GET",
+		    dataType: 'JSON',
+		    data : {id:$(this).attr("data-id")},
+		    success: function(data)
+		    {		    	
+		        if (data.status==true) {
+		        	$("#photo-title").val(data.title);
+		        	$("#photo-description").val(data.description);
+		        	$("#photo-id").val(data.id);
+		        	$("#album-image-options").modal('show');
+		        }
+		    },
+		    error: function (data)
+		    {
+		 		alert('Resim Düzenleme Hatası');
+		 		$("#album-image-options").modal('hide');
+		    }
 		});
-		$("#album-image-options").modal('show');
-		
-		
+
 	});
 	
 	
-	// Sample Filtering
-	var all_items = $("div[data-tag]"),
-		categories_links = $(".image-categories a");
-	
-	categories_links.click(function(ev)
-	{
-		ev.preventDefault();
-		
-		var $this = $(this),
-			filter = $this.data('filter');
-		
-		categories_links.removeClass('active');
-		$this.addClass('active');
-		
-		all_items.addClass('not-in-filter').filter('[data-tag="' + filter + '"]').removeClass('not-in-filter');
-		
-		if(filter == 'all' || filter == '*')
-		{
-			all_items.removeClass('not-in-filter');
-			return;
-		}
+
+	$('#save-image').click(function(event) {
+			$.ajax({
+		    url : "{{ URL::to('admin/media/savephotoinfo')}}",
+		    type: "post",
+		    dataType: 'JSON',
+		    data : {
+		    	id:$("#photo-id").val(),
+		    	title:$("#photo-title").val(),
+		    	description:$("#photo-description").val()
+		    },
+		    success: function(data)
+		    {		    	
+		        if (data.status==true) {
+		        	$("#album-image-options").modal('hide');
+		        }else{
+		        	alert('-Bilgi Güncelleme Hatası' + $("#photo-title").val() + $("#photo-description").val());
+		        }
+		    },
+		    error: function (data)
+		    {
+		 		alert('Bilgi Güncelleme Hatası');
+		    }
+		});	
 	});
 	
 });
@@ -186,7 +198,6 @@ jQuery(document).ready(function($)
 	<div class="gallery-env">
 
 		{{-- var_dump($images) --}}
-		@for ($i=0; $i < 10; $i++) 
 			@foreach ($images as $image )
 				<div class="col-sm-2 col-xs-4" data-tag="1d">
 
@@ -205,7 +216,6 @@ jQuery(document).ready(function($)
 				
 				</div>
 			@endforeach
-		@endfor
 	</div>
 </div><!--END ROW-->
 
@@ -338,11 +348,11 @@ jQuery(document).ready(function($)
 					
 						<div class="row">
 							<div class="col-md-12">
-								
+								<input type="hidden" name="photo-id" id="photo-id" value="">
 								<div class="form-group">
-									<label for="field-1" class="control-label">Title</label>
+									<label for="field-1" class="control-label">Resim Adı/Başlığı</label>
 									
-									<input type="text" class="form-control" id="field-1" placeholder="Enter image title">
+									<input type="text" class="form-control" id="photo-title" name="photo-title" placeholder="Enter image title">
 								</div>	
 								
 							</div>
@@ -352,9 +362,9 @@ jQuery(document).ready(function($)
 							<div class="col-md-12">
 								
 								<div class="form-group">
-									<label for="field-1" class="control-label">Description</label>
+									<label for="field-1" class="control-label">Açıklaması</label>
 									
-									<textarea class="form-control autogrow" id="field-2" placeholder="Enter image description" style="min-height: 80px;"></textarea>
+									<textarea class="form-control autogrow" id="photo-description" name="photo-description" placeholder="Enter image description" style="min-height: 80px;"></textarea>
 								</div>	
 								
 							</div>
@@ -365,9 +375,9 @@ jQuery(document).ready(function($)
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success btn-icon">
+				<button type="button" id="save-image" class="btn btn-success btn-icon">
 					<i class="entypo-check"></i>
-					Apply Changes
+					Bilgileri Güncelle
 				</button>
 			</div>
 		</div>

@@ -30,14 +30,14 @@ class MediaController extends \BaseController {
 	{
 		$rules = array(
 			'album_id'=>'required',
-		    'file' => 'max:3005'
+		    'file' => 'max:3000'
 		);
 		$messages=array(
 			'album_id.required'=>'test'
 			);
 		$validation = Validator::make(Input::all(), $rules, $messages);
 		if($validation->fails()){
-			return "error";
+			return Response::json('error', 400);
 		}
 			if (Input::hasFile('file')) {
 				$file            = Input::file('file');
@@ -48,8 +48,24 @@ class MediaController extends \BaseController {
 		        $uploadSuccess   = $file->move($destinationPath, $filename);
 			}
 		
+		if ($uploadSuccess) {
+			//return Response::json('success', 200);
+			$addphotos=new Photo;
+			$addphotos->link=$filelink;
+			$addphotos->name=$filename;
+			$addphotos->user_id=Auth::id();
+			$addphotos->save();
+			$photoid=$addphotos->id;
 
+			$add= new Album;
+			$add->albuminfo_id=Input::get('album_id');
+			$add->photo_id=$photoid;
+			$add->save();
 
+			return Response::json('error', 200);
+        } else {
+            return Response::json('error', 400);
+        }
 		
 
 	}
@@ -57,7 +73,49 @@ class MediaController extends \BaseController {
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /media/delete
-	 *
+	 *photoinfo
+	 * @return Response
+	 */
+	public function getPhotoinfo(){
+		if (Input::get('id')!=null) {
+			$photo=Album::find(Input::get('id'))->photo;
+			$response['status']=true;
+			$response['title']=$photo->name;
+			$response['description']=$photo->alt;
+			$response['id']=$photo->id;
+		}else{
+			$response['status']=false;
+		}
+
+		return json_encode($response);
+		
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 * GET /media/delete
+	 *photoinfo
+	 * @return Response
+	 */
+	public function postSavephotoinfo(){
+		if (Input::get('id')!=null) {
+			$photo=Photo::find(Input::get('id'));
+			$photo->name=Input::get('title');
+			$photo->alt=Input::get('description');
+			$photo->save();
+			$response['status']=true;
+		}else{
+			$response['status']=false;
+		}
+
+		return json_encode($response);
+		
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 * GET /media/delete
+	 *photoinfo
 	 * @return Response
 	 */
 	public function getDelphoto(){
