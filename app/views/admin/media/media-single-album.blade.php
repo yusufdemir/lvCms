@@ -16,6 +16,23 @@
 @section('custom-js')
 <script src="{{ asset('assets/js/jcrop/jquery.Jcrop.min.js') }}"></script>
 <script src="{{ asset('assets/js/dropzone/dropzone.js') }}"></script>
+
+<script>
+
+$("#dropzone_upload").dropzone({
+    paramName: 'file',
+    url: '{{ URL::to("admin/media/storephoto") }}',
+    maxFilesize: 3,
+    acceptedFiles:'image/*',
+	init: function() {
+		this.on('sending', function(file, xhr, formData){
+            formData.append('album_id', {{ $album->id }});
+            console.log("Sending");
+        });
+	}
+});
+
+</script>
 @stop
 
 @section('body')
@@ -107,6 +124,9 @@ jQuery(document).ready(function($)
 	});
 	
 });
+
+
+
 </script>
 
 <h1 class="margin-bottom">{{ $album->name }} 
@@ -201,7 +221,7 @@ jQuery(document).ready(function($)
 
 		<br />
 			
-		<form action="data/upload-file.php" class="dropzone dz-min" id="dropzone_example">
+		<form action="" class="dropzone dz-min" id="dropzone_upload">
 			<div class="fallback">
 				<input name="file" type="file" multiple />
 			</div>

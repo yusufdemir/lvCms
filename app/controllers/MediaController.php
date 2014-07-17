@@ -22,58 +22,44 @@ class MediaController extends \BaseController {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /media/create
+	 * GET /media/store
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function postStorephoto()
 	{
-		//
+		$rules = array(
+			'album_id'=>'required',
+		    'file' => 'max:3005'
+		);
+		$messages=array(
+			'album_id.required'=>'test'
+			);
+		$validation = Validator::make(Input::all(), $rules, $messages);
+		if($validation->fails()){
+			return "error";
+		}
+			if (Input::hasFile('file')) {
+				$file            = Input::file('file');
+				$desinationFolder= '/_uploads/media/';
+		        $destinationPath = public_path().$desinationFolder;
+		        $filename        = date('YmdHis').'_'. $file->getClientOriginalName();
+		        $filelink		 = $desinationFolder.$filename;
+		        $uploadSuccess   = $file->move($destinationPath, $filename);
+			}
+		
+
+
+		
+
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 * POST /media
+	 * Show the form for creating a new resource.
+	 * GET /media/delete
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /media/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /media/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function getEdit($id)
-	{
-		return "edit - > ".$id;
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /media/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-
 	public function getDelphoto(){
 		if (Input::get('_method')=="PUT" && Input::get('id')!=null) {
 			$delete=Album::find(Input::get('id'));
@@ -86,23 +72,6 @@ class MediaController extends \BaseController {
 
 		return json_encode($response);
 		
-	}
-
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /media/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }
