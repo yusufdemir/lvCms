@@ -29,8 +29,13 @@ $("#dropzone_upload").dropzone({
             formData.append('album_id', {{ $album->id }});
             console.log("Sending");
         });
+		this.on('success', function(response){
+            //alert(response.status);
+            console.log('success');
+        });
 	}
 });
+
 
 </script>
 @stop

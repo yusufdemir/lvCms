@@ -37,7 +37,7 @@ class MediaController extends \BaseController {
 			);
 		$validation = Validator::make(Input::all(), $rules, $messages);
 		if($validation->fails()){
-			return Response::json('error', 400);
+			return Response::json('status', 400);
 		}
 			if (Input::hasFile('file')) {
 				$file            = Input::file('file');
@@ -62,9 +62,9 @@ class MediaController extends \BaseController {
 			$add->photo_id=$photoid;
 			$add->save();
 
-			return Response::json('error', 200);
+			return Response::json('status', 200);
         } else {
-            return Response::json('error', 400);
+            return Response::json('status', 400);
         }
 		
 
@@ -91,6 +91,19 @@ class MediaController extends \BaseController {
 		
 	}
 
+
+	public function postAddalbum(){
+
+			$album=new Albuminfo;
+			$album->name=Input::get('name');
+			$album->description=Input::get('description');
+			$save=$album->save();
+			$response['status'] = ($save) ? "true" : "false" ;
+
+		return json_encode($response);
+		
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /media/delete
@@ -111,6 +124,8 @@ class MediaController extends \BaseController {
 		return json_encode($response);
 		
 	}
+
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -133,3 +148,4 @@ class MediaController extends \BaseController {
 	}
 
 }
+

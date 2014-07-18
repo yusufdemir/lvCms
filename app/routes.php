@@ -13,9 +13,13 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('btp.layouts.master');
 });
 
+Route::get('testevent', function()
+{
+    return View::make('hello');
+});
 /*
 Route::get('login', function() {
 	return View::make('admin.auth.login');
