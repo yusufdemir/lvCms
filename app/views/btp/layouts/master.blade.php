@@ -34,7 +34,10 @@
 	        </nav>
 	      </div>
 	</header>
-    <div class="container">
+
+<section>
+	<div class="container contents">
+<img src="http://www.btp.org.tr/_uploads/images/big_fotograf_847016.jpg" alt="Bu devran değişecek" style="width: 660px; height: 378.125px;">
 
       <div class="blog-header">
         <h1 class="blog-title">BTP YENİ DİZAYN</h1>
@@ -146,15 +149,15 @@
       </div><!-- /.row -->
 
     </div><!-- /.container -->
-
+</section>
+<footer>
     <div class="blog-footer">
       <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
       <p>
         <a href="#">Back to top</a>
       </p>
     </div>
-
-    <h1>BTP ARAYÜZ</h1>
+</footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
