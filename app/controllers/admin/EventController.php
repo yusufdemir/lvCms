@@ -151,4 +151,40 @@ class EventController extends \BaseController {
 		return Redirect::to('admin/event');
 	}
 
+//{ "date": "2013-03-23 17:30:00", "type": "meeting", "title": "Test Next Year", "description": "Lorem Ipsum dolor set", "url": "http://www.event3.com/" }
+	public function eventJson()
+	{
+		$Events=Active::all();
+
+		$response= array();
+		foreach ($Events as $event) {
+			if($event->more_day==1){
+				$start=strtotime($event->event_start);
+				$end=strtotime($event->event_end);
+				$fark=$end-$start;
+				$fark = ($fark/60/60/24);
+				for ($i=0; $i <= $fark ; $i++) { 
+					$response[]=array(
+						'date' 	=> date("Y-m-d H:i:00",strtotime($event->event_start. ' + '.$i.' days')),
+						'type' 	=> 'meeting',
+						'title'	=> $event->name,
+						'description'=>'',
+						'url'	=> $event->link
+					);
+				}
+			}else{
+				$response[]=array(
+					'date' 	=> $event->event_start, 
+					'type' 	=> 'meeting',
+					'title'	=> $event->name,
+					'description'=>'',
+					'url'	=> $event->link
+				);
+			}
+
+
+		}
+		return Response::json($response);
+	}
+
 }

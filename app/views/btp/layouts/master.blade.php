@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <link href="{{ asset('btp/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('btp/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('btp/js/eventCalendar/css/eventCalendar.css') }}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -16,11 +17,13 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <script src="http://cufon.shoqolate.com/js/cufon-yui.js" type="text/javascript"></script>
     <script src="{{ asset('btp/js/bebas-neue.cufonfonts.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
-    Cufon.replace('.blog-nav-item', { fontFamily: 'Bebas Neue', hover: true,textShadow: '1px 1px black' }); 
+      Cufon.replace('.blog-nav-item', { fontFamily: 'Bebas Neue', hover: true,textShadow: '1px 1px black' }); 
     </script>
+    
   </head>
   <body>
 
@@ -84,6 +87,15 @@
             </section>
 
             <div class="clearfix"></div>
+
+            <div class="columnist-last-post">
+              <div class="columnist-content">
+                <a href="#">
+                  <strong>Hz. Yusuf misali</strong>
+                  <p>BRICS ülkeleri yeni bir ekonomi yapılanması için imzaları attılar. IMF ve Dünya Bankası’na rakip...</p>
+                </a>
+              </div>
+            </div>
 
             <div class="blog-post">
               <h2 class="blog-post-title">Sample blog post</h2>
@@ -153,26 +165,16 @@
 
           <aside>
             <div class="col-sm-4 blog-sidebar">
+              <div class="sidebar-module-title">
+                <h4>ETKİNLİK TAKVİMİ</h4> <div class="stripe-title"> </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="sidebar-module">
+                <div id="eventCalendar"></div>
+              </div>
               <div class="sidebar-module sidebar-module-inset">
                 <h4>About</h4>
                 <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-              </div>
-              <div class="sidebar-module">
-                <h4>Archives</h4>
-                <ol class="list-unstyled">
-                  <li><a href="#">March 2014</a></li>
-                  <li><a href="#">February 2014</a></li>
-                  <li><a href="#">January 2014</a></li>
-                  <li><a href="#">December 2013</a></li>
-                  <li><a href="#">November 2013</a></li>
-                  <li><a href="#">October 2013</a></li>
-                  <li><a href="#">September 2013</a></li>
-                  <li><a href="#">August 2013</a></li>
-                  <li><a href="#">July 2013</a></li>
-                  <li><a href="#">June 2013</a></li>
-                  <li><a href="#">May 2013</a></li>
-                  <li><a href="#">April 2013</a></li>
-                </ol>
               </div>
               <div class="sidebar-module">
                 <h4>Elsewhere</h4>
@@ -203,14 +205,19 @@
     <script src="{{ asset('btp/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('btp/js/elasticslideshow/jquery.easing.1.3.js') }}"></script>
     <script src="{{ asset('btp/js/elasticslideshow/jquery.eislideshow.js') }}"></script>
+    <script src="{{ asset('btp/js/eventCalendar/js/jquery.eventCalendar.min.js') }}"></script>
+    <script src="{{ asset('btp/js/script.js') }}"></script>
 
     <script type="text/javascript">
-      jQuery(function() {
-        jQuery('#ei-slider').eislideshow({
+
+      $(document).ready(function() {
+
+        $('#ei-slider').eislideshow({
           animation     : 'left',
           autoplay      : true,
 
         });
+
       });
     </script>
   </body>

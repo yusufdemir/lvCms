@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function()
-{
-	return View::make('btp.layouts.master');
+{   $news=POST::all();
+	return View::make('btp.layouts.master',compact('news'));
 });
 
 Route::get('testevent', function()
@@ -90,7 +90,7 @@ Route::controller('admin/media', 'MediaController');
 
 });
 
-
+Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@eventJson'));
 /*
 |---------------------------------------------------------------------------------------------
 | ROUTE Filters

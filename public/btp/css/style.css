@@ -1,17 +1,30 @@
-/*
- * Globals
+@charset utf-8;
+/*------------------------------------------------------------------------------------------
+ * GLOBALS
+ *------------------------------------------------------------------------------------------
  */
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #555;
-    background-image: url('/btp/img/graphic/page-bg.png');
+    background-image: url('/btp/img/page-bg.png');
 }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
     color: #333;
+}
+/*------------------------------------------------------------------------------------------
+ * FONTS
+ *------------------------------------------------------------------------------------------
+ */
+
+@font-face {
+    font-family: BebasNeueRegular;
+    src: url('/btp/fonts/BebasNeue-webfont.eot?#iefix') format(embedded-opentype), url('/btp/fonts/BebasNeue-webfont.woff') format(woff), url('/btp/fonts/BebasNeue-webfont.ttf') format(truetype), url('/btp/fonts/BebasNeue-webfont.svg#BebasNeueRegular') format(svg);
+    font-weight: 400;
+    font-style: normal;
 }
 /*------------------------------------------------------------------------------------------
  * Layouts
@@ -22,7 +35,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     width: 1045px !important;
 }
 header {
-    background: url('/btp/img/graphic/header_bg.jpg') top center no-repeat;
+    background: url('/btp/img/header_bg.jpg') top center no-repeat;
     margin: 0px auto;
     position: relative;
     width: 100%;
@@ -107,7 +120,6 @@ ul#main-menu a {
     margin: 0 0 0 -55px;
     min-width: 150px;
 }
-
 #main-menu li ul {
     display: none;
 }
@@ -115,9 +127,43 @@ ul#main-menu a {
     display: block;
 }
 .blog-nav-item:hover, .blog-nav-item:focus {
-color: #fff;
-text-decoration: none;
-background-color: black;
+    color: #fff;
+    text-decoration: none;
+    background-color: black;
+}
+/*------------------------------------------------------------------------------------------
+ * SECTION
+ *------------------------------------------------------------------------------------------
+ */
+
+.columnist-last-post {
+    width: 667px;
+    height: 85px;
+    background: url('/btp/img/columnist-bg.jpg') top center no-repeat;
+    margin-top: 20px;
+}
+.columnist-content {
+    margin-left: 240px;
+    padding-top: 20px;
+    font-size: 12px;
+    width: 420px;
+}
+.columnist-content a, a:hover {
+    color: black;
+    text-decoration: none;
+}
+.sidebar-module-title > h4 {
+    float: left;
+    margin-right: 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-family: BebasNeueRegular, arial, Georgia, serif;
+}
+.stripe-title {
+    background: url('/btp/img/stripe.png');
+    height: 12px;
+    overflow: hidden;
+    margin-top: 5px;
 }
 /*------------------------------------------------------------------------------------------
  * CONTENT
@@ -257,7 +303,7 @@ section#slider {
     margin-right: 1%;
     top: 10%;
     width: auto;
-    padding:10px;
+    padding: 10px;
 }
 .ei-title h2, .ei-title h3 {
     text-align: right;
@@ -268,8 +314,7 @@ section#slider {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     color: #b5b5b5;
-    padding:5px 10px;
-
+    padding: 5px 10px;
 }
 .ei-title h3 {
     font-size: 24px;
@@ -277,8 +322,8 @@ section#slider {
     font-family: 'Open Sans Condensed', sans-serif;
     text-transform: uppercase;
     color: #fff;
-    background-color:#333;
-    padding:5px 10px;
+    background-color: #333;
+    padding: 5px 10px;
 }
 .ei-slider-thumbs {
     height: 13px;
