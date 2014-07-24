@@ -140,7 +140,7 @@ ul#main-menu a {
     width: 667px;
     height: 85px;
     background: url('/btp/img/columnist-bg.jpg') top center no-repeat;
-    margin-top: 20px;
+    margin: 20px 0px;
 }
 .columnist-content {
     margin-left: 240px;
@@ -154,10 +154,10 @@ ul#main-menu a {
 }
 .sidebar-module-title > h4 {
     float: left;
-    margin-right: 10px;
     font-size: 20px;
     text-transform: capitalize;
     font-family: BebasNeueRegular, arial, Georgia, serif;
+    margin: -5px 3px 0px 0px;
 }
 .stripe-title {
     background: url('/btp/img/stripe.png');
@@ -165,11 +165,20 @@ ul#main-menu a {
     overflow: hidden;
     margin-top: 5px;
 }
-/*------------------------------------------------------------------------------------------
+
+ul.cat-news {list-style-type: none; margin: 0px; padding: 0px;}
+ul.cat-news li {border: 1px solid rgb(235, 235, 235); border-width: 0 0 1px 0;clear: both;margin-bottom: 5px;font-size: 12px;}
+ul.cat-news li p {text-align: justify;}
+ul.cat-news li h3 {font-size: 20px;}
+ul.cat-news li img {float: left; margin: 0px 10px 10px 0px; }
+ul.cat-news li.first p {padding: 0px 0px 0px 2px;}
+ul.cat-news li.first h3 {padding: 0px 0px 0px 2px; text-transform: capitalize; font-size: 24px;}
+ul.cat-news li.first img { float: none;width: 100%;}
+
+ /*------------------------------------------------------------------------------------------
  * CONTENT
  *------------------------------------------------------------------------------------------
  */
-
 .blog-header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -221,7 +230,7 @@ ul#main-menu a {
  */
 
 .sidebar-module {
-    padding: 15px;
+    padding: 0px 15px 15px 15px;
     margin: 0 -15px 15px;
 }
 .sidebar-module-inset {
