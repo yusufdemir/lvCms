@@ -165,20 +165,52 @@ ul#main-menu a {
     overflow: hidden;
     margin-top: 5px;
 }
-
-ul.cat-news {list-style-type: none; margin: 0px; padding: 0px;}
-ul.cat-news li {border: 1px solid rgb(235, 235, 235); border-width: 0 0 1px 0;clear: both;margin-bottom: 5px;font-size: 12px;}
-ul.cat-news li p {text-align: justify;}
-ul.cat-news li h3 {font-size: 20px;}
-ul.cat-news li img {float: left; margin: 0px 10px 10px 0px; }
-ul.cat-news li.first p {padding: 0px 0px 0px 2px;}
-ul.cat-news li.first h3 {padding: 0px 0px 0px 2px; text-transform: capitalize; font-size: 24px;}
-ul.cat-news li.first img { float: none;width: 100%;}
-
- /*------------------------------------------------------------------------------------------
+ul.cat-news {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+ul.cat-news li {
+    border: 1px solid rgb(235, 235, 235);
+    border-width: 0 0 1px 0;
+    clear: both;
+    margin-bottom: 5px;
+    font-size: 12px;
+    background-color: #F7F7F7;
+}
+ul.cat-news li:hover {
+    background-color: #F1EEEE;
+}
+ul.cat-news li p {
+    text-align: justify;
+}
+ul.cat-news li h3 {
+    font-size: 20px;
+}
+ul.cat-news li img {
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+ul.cat-news li.first {
+    background: none;
+}
+ul.cat-news li.first p {
+    padding: 0px 0px 0px 2px;
+}
+ul.cat-news li.first h3 {
+    padding: 0px 0px 0px 2px;
+    text-transform: capitalize;
+    font-size: 24px;
+}
+ul.cat-news li.first img {
+    float: none;
+    width: 100%;
+}
+/*------------------------------------------------------------------------------------------
  * CONTENT
  *------------------------------------------------------------------------------------------
  */
+
 .blog-header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -246,15 +278,32 @@ ul.cat-news li.first img { float: none;width: 100%;}
  *------------------------------------------------------------------------------------------
  */
 
-.blog-footer {
-    padding: 40px 0;
+footer {
+    margin-top: 20px;
+    border-top: 10px solid #DBDBDB;
+    background: #333;
+}
+.footer {
+    width: 1045px;
+    margin: 0 auto;
+    min-height: 150px;
     color: #999;
     text-align: center;
-    background-color: #f9f9f9;
-    border-top: 1px solid #e5e5e5;
+    background-color: #333;
+    background: url('/btp/img/footer-bg.png') top left no-repeat;
 }
-.blog-footer p: last-child {
+.footer p: last-child {
     margin-bottom: 0;
+}
+.copyright {
+    width: 1045px;
+    margin: 0 auto;
+    color: rgb(170, 170, 170);
+    border-top: 1px solid #4B4B4B;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 20px;
+    text-align: center;
 }
 /*------------------------------------------------------------------------------------------
  * SlIDER

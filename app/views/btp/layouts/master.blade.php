@@ -64,7 +64,7 @@
             <section id="slider">
               <div id="ei-slider" class="ei-slider">
                   <ul class="ei-slider-large">
-                  @for($i=0; $i < 5; $i++)
+                  @for($i=1; $i <=5; $i++)
                     <li>
                       <img src="http://dummyimage.com/600x400/8a4d4d/ffffff.jpg&text=BTP+-+{{$i}}" alt="image01" />
                       <div class="ei-title">
@@ -77,7 +77,7 @@
 
                   <ul class="ei-slider-thumbs">
                     <li class="ei-slider-element">Current</li>
-                  @for($i=0; $i < 5; $i++)
+                  @for($i=1; $i <=5; $i++)
                     <li>
                       <a href="#">BİRLİK VE BERABERLİK BÖYLE OLUR {{$i}}</a>
                       <img src="http://dummyimage.com/600x400/8a4d4d/ffffff.jpg&text=BTP+-+{{$i}}" alt="thumb01" />
@@ -114,16 +114,19 @@
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
                     <h3>Kadi̇r geceni̇z mübarek olsun</h3>
                     <small>20.07.2014</small>
+                    <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
                     <h3>Kadi̇r geceni̇z mübarek olsun</h3>
                     <small>20.07.2014</small>
+                    <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
                     <h3>Kadi̇r geceni̇z mübarek olsun</h3>
                     <small>20.07.2014</small>
+                    <div class="clearfix"></div>
                   </li>
                 </ul>
                   
@@ -143,16 +146,19 @@
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
                     <h3>Kadi̇r geceni̇z mübarek olsun</h3>
                     <small>20.07.2014</small>
+                    <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
                     <h3>Kadi̇r geceni̇z mübarek olsun</h3>
                     <small>20.07.2014</small>
+                    <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
                     <h3>Kadi̇r geceni̇z mübarek olsun</h3>
                     <small>20.07.2014</small>
+                    <div class="clearfix"></div>
                   </li>
                 </ul>
               </div>
@@ -170,17 +176,40 @@
               <div class="sidebar-module">
                 <div id="eventCalendar"></div>
               </div>
+              <!-- /.Sidebar-news-Start -->
+                <div class="sidebar-module-title">
+                  <h4>HABERLER</h4> <div class="stripe-title"> </div>
+                </div>
+                <ul class="cat-news">
+                  <li class="first">
+                    <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
+                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <p>Bugün bin aydan daha hayırlı olan mübarek Kadir Gecesini idrak edeceğiz. Bu münasebetle bir mesaj yayınlayan... Devamını oku »</p>
+                  </li>
+                  <li>
+                    <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
+                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <small>20.07.2014</small>
+                    <div class="clearfix"></div>
+                  </li>
+                  <li>
+                    <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
+                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <small>20.07.2014</small>
+                    <div class="clearfix"></div>
+                  </li>
+                  <li>
+                    <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
+                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <small>20.07.2014</small>
+                    <div class="clearfix"></div>
+                  </li>
+                </ul>
+                <br>
+              <!-- /.Sidebar-news-END -->
               <div class="sidebar-module sidebar-module-inset">
-                <h4>About</h4>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-              </div>
-              <div class="sidebar-module">
-                <h4>Elsewhere</h4>
-                <ol class="list-unstyled">
-                  <li><a href="#">GitHub</a></li>
-                  <li><a href="#">Twitter</a></li>
-                  <li><a href="#">Facebook</a></li>
-                </ol>
+                <h4>Btp.org.tr Yenilendi.</h4>
+                <p>Yenilenen alt yapısıyla<em>daha hızlı ve daha güvenli</em>.</p>
               </div>
             </div><!-- /.blog-sidebar -->
           </aside>
@@ -189,12 +218,15 @@
     </div><!-- /.container -->
 
     <footer>
-        <div class="blog-footer">
-          <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-          <p>
-            <a href="#">Back to top</a>
-          </p>
+        <div class="footer">
+          
+          <div class="clearfix"></div>
+
         </div>
+        <div class="copyright">Tüm hakları Bağımsız Türkiye Partisi'ne aittir. Sitede yayınlanan yazılar, ancak kaynak ve adres gösterilerek kullanılabilir.
+        <br> www.btp.org.tr </div>
+        
+        
     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
