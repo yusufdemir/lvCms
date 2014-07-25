@@ -17,7 +17,7 @@
 @stop
 
 @section('body')
-<h2> {{$page['name']}}larınız</h2>
+<h2> Yazılarınız</h2>
 
 <table class="table table-bordered datatable" id="table-3">
 	<thead>
@@ -50,21 +50,21 @@
 				</td>
 					<td>
 					<!--EDIT-->
-					<a href="{{URL::action('post-edit', $p->id)}}">
+					<a href="{{URL::to('/admin/post/'.$p->id.'/edit/')}}">
 						<button type="button" class="btn btn-info btn-xs">
 							<i class="entypo-pencil"></i>
 						</button>
 					</a>
 					<!--END EDIT-->
 					<!--PREVIEW BUTTON-->
-					<a href="{{URL::action('post-show', $p->id)}}">
+					<a href="{{URL::to('/admin/post/'. $p->id)}}">
 						<button type="button" class="btn btn-orange btn-xs">
 							<i class="entypo-eye"></i>
 						</button>
 					</a>
 					<!--END PREVIEW BUTTON-->
 					<!--DELETED-->
-				{{ Form::open(array('route' => array('post-delete', $p->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
+				{{ Form::open(array('url' => array('/admin/post/', $p->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
 					<button type="submit" class="btn btn-danger btn-xs" id="delcontent">
 						<i class="entypo-trash"></i>
 					</button>

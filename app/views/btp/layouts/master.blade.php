@@ -20,9 +20,12 @@
 
     <script src="http://cufon.shoqolate.com/js/cufon-yui.js" type="text/javascript"></script>
     <script src="{{ asset('btp/js/bebas-neue.cufonfonts.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('btp/js/Calibri_700.font.js') }}" type="text/javascript"></script>
+    
     <script type="text/javascript">
       Cufon.replace('.blog-nav-item', { fontFamily: 'Bebas Neue', hover: true,textShadow: '1px 1px black' });
-      Cufon.replace('.inner-content h2, .cat-news h3', { fontFamily: 'Bebas Neue', hover: true });
+      Cufon.replace('.cat-news h3', { fontFamily: 'Calibri'});
+      Cufon.replace('ul.cat-news li.first h3', { fontFamily: 'Bebas Neue'});
     </script>
     
   </head>
@@ -59,7 +62,7 @@
 
         <div class="row">
 
-          <div class="col-sm-8 blog-main">
+          <div class="col-sm-8 home-main">
 
             <section id="slider">
               <div id="ei-slider" class="ei-slider">
@@ -107,24 +110,24 @@
                 <ul class="cat-news">
                   <li class="first">
                     <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>KADİR GECENİZ MÜBAR</h3>
                     <p>Bugün bin aydan daha hayırlı olan mübarek Kadir Gecesini idrak edeceğiz. Bu münasebetle bir mesaj yayınlayan... Devamını oku »</p>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
@@ -139,24 +142,24 @@
                 <ul class="cat-news">
                   <li class="first">
                     <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <p>Bugün bin aydan daha hayırlı olan mübarek Kadir Gecesini idrak edeceğiz. Bu münasebetle bir mesaj yayınlayan... Devamını oku »</p>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
@@ -183,24 +186,24 @@
                 <ul class="cat-news">
                   <li class="first">
                     <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <p>Bugün bin aydan daha hayırlı olan mübarek Kadir Gecesini idrak edeceğiz. Bu münasebetle bir mesaj yayınlayan... Devamını oku »</p>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>
                   <li>
                     <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-                    <h3>Kadi̇r geceni̇z mübarek olsun</h3>
+                    <h3>Kadir geceniz mübarek olsun</h3>
                     <small>20.07.2014</small>
                     <div class="clearfix"></div>
                   </li>

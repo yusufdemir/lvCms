@@ -38,7 +38,7 @@
 
 <h1 class="margin-bottom">Yazıyı Düzenle
 		<!--PREVIEW BUTTON-->
-		<a href="{{URL::action('post-show', $post->id)}}">
+		<a href="{{URL::to('/admin/post/'.$post->id)}}">
 			<button type="button" class="btn btn-orange btn-md">
 				<i class="entypo-eye"></i> Yazıyı Önizle
 			</button>
@@ -50,7 +50,7 @@
 		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
 	</li>
 	<li>
-		<a href=" {{ URL::route('post-list') }} ">Yazılar</a>
+		<a href=" {{ URL::to('/admin/post/') }} ">Yazılar</a>
 	</li>
 	<li class="active">
 		<strong>Yeni Yazı Ekle</strong>
@@ -86,9 +86,7 @@
 	</div>
 @endif
 
-<!--<form enctype="multipart/form-data"  action="{{ URL::route('post-store') }}" method="post"  >-->
-
-{{ Form::model($post, array('route' => array('post-update', $post->id),'method'=> 'PUT','files' => true)) }}
+{{ Form::model($post, array('url' => array('/admin/post/'. $post->id),'method'=> 'PUT','files' => true)) }}
 	<!-- Title and Publish Buttons -->	
 	<div class="row">
 		<div class="col-sm-2 post-save-changes">

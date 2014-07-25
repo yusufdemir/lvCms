@@ -60,17 +60,17 @@ function getRandomInt(min, max) {
         <ul class="list-inline links-list pull-right">
 
             <li>
-                <a href="{{ URL::route('post-create') }}">
+                <a href="{{ URL::to('/admin/post/create/') }}">
                 <button type="button" class="btn btn-white btn-sm"><i class="entypo-doc-text"></i> Yeni Yazı</button>
                 </a>
             </li>
             <li>
-                <a href="{{ URL::route('post-list') }}">
-                <button type="button" class="btn btn-white btn-sm"><i class="entypo-docs"></i> Yeni Sayfa</button>
+                <a href="{{ URL::to('/admin/media') }}">
+                <button type="button" class="btn btn-white btn-sm"><i class="entypo-docs"></i> Yeni Albüm </button>
                 </a>
             </li>
             <li>
-                <a href="{{ URL::route('post-list') }}">
+                <a href="{{ URL::to('/admin/event/create/') }}">
                 <button type="button" class="btn btn-white btn-sm"><i class="entypo-clock"></i> Yeni Etkinlik</button>
                 </a>
             </li>

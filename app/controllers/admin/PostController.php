@@ -10,44 +10,27 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$page['name']='Yazı';
 		$all_post=Post::where('deleted','=','0')->where('type','=','post')->get();
-		return View::make('admin.post.post-list', compact('all_post','page'));
-	}
-
-
-	public function pageindex()
-	{	
-		$page['name']='Sayfa';
-		$all_post=Post::where('deleted','=','0')->where('type','=','page')->get();
-		return View::make('admin.post.post-list', compact('all_post','page'));
+		return View::make('admin.post.post-list', compact('all_post'));
 	}
 
 	public function trashindex()
 	{	
-		$page['name']='Silinmişler';
 		$all_post=Post::where('deleted','=','1')->get();
-		return View::make('admin.post.post-list-deleted', compact('all_post','page'));
+		return View::make('admin.post.post-list-deleted', compact('all_post'));
 	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /post/create
 	 *
 	 * @return Response
 	 */
-	public function create($type=null)
+
+	public function create()
 	{
-		$t['action']=($type==null?"post":$type);
-		if($t['action']=="post"){
-			$t['name']="Yazı";
-			}elseif ($t['action']=="page") {
-				$t['name']="Sayfa";
-				}else{
-					$t['action']="post";
-					$t['name']="Yazı";
-					}
 		$cat=Cat::all();
-		return View::make('admin.post.post-form',compact('cat','t'));
+		return View::make('admin.post.post-form',compact('cat'));
 	}
 
 	/**
@@ -66,13 +49,13 @@ class PostController extends \BaseController {
 		$rules=array(
 			'head'=>'required',
 			'publish_date'=>'required|date_format:Y-m-d',
-			'type'=>'required|in:post,page'
+			//'type'=>'required|in:post,page'
 			);
 		$messages=array(
 			'head.required'=>'Başlık Girilmemiş',
 			'publish_date.required'=>'Yayınlanma Tarihi Boş Girilmiş.',
 			'publish_date.date_format'=>'Yayınlanma tarihi hatalı bir formatta girilmiş.',
-			'type.in'=>'Form Kodlarında Değişim Tespit Edildi. Tekrar Deneyiniz.'
+			//'type.in'=>'Form Kodlarında Değişim Tespit Edildi. Tekrar Deneyiniz.'
 			);
 		$validator = Validator::make(Input::all(), $rules, $messages);
 		if ($validator->fails()) {
@@ -81,7 +64,7 @@ class PostController extends \BaseController {
 		}else{
 			//add to db
 			$post = new Post;
-			$post->type=Input::get('type');
+			//$post->type=Input::get('type');
 			$post->head= Input::get('head');
 			$post->slug= Str::slug(Input::get('head'));
 			$post->content= Input::get('content');
@@ -160,7 +143,7 @@ class PostController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules, $messages);
 		if ($validator->fails()) {
 			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Form Hatalı Dolduruldu.','type'=>'error'));
-			return Redirect::route('post-create')->withErrors($validator)->withInput();
+			return Redirect::to('/admin/post/create/')->withErrors($validator)->withInput();
 		}else{
 			$post = Post::find($id);
 			$post->head= Input::get('head');
@@ -188,7 +171,7 @@ class PostController extends \BaseController {
 
 			$post->save();
 			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Güncellendi...','type'=>'info'));
-			return Redirect::route('post-list');
+			return Redirect::to('/admin/post/');
 
 		}
 	}
@@ -206,7 +189,7 @@ class PostController extends \BaseController {
 		$post->deleted=1;
 		$post->save();
 		Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Gönderi Başarıyla Çöp Kutusuna Gönderildi.','type'=>'info'));
-		return Redirect::route('post-list');
+		return Redirect::to('/admin/post/');
 	}
 
 

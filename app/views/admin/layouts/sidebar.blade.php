@@ -37,37 +37,42 @@
                 </a>
             </li>
             <li class="opened">
-                <a href="{{ URL::route('post-create') }}">
+                <a href="{{ URL::to('admin/post/create/') }}">
                 <i class="entypo-doc-text-inv"></i>
                 <span>Yazılar</span>
                 </a>
                 <ul>
                     <li>
-                        <a href="{{ URL::route('post-list') }}">
+                        <a href="{{ URL::to('/admin/post/') }}">
                             <span>Tüm Yazılar</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ URL::route('post-create') }}">
+                        <a href="{{-- URL::to('/admin/post/create/') --}}">
                             <span>Yazı Ekle</span>
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="opened">
-                <a href="{{-- URL::route('page-create') --}}">
+                <a href="#">
                 <i class="entypo-doc-text-inv"></i>
-                <span>Sayfalar</span>
+                <span>Medya</span>
                 </a>
                 <ul>
                     <li>
-                        <a href="{{ URL::route('page-list') }}">
-                            <span>Tüm Sayfalar</span>
+                        <a href="{{ URL::to('/admin/media/') }}">
+                            <span>Albümler</span>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="{{URL::to('admin/posts/create/page') }}">
-                            <span>Sayfa Ekle</span>
+                    <li>
+                        <a href="#">
+                            <span>Videolar (Yapım Aşamasında)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Dosyalar (Yapım Aşamasında)</span>
                         </a>
                     </li>
                 </ul>
@@ -79,19 +84,19 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="{{ URL::to('admin/event') }}">
+                        <a href="{{ URL::to('/admin/event') }}">
                             <span>Tüm Etkinlikler</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="{{URL::to('admin/event/create') }}">
+                        <a href="{{URL::to('/admin/event/create') }}">
                             <span>Etkinlik Ekle</span>
                         </a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="{{ URL::route('post-trash') }}">
+                <a href="{{ URL::to('/admin/post/trash/') }}">
                 <i class="entypo-gauge"></i>
                 <span>Çöp Kutusu</span>
                 </a>

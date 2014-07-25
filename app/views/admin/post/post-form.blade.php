@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-	POST PAGE
+	Yeni Yazı Ekle
 @stop
 
 @section('notification')
@@ -36,18 +36,18 @@
 
 </script>
 
-<h1 class="margin-bottom">Yeni {{ $t['name'] }} Ekle  </h1>
+<h1 class="margin-bottom">Yeni YAZI Ekle  </h1>
 <ol class="breadcrumb 2">
 	<li>
 		<a href="{{ URL::route('dashboard') }}"><i class="entypo-home"></i>Anasayfa</a>
 	</li>
 
 	<li>
-		<a href="#">{{ $t['name'] }}</a>
+		<a href="#">YAZI</a>
 	</li>
 
 	<li class="active">
-		<strong>Yeni {{ $t['name'] }} Ekle</strong>
+		<strong>Yeni YAZI Ekle</strong>
 	</li>
 </ol>
 			
@@ -80,9 +80,7 @@
 	</div>
 @endif
 
-<!--<form enctype="multipart/form-data"  action="{{ URL::route('post-store') }}" method="post"  >-->
-{{ Form::open(array('url' => URL::route('post-store'), 'files' => true, 'method' => 'post')) }}
-{{ Form::hidden('type', $t['action'] ) }}
+{{ Form::open(array('url' => URL::to('/admin/post/'), 'files' => true, 'method' => 'post')) }}
 	<!-- Title and Publish Buttons -->	
 	<div class="row">
 		<div class="col-sm-2 post-save-changes">
@@ -177,15 +175,13 @@
 				</div>
 				
 				<div class="panel-body">
-					@if( $t['action'] =='post')
 					<div class="checkbox checkbox-replace">
 						<input type="checkbox" id="slider" name="slider" checked>
 
 						<label>Slider'da Göster</label>
 					</div>
-					
+
 					<br />
-					@endif
 					<p>Yayınlanma Tarihi</p>
 					<div class="input-group">
 						<input type="text" name="publish_date" class="form-control datepicker" value="{{ Input::old('publish_date',date('Y-m-d')) }}" data-format="yyyy-mm-dd">
@@ -214,7 +210,7 @@
 		
 		<!-- Metabox :: Categories -->		
 		<div class="col-sm-4">
-		@if($t['action']=='post')
+
 			<div class="panel panel-gray panel-shadow" data-collapsed="0">
 		
 				<div class="panel-heading">
@@ -241,7 +237,7 @@
 				</div>
 			
 			</div>
-		@endif	
+
 		<!-- </div>
 
 		Metabox :: Tags 	

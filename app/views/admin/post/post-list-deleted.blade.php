@@ -17,7 +17,7 @@
 @stop
 
 @section('body')
-<h2> {{$page['name']}}</h2>
+<h2> Silinmiş Yazılar</h2>
 
 <table class="table table-bordered datatable" id="table-3">
 	<thead>
@@ -49,15 +49,7 @@
 					{{ $p->type=='post'?'<div class="label label-info">Yazı</div>':'<div class="label label-success">Sayfa</div>' }}
 				</td>
 					<td>
-					<!--EDIT
-					<a href="{{URL::action('post-edit', $p->id)}}">
-						<button type="button" class="btn btn-info btn-xs">
-							<i class="entypo-pencil"></i>
-						</button>
-					</a>-->
-					<!--END EDIT-->
-					<!--PREVIEW BUTTON-->
-					<a href="{{URL::action('post-show', $p->id)}}">
+					<a href="{{URL::to('/admin/post', $p->id)}}">
 						<button type="button" class="btn btn-orange btn-xs">
 							<i class="entypo-eye"></i>
 						</button>
