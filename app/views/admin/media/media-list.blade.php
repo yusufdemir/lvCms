@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-	POST PAGE
+	Medyalar
 @stop
 
 @section('notification')
@@ -9,9 +9,7 @@
 @stop
 
 @section('custom-css')
-	<link rel="stylesheet" href="{{ asset('assets/js/selectboxit/jquery.selectBoxIt.css') }}">
 
-	<link rel="stylesheet" href="{{ asset('assets/js/icheck/skins/square/_all.css') }}">
 @stop
 
 @section('custom-js')
@@ -36,7 +34,7 @@
 			    },
 			    success: function(data)
 			    {		    	
-			        if (data.status==true) {
+			        if (data.status=="true") {
 			        	$("#add-album").modal('hide');
 			        	window.location.reload(true);
 			        }else{
@@ -122,7 +120,7 @@
                     <tr>
                         <th>ID</th>
                         <th>ALBÜM ADI</th>
-                        <th>RESİM SAYISI</th>
+                        <th>GÖRSEL SAYISI</th>
                         
                         <th>İŞLEMLER</th>
                     </tr>
@@ -132,8 +130,12 @@
                         <tr>
                             <td>{{ $album->id }}</td>
                             <td>{{ $album->name }}</td>
-                            <td>{{ $album->photocount }}</td>
                             
+                            <td>
+                            @foreach ($album->photocount as $count) 
+                            	{{ $count->count }}
+                            @endforeach
+                            </td>
                             <td>
 								<!--EDIT-->
 								<a href="{{URL::to('admin/media/showalbum/'.$album->id) }}">
@@ -143,7 +145,8 @@
 								</a>
 								<!--END EDIT-->
 								<!--DELETED-->
-								{{ Form::open(array('url' => array('admin/media/deletealbum', $album->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
+								{{ Form::open(array('url' => 'admin/media/deletealbum', 'method'=> 'DELETE', 'class' => 'pull-right')) }}
+									<input type="hidden" name="id" value="{{ $album->id }}">
 									<button type="submit" class="btn btn-danger btn-xs" id="delcontent">
 										<i class="entypo-trash"></i> Kaldır
 									</button>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-	POST PAGE
+	Yazılar
 @stop
 
 @section('notification')
@@ -64,7 +64,7 @@
 					</a>
 					<!--END PREVIEW BUTTON-->
 					<!--DELETED-->
-				{{ Form::open(array('url' => array('/admin/post/', $p->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
+				{{ Form::open(array('url' => array('/admin/post', $p->id),'method'=> 'DELETE', 'class' => 'pull-right')) }}
 					<button type="submit" class="btn btn-danger btn-xs" id="delcontent">
 						<i class="entypo-trash"></i>
 					</button>

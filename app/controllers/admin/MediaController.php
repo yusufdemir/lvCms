@@ -10,7 +10,7 @@ class MediaController extends \BaseController {
 	 */
 	public function getIndex()
 	{
-		$albums=Albuminfo::all();
+		$albums=Albuminfo::where('deleted','=','0')->get();
 		return View::make('admin.media.media-list', compact('albums') );
 	}
 
@@ -144,6 +144,27 @@ class MediaController extends \BaseController {
 		}
 
 		return json_encode($response);
+		
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 * GET /media/delete
+	 *photoinfo
+	 * @return Response
+	 */
+	public function deleteDeletealbum(){
+		if (Input::get('_method')=="DELETE" && Input::get('id')!=null) {
+			$delete=Albuminfo::find(Input::get('id'));
+			$delete->deleted=1;
+			$delete->save();
+			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Albüm başarıyla silindi.','type'=>'success'));
+			return Redirect::to('/admin/media/');
+		}else{
+			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Albüm Silinemedi.','type'=>'error'));
+			return Redirect::to('/admin/media/');
+		}
+
 		
 	}
 

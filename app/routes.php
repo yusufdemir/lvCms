@@ -44,6 +44,7 @@ Route::any('logout', array('as' => 'logout','uses'=>'UserController@anyLogout'))
 |---------------------------------------------------------------------------------------------
 */
 Route::group(array('before' => 'doLogin'), function() {
+
     Route::resource('admin/dashboard', 'DashboardController',
         array(
             'names'=>array(
@@ -70,13 +71,23 @@ Route::resource('admin/post', 'PostController');
 |---------------------------------------------------------------------------------------------
 */
 
+
+
 Route::resource('admin/event', 'EventController');
 
 Route::controller('admin/media', 'MediaController');
 
 });
 
+
+
+
 Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@eventJson'));
+
+
+
+
+
 /*
 |---------------------------------------------------------------------------------------------
 | ROUTE Filters
