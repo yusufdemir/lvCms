@@ -13,7 +13,12 @@
 
 Route::get('/', function()
 {   $news=POST::all();
-	return View::make('btp.layouts.master',compact('news'));
+	return View::make('btp.home',compact('news'));
+});
+
+Route::get('news', function()
+{   $news=POST::all();
+    return View::make('btp.news',compact('news'));
 });
 
 Route::get('testevent', function()

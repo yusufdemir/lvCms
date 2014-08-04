@@ -159,9 +159,25 @@ ul#main-menu a {
     font-family: BebasNeueRegular, arial, Georgia, serif;
     margin: -5px 3px 0px 0px;
 }
+.news-section-title {
+    margin-bottom: 20px;
+}
+.news-section-title > h3 {
+    float: left;
+    font-size: 32px;
+    text-transform: capitalize;
+    font-family: BebasNeueRegular, arial, Georgia, serif;
+    margin: -5px 3px 0px 0px;
+}
 .stripe-title {
     background: url('/btp/img/stripe.png');
     height: 12px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.stripe-title-big {
+    background: url('/btp/img/stripe_big.png');
+    height: 23px;
     overflow: hidden;
     margin-top: 5px;
 }
@@ -190,7 +206,7 @@ ul.cat-news li h3 {
     text-transform: none;
     font-weight: 100;
 }
-div > div.home-main > div.row > div:nth-child(1){
+div > div.home-main > div.row > div: nth-child(1) {
     border-right: 1px solid #EBEBEB;
 }
 ul.cat-news li img {
@@ -262,6 +278,26 @@ ul.cat-news li.first img {
     padding: 10px 20px;
     text-align: center;
     border-radius: 30px;
+}
+/*------------------------------------------------------------------------------------------
+ * CONTENT NEWS - LOOP & SINGLE
+ *------------------------------------------------------------------------------------------
+ */
+
+section#news article {
+    float: left;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+section#news article img {
+    float: right;
+    margin: 0px 0px 0px 10px;
+}
+section#news article p {
+    color: #333;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 13px;
+    text-align: justify;
 }
 /*------------------------------------------------------------------------------------------
  * SIDEBAR
