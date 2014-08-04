@@ -10,7 +10,7 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$all_post=Post::where('deleted','=','0')->where('type','=','post')->get();
+		$all_post=Post::where('deleted','=','0')->where('type','=','post')->orderBy('id', 'DESC')->paginate(20);
 		return View::make('admin.post.post-list', compact('all_post'));
 	}
 
@@ -76,11 +76,11 @@ class PostController extends \BaseController {
 			$post->tags=Input::get('tags');
 
 
-			if (Input::hasFile('media')) {
+			if (Input::hasFile('media')) { 
 				$file            = Input::file('media');
 				$desinationFolder= '/_uploads/';
 		        $destinationPath = public_path().$desinationFolder;
-		        $filename        = date('Ymd').'_'.str_random(6) . '_' . Str::slug($file->getClientOriginalName(), '_');
+		        $filename        = date('YmdHis').'_'. $file->getClientOriginalName();
 		        $filelink		 = $desinationFolder.$filename;
 		        $uploadSuccess   = $file->move($destinationPath, $filename);
 		        $post->media=$filelink;
@@ -88,7 +88,7 @@ class PostController extends \BaseController {
 
 			$post->save();
 			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Eklendi','type'=>'success','position'=>'full'));
-			return Redirect::route('post-list');
+			return Redirect::to('/admin/post/');
 		}
 
 		//return var_dump(Input::all());

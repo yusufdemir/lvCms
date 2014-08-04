@@ -14,11 +14,14 @@
 
     @foreach ($news as $article)
       <article>
-        @if($article->media!=null)
-          <img src="{{ Timthumb::link(asset($article->media),220,150) }}" alt="{{ $article->head }}" class="thumbnail">
-        @endif
-        <h3>{{ $article->head }}</h3>
+        <a href="#">
+          @if($article->media!=null)
+            <img src="{{ Timthumb::link(asset($article->media),220,150) }}" alt="{{ $article->head }}" class="thumbnail">
+          @endif
+          <h3>{{ $article->head }}</h3>
+        </a>
         <p>{{ Str::words($article->content,53) }}</p>
+
       </article>
     @endforeach
 

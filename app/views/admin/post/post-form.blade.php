@@ -224,7 +224,7 @@
 				</div>
 				
 				<div class="panel-body" style="">
-					<div class="scrollable" data-height="200">
+					<div class="scrollable" data-height="400" style="overflow: overlay;">
 						<ul class="icheck-list">
 							@foreach ($cat as $c) 
 								<li>

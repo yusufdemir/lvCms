@@ -39,7 +39,7 @@
 					
 					<div class="meta-info">
 						<i class="entypo-calendar"></i> {{ $post->publish_date }}
-						<i class="entypo-comment"></i>{{ $post->cat->name }} / {{ $post->user->name }}
+						<i class="entypo-comment"></i>{{ $post->cat->name }} / {{-- $post->user->name --}}
 					</div>
 					
 				</div>

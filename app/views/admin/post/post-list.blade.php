@@ -41,7 +41,7 @@
 					{{ $p->head }}
 					<!--<img src="{{ $p->media!=null?asset($p->media):"" }}" alt="" class="img-thumb" width="22">--> 
 				</td>
-				<td>{{ $p->cat_id }}</td>
+				<td>{{ $p->cat->name }}</td>
 				<td>{{ date("Y-m-d H:i",strtotime($p->updated_at)) }}</td>
 				<td>{{ date("Y-m-d",strtotime($p->publish_date)) }}</td>
 				<td class="center">admin</td>
@@ -88,6 +88,7 @@
 		</tr>
 	</tfoot>
 </table>
+{{ $all_post->links() }}
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -95,7 +96,8 @@
 			"sPaginationType": "bootstrap",
 			"displayLength": 20,
 			"aLengthMenu": [[20, 25, 50, -1], [20, 25, 50, "All"]],
-			"bStateSave": true
+			"bStateSave": true,
+			"bPaginate": false
 		});
 		
 		/*table.columnFilter({

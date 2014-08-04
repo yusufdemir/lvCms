@@ -17,7 +17,7 @@ Route::get('/', function()
 });
 
 Route::get('news', function()
-{   $news=POST::where('deleted','=','0')->paginate(5);
+{   $news=POST::where('deleted','=','0')->where('cat_id','=','1')->orderBy('id', 'DESC')->paginate(5);
     return View::make('btp.news',compact('news'));
 });
 

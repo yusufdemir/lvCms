@@ -25,7 +25,7 @@
     <script type="text/javascript">
       Cufon.replace('.blog-nav-item', { fontFamily: 'Bebas Neue', hover: true,textShadow: '1px 1px black' });
       Cufon.replace('.cat-news h3', { fontFamily: 'Calibri'});
-      Cufon.replace('ul.cat-news li.first h3, #news > article > h3', { fontFamily: 'Bebas Neue'});
+      Cufon.replace('ul.cat-news li.first h3, #news > article > a > h3', { fontFamily: 'Bebas Neue'});
     </script>
     
   </head>
