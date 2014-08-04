@@ -12,24 +12,16 @@
       <hr>
       <div class="clearfix"></div>
 
-    @for($i=1; $i <=5; $i++)
+    @foreach ($news as $article)
       <article>
-      <img src="http://dummyimage.com/220x150/8a4d4d/ffffff.jpg&text=BTP-news" alt="" class="thumbnail">
-        <h3>RAMAZAN BAYRAMINIZ MÜBAREK OLSUN</h3>
-        
-        <p>Mübarek Kadir Gecesi’ni idrak ettik. Türkiye’de huzurla, dualarla, zikir meclisleri ile ihya edilen gece yaz akşamına denk gelmesi hasebiyle bahçelere taşan Teravih namazlarıyla süslendi. Ülkemizdeki huzur maalesef komşu coğrafyalarda sağlanamıyor. Ramazan ayı boyunca Filistin’de verilen canlar için dua ettik.  Müslümanlar üzerinden devam eden işgallerin bitmesi için Kadir Gecesi’nde de ellerimizi göğe kaldırdık. Temennimiz bayrama barış ortamında girilmesidir. İslam...</p>
+      <img src="{{ asset($article->media) }}" alt="{{ $article->head }}" class="thumbnail">
+        <h3>{{ $article->head }}</h3>
+        <p>{{ Str::words($article->content,53) }}</p>
       </article>
-    @endfor
+    @endforeach
 
-    <ul class="pagination">
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
+    {{ $news->links() }}
+
     </section>
     @stop
     
