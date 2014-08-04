@@ -14,7 +14,9 @@
 
     @foreach ($news as $article)
       <article>
-      <img src="{{ asset($article->media) }}" alt="{{ $article->head }}" class="thumbnail">
+        @if($article->media!=null)
+          <img src="{{ Timthumb::link(asset($article->media),220,150) }}" alt="{{ $article->head }}" class="thumbnail">
+        @endif
         <h3>{{ $article->head }}</h3>
         <p>{{ Str::words($article->content,53) }}</p>
       </article>
