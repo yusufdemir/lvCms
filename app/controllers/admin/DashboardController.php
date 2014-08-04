@@ -10,10 +10,12 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
-		$post_count=Post::where('type','=','post')->count();
-		$user_count=User::all()->count();
+		$counts['posts']=Post::where('deleted','=','0')->count();
+		$counts['users']=User::where('deleted','=','0')->count();
+		$counts['albums']=Albuminfo::where('deleted','=','0')->count();
+		$counts['actives']=Active::where('deleted','=','0')->count();
 		$all_post=Post::take(5)->get();
-		return View::make('admin.dashboard', compact('all_post','post_count','user_count','gravatar') );
+		return View::make('admin.dashboard', compact('all_post','counts') );
 	}
 
 	/**
