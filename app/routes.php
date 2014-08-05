@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
+/*Route::get('/', function()
 {   $news=POST::all();
 	return View::make('btp.home',compact('news'));
-});
+});*/
 
 Route::get('news', function()
 {   
@@ -66,37 +66,37 @@ Route::group(array('before' => 'doLogin'), function() {
         );
     //Route::resource('admin', 'DashboardController');
     Route::get('admin', function() {return Redirect::route('dashboard'); });
+    /*
+    |---------------------------------------------------------------------------------------------
+    | POST & PAGE
+    |---------------------------------------------------------------------------------------------
+    */
+    Route::get('admin/post/trash/', array('as' => 'post-trash', 'uses' => 'PostController@trashindex'));
+    Route::get('admin/post/trash/{id}', array('as' => 'post-recovery', 'uses' => 'PostController@postRecovery'));
+    Route::resource('admin/post', 'PostController');
 
-/*
-|---------------------------------------------------------------------------------------------
-| POST & PAGE
-|---------------------------------------------------------------------------------------------
-*/
-
-Route::get('admin/post/trash/', array('as' => 'post-trash', 'uses' => 'PostController@trashindex'));
-Route::get('admin/post/trash/{id}', array('as' => 'post-recovery', 'uses' => 'PostController@postRecovery'));
-Route::resource('admin/post', 'PostController');
-
-/*
-|---------------------------------------------------------------------------------------------
-| Event
-|---------------------------------------------------------------------------------------------
-*/
-
-
-
-Route::resource('admin/event', 'EventController');
-
-Route::controller('admin/media', 'MediaController');
-
+    /*
+    |---------------------------------------------------------------------------------------------
+    | Event
+    |---------------------------------------------------------------------------------------------
+    */
+    Route::resource('admin/event', 'EventController');
+    /*
+    |---------------------------------------------------------------------------------------------
+    | MEDİA
+    |---------------------------------------------------------------------------------------------
+    */
+    Route::controller('admin/media', 'MediaController');
 });
-
-
-
 
 Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@eventJson'));
 
-
+/*
+|---------------------------------------------------------------------------------------------
+| THEME CONTROLLER
+|---------------------------------------------------------------------------------------------
+*/
+Route::controller('/', 'HomeController');
 
 
 

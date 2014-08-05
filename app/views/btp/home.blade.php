@@ -49,29 +49,31 @@
           <h4>GENEL BAŞKAN'DAN</h4> <div class="stripe-title"> </div>
         </div>
         <ul class="cat-news">
-          <li class="first">
-            <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>KADİR GECENİZ MÜBAR</h3>
-            <p>Bugün bin aydan daha hayırlı olan mübarek Kadir Gecesini idrak edeceğiz. Bu münasebetle bir mesaj yayınlayan... Devamını oku »</p>
-          </li>
-          <li>
-            <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <small>20.07.2014</small>
-            <div class="clearfix"></div>
-          </li>
-          <li>
-            <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <small>20.07.2014</small>
-            <div class="clearfix"></div>
-          </li>
-          <li>
-            <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <small>20.07.2014</small>
-            <div class="clearfix"></div>
-          </li>
+          @foreach ($cats['genelBaskan'] as $index => $post)
+            @if ($index == 0)
+              <li class="first"> 
+                @if($post->media!=null)
+                  <img src="{{ Timthumb::link(asset($post->media),220,150) }}" alt="{{ $post->head }}" class="thumbnail">
+                @else
+                  <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP" alt="BTP">
+                @endif
+                <h3>{{ $post->head }}</h3>
+                <p>{{ Str::words($post->content,20) }}</p>
+              </li>
+            @else
+              <li>
+                @if($post->media!=null)
+                  <img src="{{ Timthumb::link(asset($post->media),50,50) }}" alt="{{ $post->head }}" class="thumbnail">
+                @else
+                  <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP" alt="test">
+                @endif
+                <h3>{{ $post->head }}</h3>
+                <small>{{ date("Y-m-d",strtotime($post->created_at)) }}</small>
+                <div class="clearfix"></div>
+              </li>
+            @endif
+
+          @endforeach
         </ul>
           
       </div>
@@ -81,29 +83,31 @@
           <h4>DEMEÇLER</h4> <div class="stripe-title"> </div>
         </div>
         <ul class="cat-news">
-          <li class="first">
-            <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <p>Bugün bin aydan daha hayırlı olan mübarek Kadir Gecesini idrak edeceğiz. Bu münasebetle bir mesaj yayınlayan... Devamını oku »</p>
-          </li>
-          <li>
-            <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <small>20.07.2014</small>
-            <div class="clearfix"></div>
-          </li>
-          <li>
-            <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <small>20.07.2014</small>
-            <div class="clearfix"></div>
-          </li>
-          <li>
-            <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP-cat" alt="test">
-            <h3>Kadir geceniz mübarek olsun</h3>
-            <small>20.07.2014</small>
-            <div class="clearfix"></div>
-          </li>
+          @foreach ($cats['demecler'] as $index => $post)
+            @if ($index == 0)
+              <li class="first"> 
+                @if($post->media!=null)
+                  <img src="{{ Timthumb::link(asset($post->media),220,150) }}" alt="{{ $post->head }}" class="thumbnail">
+                @else
+                  <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP" alt="BTP">
+                @endif
+                <h3>{{ $post->head }}</h3>
+                <p>{{ Str::words($post->content,20) }}</p>
+              </li>
+            @else
+              <li>
+                @if($post->media!=null)
+                  <img src="{{ Timthumb::link(asset($post->media),50,50) }}" alt="{{ $post->head }}" class="thumbnail">
+                @else
+                  <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP" alt="test">
+                @endif
+                <h3>{{ $post->head }}</h3>
+                <small>{{ date("Y-m-d",strtotime($post->created_at)) }}</small>
+                <div class="clearfix"></div>
+              </li>
+            @endif
+
+          @endforeach
         </ul>
       </div>
 

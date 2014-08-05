@@ -90,3 +90,13 @@ Route::filter('csrf', function()
 });
 
 
+
+View::composer('btp.layouts.sidebar', function($view)
+{	
+
+    $newsSidebar = Cache::remember('newsSidebar', 60, function(){
+        return POST::where('cat_id','=','4')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+    });
+
+    $view->with('newsSidebar', $newsSidebar);
+});

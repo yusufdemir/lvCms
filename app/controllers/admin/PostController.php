@@ -87,6 +87,7 @@ class PostController extends \BaseController {
 			}
 
 			$post->save();
+			Cache::flush();
 			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Eklendi','type'=>'success','position'=>'full'));
 			return Redirect::to('/admin/post/');
 		}
@@ -170,6 +171,7 @@ class PostController extends \BaseController {
 
 
 			$post->save();
+			Cache::flush();
 			Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>Input::get('head').' Başlıklı Yazınız Başarıyla Güncellendi...','type'=>'info'));
 			return Redirect::to('/admin/post/');
 
@@ -188,6 +190,7 @@ class PostController extends \BaseController {
 		$post = Post::find($id);
 		$post->deleted=1;
 		$post->save();
+		Cache::flush();
 		Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Gönderi Başarıyla Çöp Kutusuna Gönderildi.','type'=>'info'));
 		return Redirect::to('/admin/post/');
 	}
@@ -198,6 +201,7 @@ class PostController extends \BaseController {
 		$post = Post::find($id);
 		$post->deleted=0;
 		$post->save();
+		Cache::flush();
 		Session::flash('notification',array('head'=>'Bilgilendirme Mesajı!','text'=>'Gönderi Başarıyla Geri Getirildi.','type'=>'success'));
 		return Redirect::route('post-trash');
 	}

@@ -15,9 +15,15 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function getIndex()
 	{
-		return View::make('hello');
+
+	    $cats = Cache::remember('catsHome', 60, function(){
+	        $cats['genelBaskan']	=POST::where('cat_id','=','1')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+			$cats['demecler']		=POST::where('cat_id','=','2')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+			return $cats;
+	    });
+		return View::make('btp.home',compact('cats'));
 	}
 
 }
