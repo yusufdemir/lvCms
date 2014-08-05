@@ -7,7 +7,7 @@
   @section('body')
     <section id="news">
       <div class="news-section-title">
-        <h3>GENEL BAŞKAN'DAN</h3> <div class="stripe-title-big"> </div>
+        <h3>{{$cat->name}}</h3> <div class="stripe-title-big"> </div>
       </div>
       <hr>
       <div class="clearfix"></div>
@@ -20,7 +20,7 @@
           @endif
           <h3>{{ $article->head }}</h3>
         </a>
-        <p>{{ Str::words($article->content,53) }}</p>
+        <p>{{ Str::words(strip_tags($article->content,53)) }}</p>
 
       </article>
     @endforeach

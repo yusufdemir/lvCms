@@ -15,23 +15,23 @@
 {   $news=POST::all();
 	return View::make('btp.home',compact('news'));
 });*/
-
+/*
 Route::get('news', function()
 {   
-    /*
+    
     $news = Cache::remember('news', 15, function()
     {
         return POST::where('deleted','=','0')->where('cat_id','=','1')->orderBy('id', 'DESC')->paginate(5)->getItems();
-    });*/
+    });
 
     $news=POST::where('deleted','=','0')->where('cat_id','=','1')->orderBy('id', 'DESC')->paginate(5);
     return View::make('btp.news',compact('news'));
-});
-
+});*/
+/*
 Route::get('testevent', function()
 {
     return View::make('hello');
-});
+});*/
 /*
 Route::get('login', function() {
 	return View::make('admin.auth.login');
@@ -91,15 +91,24 @@ Route::group(array('before' => 'doLogin'), function() {
 
 Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@eventJson'));
 
+
+
+
+
 /*
 |---------------------------------------------------------------------------------------------
-| THEME CONTROLLER
+| THEME ROUTING
 |---------------------------------------------------------------------------------------------
 */
+
+Route::get('content/k/{id?}/{slug?}', function($id=1,$page=1)
+{
+    $news=POST::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
+    $cat=CAT::find($id);
+    return View::make('btp.news',compact('news','cat'));
+});
+
 Route::controller('/', 'HomeController');
-
-
-
 /*
 |---------------------------------------------------------------------------------------------
 | ROUTE Filters

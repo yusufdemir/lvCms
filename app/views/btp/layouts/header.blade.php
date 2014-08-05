@@ -46,10 +46,10 @@
             </ul>
           </li>
           <li class="blog-nav-item"><a href="#">YÖNETİM</a></li>
-          <li class="blog-nav-item"><a href="#">GENEL BAŞKAN'DAN</a></li>
-          <li class="blog-nav-item"><a href="#">DEMEÇLER</a></li>
-          <li class="blog-nav-item"><a href="#">PROJELER</a></li>
-          <li class="blog-nav-item"><a href="#">BASINDA BTP</a></li>
+          <li class="blog-nav-item"><a href="{{ URL::to('/content/k/1/genel-baskan') }}">GENEL BAŞKAN'DAN</a></li>
+          <li class="blog-nav-item"><a href="{{ URL::to('/content/k/2/demecler') }}">DEMEÇLER</a></li>
+          <li class="blog-nav-item"><a href="{{ URL::to('/content/k/9/projeler') }}">PROJELER</a></li>
+          <li class="blog-nav-item"><a href="{{ URL::to('/content/k/3/basinda-btp') }}">BASINDA BTP</a></li>
           <li class="blog-nav-item"><a href="#">MEDYA</a></li>
         </ul>
       </div>

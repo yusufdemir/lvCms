@@ -225,6 +225,7 @@ ul.cat-news li img {
     margin: 0px 10px 0px 0px;
     width: 50px;
     height: 50px;
+    color: transparent;
 }
 
 ul.cat-news li.first {
@@ -243,6 +244,7 @@ ul.cat-news li.first img {
     width: 320px;
     height: 210px;
     margin-bottom: 5px;
+    color: black;
 }
 /*
 ul.cat-news li:first-child {

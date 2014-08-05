@@ -26,4 +26,8 @@ class HomeController extends BaseController {
 		return View::make('btp.home',compact('cats'));
 	}
 
+	public function getCategories(){
+
+	}
+
 }

@@ -42,7 +42,7 @@
               <!-- /.Sidebar-news-END -->
               <div class="sidebar-module sidebar-module-inset">
                 <h4>Btp.org.tr Yenilendi.</h4>
-                <p>Yenilenen alt yapısıyla<em>daha hızlı ve daha güvenli</em>.</p>
+                <p>Yenilenen alt yapısıyla <em>daha hızlı ve daha güvenli</em>.</p>
               </div>
             </div><!-- /.blog-sidebar -->
           </aside>
