@@ -14,7 +14,7 @@
 
     @foreach ($news as $article)
       <article>
-        <a href="#">
+        <a href="{{ URL::to('content/view/'.$article->id.'/'.$article->slug) }}">
           @if($article->media!=null)
             <img src="{{ Timthumb::link(asset($article->media),220,150) }}" alt="{{ $article->head }}" class="thumbnail">
           @endif

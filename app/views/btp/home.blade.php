@@ -57,7 +57,7 @@
                 @else
                   <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP" alt="BTP">
                 @endif
-                <h3>{{ $post->head }}</h3>
+                <h3><a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}" title="{{ $post->head }}">{{ $post->head }}</a></h3>
                 <p>{{ Str::words($post->content,20) }}</p>
               </li>
             @else
@@ -67,7 +67,7 @@
                 @else
                   <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP" alt="test">
                 @endif
-                <h3>{{ $post->head }}</h3>
+                <h4><a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}" title="{{ $post->head }}">{{ $post->head }}</a></h4>
                 <small>{{ date("Y-m-d",strtotime($post->created_at)) }}</small>
                 <div class="clearfix"></div>
               </li>
@@ -91,7 +91,7 @@
                 @else
                   <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP" alt="BTP">
                 @endif
-                <h3>{{ $post->head }}</h3>
+                <h3><a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}" title="{{ $post->head }}">{{ $post->head }}</a></h3>
                 <p>{{ Str::words($post->content,20) }}</p>
               </li>
             @else
@@ -101,7 +101,7 @@
                 @else
                   <img class="thumbnail" src="http://dummyimage.com/50x50/8a4d4d/ffffff.jpg&text=BTP" alt="test">
                 @endif
-                <h3>{{ $post->head }}</h3>
+                <h4><a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}" title="{{ $post->head }}">{{ $post->head }}</a></h4>
                 <small>{{ date("Y-m-d",strtotime($post->created_at)) }}</small>
                 <div class="clearfix"></div>
               </li>

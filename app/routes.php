@@ -97,7 +97,7 @@ Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@event
 
 /*
 |---------------------------------------------------------------------------------------------
-| THEME ROUTING
+| THEME ROUTING // ESKİYE UYUMLU
 |---------------------------------------------------------------------------------------------
 */
 
@@ -106,6 +106,13 @@ Route::get('content/k/{id?}/{slug?}', function($id=1,$page=1)
     $news=POST::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
     $cat=CAT::find($id);
     return View::make('btp.news',compact('news','cat'));
+});
+
+Route::get('content/view/{id?}/{slug?}', function($id=1,$page=1)
+{
+    $article=POST::find($id); 
+    //return var_dump($article);
+    return View::make('btp.single',compact('article'));
 });
 
 Route::controller('/', 'HomeController');

@@ -23,4 +23,17 @@ $(document).ready(function() {
     txt_GoToEventUrl: "Etkinliğe Git",
   });
 
+    /*jQuery('p').accordion({ 
+        active: false, 
+        header: '.head', 
+        navigation: true, 
+        event: 'click',  
+        animated: 'easeslide',
+        clearStyle: true,
+        collapsible: true
+    });*/
+    /*$(".accordion").collapse({
+        toggle: true
+    })*/
+
 });
