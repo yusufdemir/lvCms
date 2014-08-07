@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For the complete reference:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-
+	config.extraPlugins = 'codemirror';
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
@@ -25,13 +25,13 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'colors' },
 		{ name: 'about' }
 	];
-
+	
 	// Remove some buttons, provided by the standard plugins, which we don't
 	// need to have in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Superscript';
+	//config.removeButtons = 'Underline,Subscript,Superscript';
 
 	// Se the most common block elements.
-	config.format_tags = 'p;h1;h2;h3;pre';
+	//config.format_tags = 'p;h1;h2;h3;pre';
 
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
@@ -40,5 +40,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.enterMode = CKEDITOR.ENTER_BR;
 	//config.enterMode = CKEDITOR.ENTER_BR; 
 	config.shiftEnterMode = CKEDITOR.ENTER_BR;
-	config.allowedContent: true;
+	//config.allowedContent: true;
+	config.extraAllowedContent = 'span;ul;li;table;td;style;*[id];*(*);*{*}';
 };
