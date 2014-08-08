@@ -575,3 +575,76 @@ section#slider {
      line-height: 40px;
 }
 }
+
+
+/*TOGGLE*/
+.close, .close {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+filter: alpha(opacity=50);
+opacity: .5;
+}
+.toggle {
+    background: #F6F6F6;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border: 1px solid #E1E1E1;
+    border-bottom: 1px solid #979797;
+    padding: 5px 10px;
+    position: relative;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    margin-left: 28px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.toggle h3 {
+    padding-bottom: 5px;
+    padding-top: 3px;
+    margin-bottom: 0;
+    text-shadow: 0 1px 1px #FFF;
+    cursor: pointer;
+    background: url(/btp/img/toggle-close.png) no-repeat right;
+    font-size: 11px;
+    font-weight: bold;
+}
+h3.toggle-head-close {
+    background: url(/btp/img/toggle-open.png) no-repeat right;
+    display: none;
+}
+.toggle-content {
+    padding-top: 15px;
+}
+.toggle.close .toggle-content, .toggle.close h3.toggle-head-open {
+    display: none;
+}
+.toggle.close h3.toggle-head-close {
+    display: block;
+    min-width: 565px;
+}
+.accordion {
+    margin-top: 30px;width: 616px;
+}
+.accordion h4.head {
+    background: url("/btp/img/bg_accordeon.png") no-repeat scroll 0 -28px transparent;
+    cursor: pointer;
+    height: 28px;
+    padding: 8px 0 0 36px;
+    font-size: 12px;
+    font-weight: bold;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.accordion h4.head.ui-state-active {
+    background-position: 0 0px;
+}
+.accordion .content {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 580px;
+}

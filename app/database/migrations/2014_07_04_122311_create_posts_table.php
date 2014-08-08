@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration {
 			$table->string('head');
 			$table->string('slug');
 			$table->string('media')->nullable();
-			$table->text('content')->nullable();
+			$table->longText('content')->nullable();
 			$table->string('tags')->nullable();
 			//$enumAllow=array('post','page');
 			//$table->enum('type', $enumAllow)->default('post');

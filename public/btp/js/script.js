@@ -30,10 +30,11 @@ $(document).ready(function() {
         event: 'click',  
         animated: 'easeslide',
         clearStyle: true,
-        collapsible: true
+        collapsible: true,
+        toggle:true
     });
-    /*$(".accordion").collapse({
-        toggle: true
-    })*/
+    $( ".toggle").click(function(event) {
+        $(this).children(".toggle-content").toggle();
+    });
 
-});
+});//doc ready.

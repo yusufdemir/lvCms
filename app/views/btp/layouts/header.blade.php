@@ -41,8 +41,8 @@
           <li class="blog-nav-item active"><a href="{{ URL::to('/') }}"><i class="glyphicon glyphicon-home"></i></a></li>
           <li class="blog-nav-item"><a href="#">PARTİ</a>
             <ul class="sub-menu">
-              <li class="blog-nav-item"><a href="#">PROGRAM</a></li>
-              <li class="blog-nav-item"><a href="#">TÜZÜK</a></li>
+              <li class="blog-nav-item"><a href="{{ URL::to('/content/view/25/program') }}">PROGRAM</a></li>
+              <li class="blog-nav-item"><a href="{{ URL::to('/content/view/36/tuzuk') }}">TÜZÜK</a></li>
             </ul>
           </li>
           <li class="blog-nav-item"><a href="#">YÖNETİM</a></li>
