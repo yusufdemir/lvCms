@@ -10,7 +10,7 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		$all_post=Post::where('deleted','=','0')->where('type','=','post')->orderBy('id', 'DESC')->paginate(20);
+		$all_post=Post::where('deleted','=','0')->orderBy('id', 'DESC')->paginate(20);
 		return View::make('admin.post.post-list', compact('all_post'));
 	}
 
