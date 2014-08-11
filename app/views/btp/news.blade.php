@@ -20,7 +20,7 @@
           @endif
           <h3>{{ $article->head }}</h3>
         </a>
-        <p>{{ Str::words(strip_tags($article->content,53)) }}</p>
+        <p>{{ Str::words(strip_tags($article->content),55) }}</p>
 
       </article>
     @endforeach
