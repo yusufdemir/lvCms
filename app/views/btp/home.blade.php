@@ -58,7 +58,7 @@
                   <img class="thumbnail" src="http://dummyimage.com/320x210/8a4d4d/ffffff.jpg&text=BTP" alt="BTP">
                 @endif
                 <h3><a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}" title="{{ $post->head }}">{{ $post->head }}</a></h3>
-                <p>{{ Str::words($post->content,20) }}</p>
+                <p>{{ Str::words(strip_tags($post->content),20) }}</p>
               </li>
             @else
               <li>
