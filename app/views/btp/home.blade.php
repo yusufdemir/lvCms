@@ -8,25 +8,28 @@
     <section id="slider">
       <div id="ei-slider" class="ei-slider">
           <ul class="ei-slider-large">
-          @for($i=1; $i <=5; $i++)
+          @foreach ($cats['slider'] as $index => $post)
             <li>
-              <img src="http://dummyimage.com/600x400/8a4d4d/ffffff.jpg&text=BTP+-+{{$i}}" alt="image01" />
+              <a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}">
+                <img src="{{ Timthumb::link(asset($post->media),600,400) }}" alt="{{ $post->head }}" />
+              </a>
               <div class="ei-title">
-                <h3>BİRLİK VE BERABERLİK BÖYLE OLUR {{ $i }}</h3>
-                <!--<h2>Açıklama</h2>-->
+                <a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}">
+                  <h3>{{ $post->head }}</h3>
+                </a>
               </div>
             </li>
-          @endfor
+          @endforeach
           </ul>
 
           <ul class="ei-slider-thumbs">
             <li class="ei-slider-element">Current</li>
-          @for($i=1; $i <=5; $i++)
-            <li>
-              <a href="#">BİRLİK VE BERABERLİK BÖYLE OLUR {{$i}}</a>
-              <img src="http://dummyimage.com/600x400/8a4d4d/ffffff.jpg&text=BTP+-+{{$i}}" alt="thumb01" />
-            </li>
-          @endfor
+            @foreach ($cats['slider'] as $index => $post)
+              <li>
+                <a href="{{ URL::to('content/view/'.$post->id.'/'.$post->slug) }}"></a>
+                <img src="{{ Timthumb::link(asset($post->media),600,400) }}" alt="{{ $post->head }}" />
+              </li>
+            @endforeach
           </ul>
       </div>
     </section>

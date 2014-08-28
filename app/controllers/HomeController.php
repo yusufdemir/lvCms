@@ -21,6 +21,7 @@ class HomeController extends BaseController {
 	    $cats = Cache::remember('catsHome', 60, function(){
 	        $cats['genelBaskan']	=POST::where('cat_id','=','1')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
 			$cats['demecler']		=POST::where('cat_id','=','2')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+			$cats['slider']			=POST::where('active','=','1')->where('deleted','=','0')->where('slider','=','1')->limit(5)->orderBy('id','DESC')->get();
 			return $cats;
 	    });
 		return View::make('btp.home',compact('cats'));
