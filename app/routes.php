@@ -37,7 +37,10 @@ Route::get('login', function() {
 	return View::make('admin.auth.login');
 });
 */
-
+Route::get('teskilat', function()
+{
+    return View::make('btp.teskilat');
+});
 /*
 |---------------------------------------------------------------------------------------------
 | AUTH

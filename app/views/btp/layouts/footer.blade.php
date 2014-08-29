@@ -24,7 +24,7 @@
     <script src="{{ asset('btp/js/elasticslideshow/jquery.eislideshow.js') }}"></script>
     <script src="{{ asset('btp/js/eventCalendar/js/jquery.eventCalendar.min.js') }}"></script>
     <script src="{{ asset('btp/js/script.js') }}"></script>
-
+    @yield('footer-js')
     <script type="text/javascript">
 
       $(document).ready(function() {
