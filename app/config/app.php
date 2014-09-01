@@ -124,6 +124,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Spescina\Timthumb\TimthumbServiceProvider',
+		'Roumen\Feed\FeedServiceProvider',
 	),
 
 	/*
@@ -191,7 +192,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Debugbar' 		  => 'Barryvdh\Debugbar\Facade',
-		'Timthumb' => 'Spescina\Timthumb\Facades\Timthumb',
+		'Timthumb' 		  => 'Spescina\Timthumb\Facades\Timthumb',
+		'Feed' 			  => 'Roumen\Feed\Facades\Feed',
 
 	),
 

@@ -37,10 +37,19 @@ Route::get('login', function() {
 	return View::make('admin.auth.login');
 });
 */
+/*
+|---------------------------------------------------------------------------------------------
+| Single Routes
+|---------------------------------------------------------------------------------------------
+*/
+/*RSS*/
+Route::get('feed/rss', array('as' => 'rss', 'uses' => 'FeedController@index'));
+
 Route::get('teskilat', function()
 {
     return View::make('btp.teskilat');
 });
+
 /*
 |---------------------------------------------------------------------------------------------
 | AUTH
@@ -138,3 +147,6 @@ Route::filter('doLogin', function () {
     	return Redirect::to('login');
     }
 });
+
+ 
+

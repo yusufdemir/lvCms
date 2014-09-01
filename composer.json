@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
 		"way/generators": "2.*",
 		"barryvdh/laravel-debugbar": "1.*",
-		"spescina/timthumb": "1.0.*"
+		"spescina/timthumb": "1.0.*",
+		"roumen/feed": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
