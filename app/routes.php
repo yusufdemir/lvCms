@@ -45,10 +45,10 @@ Route::get('login', function() {
 /*RSS*/
 Route::get('feed/rss', array('as' => 'rss', 'uses' => 'FeedController@index'));
 
-Route::get('teskilat', function()
-{
-    return View::make('btp.teskilat');
-});
+/*Teşkilat--START*/
+Route::get('teskilat', function(){ return View::make('btp.teskilat'); });
+Route::get('city', array('as' => 'city', 'uses' => 'FeedController@city'));
+/*Teşkilat--END*/
 
 /*
 |---------------------------------------------------------------------------------------------
