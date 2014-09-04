@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{-- URL::to('/admin/post/create/') --}}">
+                        <a href="{{ URL::to('/admin/post/create/') }}">
                             <span>Yazı Ekle</span>
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                             <span>Albümler</span>
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#">
                             <span>Videolar (Yapım Aşamasında)</span>
                         </a>
@@ -74,7 +74,7 @@
                         <a href="#">
                             <span>Dosyalar (Yapım Aşamasında)</span>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
             <li class="opened">

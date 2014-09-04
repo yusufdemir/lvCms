@@ -27,8 +27,20 @@ class HomeController extends BaseController {
 		return View::make('btp.home',compact('cats'));
 	}
 
-	public function getCategories(){
-
+	public function biography(){
+	    $biography = DB::select('SELECT * FROM teskilat WHERE id = ?',array('1'));
+		return View::make('btp.singleuser',compact('biography'));
 	}
+	
+	public function categories($id=1){
+		$news=POST::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
+    	$cat=CAT::find($id);
+    	return View::make('btp.news',compact('news','cat'));
+	} 
 
+	public function show($id=1){
+		$article=POST::find($id); 
+    	return View::make('btp.single',compact('article'));
+	}
+	
 }

@@ -1,31 +1,8 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 /*Route::get('/', function()
 {   $news=POST::all();
 	return View::make('btp.home',compact('news'));
-});*/
-/*
-Route::get('news', function()
-{   
-    
-    $news = Cache::remember('news', 15, function()
-    {
-        return POST::where('deleted','=','0')->where('cat_id','=','1')->orderBy('id', 'DESC')->paginate(5)->getItems();
-    });
-
-    $news=POST::where('deleted','=','0')->where('cat_id','=','1')->orderBy('id', 'DESC')->paginate(5);
-    return View::make('btp.news',compact('news'));
 });*/
 /*
 Route::get('testevent', function()
@@ -37,20 +14,31 @@ Route::get('login', function() {
 	return View::make('admin.auth.login');
 });
 */
+
 /*
 |---------------------------------------------------------------------------------------------
-| Single Routes
+| THEME ROUTING // ESKİYE UYUMLU
 |---------------------------------------------------------------------------------------------
 */
+//Route::controller('/', 'HomeController');
+Route::get('/', array('uses' => 'HomeController@getIndex'));
+
+Route::get('content/k/{id?}/{slug?}', array('uses' => 'HomeController@categories'));
+Route::get('content/view/{id?}/{slug?}', array('uses' => 'HomeController@show'));
+/*Biyografi*/
+Route::get('/user/biography/1/prof-dr-haydar-bas', array('uses' => 'HomeController@biography'));
+
 /*RSS*/
 Route::get('feed/rss', array('as' => 'rss', 'uses' => 'FeedController@index'));
-
 /*Teşkilat--START*/
-Route::get('teskilat', function(){ return View::make('btp.teskilat'); });
-Route::get('city', array('as' => 'city', 'uses' => 'FeedController@city'));
+Route::get('yonetim/teskilat', function(){ return View::make('btp.teskilat'); });
+Route::get('yonetim/city', array('as' => 'city', 'uses' => 'FeedController@city'));
 /*Teşkilat--END*/
 
-/*
+
+
+
+/* ADMİN START
 |---------------------------------------------------------------------------------------------
 | AUTH
 |---------------------------------------------------------------------------------------------
@@ -103,31 +91,6 @@ Route::group(array('before' => 'doLogin'), function() {
 
 Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@eventJson'));
 
-
-
-
-
-/*
-|---------------------------------------------------------------------------------------------
-| THEME ROUTING // ESKİYE UYUMLU
-|---------------------------------------------------------------------------------------------
-*/
-
-Route::get('content/k/{id?}/{slug?}', function($id=1,$page=1)
-{
-    $news=POST::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
-    $cat=CAT::find($id);
-    return View::make('btp.news',compact('news','cat'));
-});
-
-Route::get('content/view/{id?}/{slug?}', function($id=1,$page=1)
-{
-    $article=POST::find($id); 
-    //return var_dump($article);
-    return View::make('btp.single',compact('article'));
-});
-
-Route::controller('/', 'HomeController');
 /*
 |---------------------------------------------------------------------------------------------
 | ROUTE Filters
@@ -147,6 +110,3 @@ Route::filter('doLogin', function () {
     	return Redirect::to('login');
     }
 });
-
- 
-
