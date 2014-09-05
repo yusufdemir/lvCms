@@ -39,18 +39,18 @@
       <div class="container">
         <ul id="main-menu">
           <li class="blog-nav-item active"><a href="{{ URL::to('/') }}"><i class="glyphicon glyphicon-home"></i></a></li>
-          <li class="blog-nav-item"><a href="#">PARTİ</a>
+          <li class="blog-nav-item"><a href="#">PARTİ »</a>
             <ul class="sub-menu">
               <li class="blog-nav-item"><a href="{{ URL::to('/content/view/25/program') }}">PROGRAM</a></li>
               <li class="blog-nav-item"><a href="{{ URL::to('/content/view/36/tuzuk') }}">TÜZÜK</a></li>
             </ul>
           </li>
-          <li class="blog-nav-item"><a href="#">YÖNETİM</a>
+          <li class="blog-nav-item"><a href="#">YÖNETİM »</a>
             <ul class="sub-menu">
               <li class="blog-nav-item"><a href="{{ URL::to('/user/biography/1/prof-dr-haydar-bas/') }}">GENEL BAŞKAN</a></li>
-              <li class="blog-nav-item"><a href="{{-- URL::to('/content/') --}}">BAŞKANLIKLAR</a></li>
-              <li class="blog-nav-item"><a href="{{-- URL::to('/content/') --}}">MYK</a></li>
-              <li class="blog-nav-item"><a href="{{-- URL::to('/content/') --}}">YDK</a></li>
+              <li class="blog-nav-item"><a href="{{ URL::to('/yonetim/baskanliklar') }}">BAŞKANLIKLAR</a></li>
+              <li class="blog-nav-item"><a href="{{ URL::to('/yonetim/myk') }}">MYK</a></li>
+              <li class="blog-nav-item"><a href="{{ URL::to('/yonetim/ydk') }}">YDK</a></li>
               <li class="blog-nav-item"><a href="{{ URL::to('/yonetim/teskilat/') }}">TEŞKİLAT</a></li>
             </ul>
           </li>
@@ -58,7 +58,7 @@
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/2/demecler') }}">DEMEÇLER</a></li>
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/9/projeler') }}">PROJELER</a></li>
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/3/basinda-btp') }}">BASINDA BTP</a></li>
-          <li class="blog-nav-item"><a href="#">MEDYA</a></li>
+          <li class="blog-nav-item"><a href="{{ URL::to('/gallery/') }}">MEDYA</a></li>
         </ul>
       </div>
     </nav>

@@ -32,11 +32,13 @@ Route::get('/user/biography/1/prof-dr-haydar-bas', array('uses' => 'HomeControll
 Route::get('feed/rss', array('as' => 'rss', 'uses' => 'FeedController@index'));
 /*Teşkilat--START*/
 Route::get('yonetim/teskilat', function(){ return View::make('btp.teskilat'); });
-Route::get('yonetim/city', array('as' => 'city', 'uses' => 'FeedController@city'));
-/*Teşkilat--END*/
+Route::get('yonetim/city', array('as' => 'city', 'uses' => 'HomeController@city'));
+/*Başkanlıklar*/
+Route::get('yonetim/baskanliklar', function() { return View::make('btp.baskanliklar'); });
+Route::get('yonetim/myk', function() { return View::make('btp.myk'); });
+Route::get('yonetim/ydk', function() { return View::make('btp.ydk'); });
 
-
-
+Route::get('/gallery', array('uses' => 'HomeController@gallery'));
 
 /* ADMİN START
 |---------------------------------------------------------------------------------------------
