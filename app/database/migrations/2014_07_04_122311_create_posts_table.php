@@ -28,6 +28,7 @@ class CreatePostsTable extends Migration {
 			$table->boolean('deleted')->default(false);
 			$table->boolean('slider')->default(false);
 			$table->boolean('sidebar')->default(true);
+			$table->integer('view')->unsigned()->default(1);
 			$table->timestamp('publish_date');
 			$table->timestamps();
 		});

@@ -1,7 +1,7 @@
 @extends('btp.layouts.master')
 
   @section('page-title')
-    BTP
+    Teşkilat
   @stop
 
   @section('footer-js')

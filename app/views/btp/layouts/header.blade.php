@@ -26,13 +26,18 @@
       Cufon.replace('.blog-nav-item', { fontFamily: 'Bebas Neue', hover: true,textShadow: '1px 1px black' });
       Cufon.replace('.cat-news h4', { fontFamily: 'Calibri'});
       Cufon.replace('ul.cat-news li.first h3, #news > article > a > h3', { fontFamily: 'Bebas Neue'});
+      Cufon.replace('.contact > a', { fontFamily: 'Bebas Neue'});
     </script>
     
   </head>
   <body>
-
+<div id="yukleniyor"></div>
   	<header>
-      <div class="container"></div>
+      <div class="container">
+        <div class="contact">
+          <a href="{{ URL::to('/content/view/11/bize-ulasin') }}">İLETİŞİM</a>
+        </div>
+      </div>
     </header>
 
     <nav class="blog-nav">
@@ -56,6 +61,7 @@
           </li>
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/1/genel-baskan') }}">GENEL BAŞKAN'DAN</a></li>
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/2/demecler') }}">DEMEÇLER</a></li>
+          <li class="blog-nav-item"><a href="{{ URL::to('/content/k/10/kose-yazilari') }}">KÖŞE YAZILARI</a></li>
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/9/projeler') }}">PROJELER</a></li>
           <li class="blog-nav-item"><a href="{{ URL::to('/content/k/3/basinda-btp') }}">BASINDA BTP</a></li>
           <li class="blog-nav-item"><a href="{{ URL::to('/gallery/') }}">MEDYA</a></li>

@@ -125,6 +125,7 @@ return array(
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Spescina\Timthumb\TimthumbServiceProvider',
 		'Roumen\Feed\FeedServiceProvider',
+		//'Liebig\Cron\CronServiceProvider',
 	),
 
 	/*

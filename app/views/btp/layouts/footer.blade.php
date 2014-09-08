@@ -36,6 +36,10 @@
         });
 
       });
+      $(window).bind("load", function() {
+          $('#yukleniyor').fadeOut(1000);
+          $('#news > article > a,.contact > a,body > nav').fadeIn(1000);
+      });
     </script>
   </body>
 </html>

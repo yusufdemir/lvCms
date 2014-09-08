@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 /*Route::get('/', function()
 {   $news=POST::all();
 	return View::make('btp.home',compact('news'));
@@ -39,9 +39,16 @@ Route::get('yonetim/myk', function() { return View::make('btp.myk'); });
 Route::get('yonetim/ydk', function() { return View::make('btp.ydk'); });
 
 Route::get('/gallery', array('uses' => 'HomeController@gallery'));
+Route::get('/gallery/view/{id?}/{slug?}', array('uses' => 'HomeController@galleryShow'));
 Route::get('bot', array('uses' => 'HomeController@hbkaleminden'));
 
+App::missing(function($exception){
+    return Response::view('btp.404', array(), 404);
+});
 
+App::error(function(ModelNotFoundException $e){
+    return Response::view('btp.404', array(), 404);
+});
 /* ADMİN START
 |---------------------------------------------------------------------------------------------
 | AUTH

@@ -50,7 +50,7 @@ summary {
             
             @foreach ($album->album as $photo)
               @if ($photo->deleted == 0) 
-                <a href="#"> <img src="{{ Timthumb::link(asset($photo->photo->link),200,120) }}"></a>
+                <a href="{{ URL::to('/gallery/view/'.$album->id.'/'.$album->name) }}"> <img src="{{ Timthumb::link(asset($photo->photo->link),200,120) }}"></a>
               @endif
             @endforeach  
             </div>

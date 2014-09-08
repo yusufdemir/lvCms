@@ -15,13 +15,16 @@ class HomeController extends BaseController {
 	|
 	*/
 
+
+
 	public function getIndex()
 	{
 
 	    $cats = Cache::remember('catsHome', 60, function(){
-	        $cats['genelBaskan']	=POST::where('cat_id','=','1')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
-			$cats['demecler']		=POST::where('cat_id','=','2')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+	        $cats['genelBaskan']	=POST::where('active','=','1')->where('cat_id','=','1')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+			$cats['demecler']		=POST::where('active','=','1')->where('cat_id','=','2')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
 			$cats['slider']			=POST::where('active','=','1')->where('deleted','=','0')->where('slider','=','1')->limit(5)->orderBy('id','DESC')->get();
+			$cats['hbkaleminden']	=POST::where('active','=','1')->where('cat_id','=','10')->where('deleted','=','0')->first();
 			return $cats;
 	    });
 		return View::make('btp.home',compact('cats'));
@@ -34,12 +37,14 @@ class HomeController extends BaseController {
 	
 	public function categories($id=1){
 		$news=POST::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
-    	$cat=CAT::find($id);
+    	$cat=CAT::findOrFail($id);
     	return View::make('btp.news',compact('news','cat'));
 	} 
 
 	public function show($id=1){
-		$article=POST::find($id); 
+		$article=POST::findOrFail($id);
+		$article->view=$article->view+1;
+		$article->save();
     	return View::make('btp.single',compact('article'));
 	}
 	
@@ -51,7 +56,12 @@ class HomeController extends BaseController {
 		return View::make('btp.medyaAlbumList',compact('media'));
 	}
 
-
+	public function galleryShow($id=1){
+		//$album = Cache::remember('mediaShow', 60, function(){
+			/*return*/ $album=Album::where('albuminfo_id','=',$id)->where('deleted','=','0')->get();
+		//});
+		return View::make('btp.medyaAlbumShow',compact('album'));
+	}
 
 	public function hbkaleminden(){
 		//*[@id="slice5"]/div[2]/div[2]/ul/li[1]/div/a
@@ -68,13 +78,27 @@ class HomeController extends BaseController {
 		$xpathLink = '//*[@id="slice5"]/div[2]/div[2]/ul/li[1]/div/a/@href';
 		$link = $xPathObj->query($xpathLink)->item(0)->firstChild->nodeValue;
 
-		/*CONTENT*/
+		//CONTENT
 		$contentUrl = 'http://www.yenimesaj.com.tr/'.$link;
 		$htmlContent = file_get_contents($contentUrl);
 		if(!$htmlContent) {throw new Exception('Failed to connection.');}
 
-		preg_match('@<h1>(.*?)</h1>(.*?)<div class="copyright">@si',$htmlContent,$baslik);
-		echo $baslik[2];
+		preg_match('@<h1>(.*?)</h1>(.*?)<div class="copyright">@si',$htmlContent,$content);
+		echo $content[1] . '<br>'.$content[2] . '<br>';
+		$unique=Post::where('cat_id', '=', '10')->where('slug', 'LIKE', Str::slug($link))->count();
+		if ($unique > 0) {
+			echo 'false';
+			} else {
+				$post=new Post;
+				$post->head= $content[1];
+				$post->slug= Str::slug($link);
+				$post->content= $content[2];
+				$post->cat_id= 10;
+				$save=$post->save();
+				echo 'true';
+				}
+		
+
 
 	}
 

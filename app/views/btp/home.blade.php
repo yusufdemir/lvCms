@@ -38,9 +38,9 @@
 
     <div class="columnist-last-post">
       <div class="columnist-content">
-        <a href="#">
-          <strong>Hz. Yusuf misali</strong>
-          <p>BRICS ülkeleri yeni bir ekonomi yapılanması için imzaları attılar. IMF ve Dünya Bankası’na rakip...</p>
+        <a href="{{ URL::to('content/view/'.$cats['hbkaleminden']->id.'/'.$cats['hbkaleminden']->slug) }}">
+          <strong>{{ $cats['hbkaleminden']->head }}</strong>
+          <p>{{ Str::words(strip_tags($cats['hbkaleminden']->content),14) }}</p>
         </a>
       </div>
     </div>

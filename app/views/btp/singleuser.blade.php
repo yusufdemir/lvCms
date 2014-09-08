@@ -1,7 +1,7 @@
 @extends('btp.layouts.master')
 
   @section('page-title')
-    BTP
+    BİYOGRAFİ || Bağımsız Türkiye Partisi
   @stop
 
   @section('body')
