@@ -39,6 +39,8 @@ Route::get('yonetim/myk', function() { return View::make('btp.myk'); });
 Route::get('yonetim/ydk', function() { return View::make('btp.ydk'); });
 
 Route::get('/gallery', array('uses' => 'HomeController@gallery'));
+Route::get('bot', array('uses' => 'HomeController@hbkaleminden'));
+
 
 /* ADMİN START
 |---------------------------------------------------------------------------------------------

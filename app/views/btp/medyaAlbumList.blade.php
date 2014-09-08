@@ -72,7 +72,7 @@ $(function(){
     // scope everything for each slideshow
     var $this = this;
     $('> :gt(0)', $this).hide();
-    var $time = Math.floor((Math.random() * 1000) + 5000);
+    var $time = Math.floor((Math.random() * 500) + 5000);
     setInterval(function(){$('> :first-child',$this).fadeOut().next().fadeIn().end().appendTo($this);}, $time);
   })
 });
