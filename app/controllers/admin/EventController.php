@@ -154,9 +154,9 @@ class EventController extends \BaseController {
 //{ "date": "2013-03-23 17:30:00", "type": "meeting", "title": "Test Next Year", "description": "Lorem Ipsum dolor set", "url": "http://www.event3.com/" }
 	public function eventJson()
 	{
-	    $Events = Cache::remember('eventsSidebar', 60, function(){
-			return Active::where('deleted','=','0')->get();
-	    });
+	    /*$Events = Cache::remember('eventsSidebar', 60, function(){
+			return*/$Events= Active::where('deleted','=','0')->get();
+	    //});
 		//$Events=Active::where('deleted','=','0')->get();
 
 		$response= array();

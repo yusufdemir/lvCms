@@ -417,13 +417,34 @@ footer {
     margin: 0 auto;
     min-height: 150px;
     color: #999;
-    text-align: center;
+    
     background-color: #333;
     background: url('/btp/img/footer-bg.png') top left no-repeat;
+    padding: 20px 0px 10px 400px;
 }
 .footer p: last-child {
     margin-bottom: 0;
 }
+
+
+.footer-widget-container{
+    float: left;
+    width: 200px;
+}
+
+.footer-widget-container > ul{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    float
+}
+
+.footer-widget-container > ul > li  a{
+    padding-bottom: 5px;
+    color: #ccc;
+    border-bottom: 1px solid #4B4646;
+}
+
 .copyright {
     width: 1045px;
     margin: 0 auto;
@@ -434,6 +455,9 @@ footer {
     border-radius: 20px;
     text-align: center;
 }
+
+
+
 /*------------------------------------------------------------------------------------------
  * SlIDER
  *------------------------------------------------------------------------------------------

@@ -4,7 +4,52 @@
 
     <footer>
         <div class="footer">
-          
+          <div class="footer-widget-container">
+            <ul>
+              <li>
+                <h5><a href="http://www.btp.org.tr/yonetim/myk" title="Merkez Yönetim Kurulu">Merkez Yönetim Kurulu</a></h5>
+              </li><li>
+                <h5><a href="http://www.btp.org.tr/yonetim/ydk" title="Yüksek Disiplin Kurulu">Yüksek Disiplin Kurulu</a></h5>
+              </li><li>
+                <h5><a href="http://www.btp.org.tr/yonetim/teskilat" title="İl ve İlçe Teşkilat">İl ve İlçe Teşkilat</a></h5>
+              </li><li>
+                <h5><a href="http://www.btp.org.tr/yonetim/baskanliklar" title="Başkanlıklar">Başkanlıklar</a></h5>
+            </li></ul>
+            <div class="clear"></div>
+          </div>
+
+
+          <div class="footer-widget-container">
+            <ul>
+              <li>
+                <h5><a href="http://www.btp.org.tr/content/k/1/genel-baskan" title="Genel Başkan'dan">Genel Başkan'dan</a></h5>
+              </li><li>
+                <h5><a href="http://www.btp.org.tr/content/view/36/tuzuk" title="Tüzük">Tüzük</a></h5>
+              </li><li>
+                <h5><a href="http://www.btp.org.tr/content/view/25/program" title="Program">Program</a></h5>
+              </li><li>
+                <h5><a href="http://www.btp.org.tr/content/k/9/projeler" title="Projeler">Projeler</a></h5>
+            </li></ul>
+            <div class="clear"></div>
+          </div>
+
+          <div class="footer-widget-container">
+            <ul>
+              <li>
+                <h5><a href="http://www.kabecanliyayin.net" title="Kabe Canlı Yayın">Kabe Canlı</a></h5>
+              </li><li>
+                <h5><a href="http://www.ehlibeyt.gen.tr" title="Ehl-iBeyt">Ehl-iBeyt</a></h5>
+              </li><li>
+                <h5><a href="http://www.milliekonomimodeli.com" title="Milli Ekonomi Modeli">Milli Ekonomi Modeli</a></h5>
+              </li><li>
+                <h5><a href="javascript:void(0)" title="Kadın Kolları">Kadın Kolları</a></h5>
+              </li><li>
+                <h5><a href="javascript:void(0)" title="Gençlik Kolları">Gençlik Kolları</a></h5>
+            </li></ul>
+            <div class="clear"></div>
+          </div>
+
+
           <div class="clearfix"></div>
 
         </div>
