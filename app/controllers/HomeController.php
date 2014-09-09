@@ -42,7 +42,11 @@ class HomeController extends BaseController {
 	} 
 
 	public function show($id=1){
-		$article=POST::findOrFail($id);
+		$cacheName=$id.'_content';
+		$article = Cache::remember($cacheName, 60, function() use($id){
+			$article=POST::findOrFail($id);
+			return $article;
+	    });
 		$article->view=$article->view+1;
 		$article->save();
     	return View::make('btp.single',compact('article'));
