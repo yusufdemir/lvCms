@@ -21,10 +21,10 @@ class HomeController extends BaseController {
 	{
 
 	    $cats = Cache::remember('catsHome', 60, function(){
-	        $cats['genelBaskan']	=POST::where('active','=','1')->where('cat_id','=','1')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
-			$cats['demecler']		=POST::where('active','=','1')->where('cat_id','=','2')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
-			$cats['slider']			=POST::where('active','=','1')->where('deleted','=','0')->where('slider','=','1')->where('media','!=','')->limit(5)->orderBy('id','DESC')->get();
-			$cats['hbkaleminden']	=POST::where('active','=','1')->where('cat_id','=','10')->where('deleted','=','0')->first();
+	        $cats['genelBaskan']	=Post::where('active','=','1')->where('cat_id','=','1')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+			$cats['demecler']		=Post::where('active','=','1')->where('cat_id','=','2')->where('deleted','=','0')->limit(4)->orderBy('id','DESC')->get();
+			$cats['slider']			=Post::where('active','=','1')->where('deleted','=','0')->where('slider','=','1')->where('media','!=','')->limit(5)->orderBy('id','DESC')->get();
+			$cats['hbkaleminden']	=Post::where('active','=','1')->where('cat_id','=','10')->where('deleted','=','0')->first();
 			return $cats;
 	    });
 		return View::make('btp.home',compact('cats'));
@@ -36,7 +36,7 @@ class HomeController extends BaseController {
 	}
 	
 	public function categories($id=1){
-		$news=POST::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
+		$news=Post::where('deleted','=','0')->where('cat_id','=',$id)->orderBy('id', 'DESC')->paginate(5);
     	$cat=CAT::findOrFail($id);
     	return View::make('btp.news',compact('news','cat'));
 	} 
@@ -44,10 +44,10 @@ class HomeController extends BaseController {
 	public function show($id=1){
 		$cacheName=$id.'_content';
 		$article = Cache::remember($cacheName, 60, function() use($id){
-			$article=POST::findOrFail($id);
+			$article=Post::findOrFail($id);
 			return $article;
 	    });
-	    $article=POST::findOrFail($id);
+	    $article=Post::findOrFail($id);
 		$article->view=$article->view+1;
 		$article->save();
     	return View::make('btp.single',compact('article'));

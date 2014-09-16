@@ -5,7 +5,7 @@ class FeedController extends \BaseController {
 	public function index()
 	{
 	    // creating rss feed with our most recent 20 posts
-	    $posts = POST::where('active','=','1')->orderBy('id', 'desc')->take(20)->get();
+	    $posts = Post::where('active','=','1')->orderBy('id', 'desc')->take(20)->get();
 	    $feed = Feed::make();
 	    // set your feed's title, description, link, pubdate and language
 	    $feed->title = 'BTP Son Gönderiler';
