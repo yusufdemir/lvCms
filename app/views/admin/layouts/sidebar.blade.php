@@ -95,6 +95,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="opened">
+                <a href="{{-- URL::to('admin/events') --}}">
+                <i class="entypo-doc-text-inv"></i>
+                <span>Kullanıcılar</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::to('/admin/user/list/') }}">
+                            <span>Tüm Kullanıcılar</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{URL::to('/admin/user/create') }}">
+                            <span>Kullanıcılar Ekle</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="{{ URL::to('/admin/post/trash/') }}">
                 <i class="entypo-gauge"></i>

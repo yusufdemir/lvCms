@@ -98,6 +98,13 @@ Route::group(array('before' => 'doLogin'), function() {
     |---------------------------------------------------------------------------------------------
     */
     Route::controller('admin/media', 'MediaController');
+    /*
+    |---------------------------------------------------------------------------------------------
+    | USER
+    |---------------------------------------------------------------------------------------------
+    */
+    Route::get('admin/user/list', array('uses' => 'UserController@listuser'));
+    Route::resource('admin/user', 'UserController');
 });
 
 

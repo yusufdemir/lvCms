@@ -71,7 +71,7 @@ class defaultUsers extends Seeder{
                 'name'		=> 'admin',
                 'surname'	=> 'admin',
                 'email'		=> 'admin@test.com',
-                'password'	=> Hash::make('asdasd'),
+                'password'	=> Hash::make('test'),
                 'created_at'=> date('Y-m-d H:i:s'),
                 'vis'		=> 'admin'
             ),
@@ -79,10 +79,11 @@ class defaultUsers extends Seeder{
                 'firstname'	=> 'editor',
                 'surname'	=> 'editor',
                 'email'		=> 'editor@test.com',
-                'password'	=> Hash::make('asdasd'),
+                'password'	=> Hash::make('test'),
                 'created_at'=> date('Y-m-d H:i:s'),
                 'vis'		=> 'editor'
             )
+
         ));
 
     }

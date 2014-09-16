@@ -47,6 +47,7 @@ class HomeController extends BaseController {
 			$article=POST::findOrFail($id);
 			return $article;
 	    });
+	    $article=POST::findOrFail($id);
 		$article->view=$article->view+1;
 		$article->save();
     	return View::make('btp.single',compact('article'));
