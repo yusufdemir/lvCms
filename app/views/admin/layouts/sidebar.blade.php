@@ -113,6 +113,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="opened">
+                <a href="#">
+                <i class="entypo-doc-text-inv"></i>
+                <span>Teşkilat</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::to('/admin/teskilat') }}">
+                            <span>Tüm Teşkilat</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{URL::to('/admin/teskilat/create') }}">
+                            <span>Teşkilat Kullanıcı Ekle</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="{{ URL::to('/admin/post/trash/') }}">
                 <i class="entypo-gauge"></i>

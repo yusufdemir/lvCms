@@ -13,7 +13,7 @@ jQuery(document).ready(function($)
 		//toastr.success("Deneme Mesajı...!", "Başarılı Uyarı", opts);
 		//toastr.error("Sıkıntı Var!", "Account Subcription Updated", opts);
         @if (Session::has('notification'))
-            toastr.{{ Session::get('notification.type') }} ( "{{ Session::get('notification.text') }}", "{{ Session::get('notification.head') }}", {{ Session::get('notification.position')==null?'lite':Session::get('notification.position') }});
+            toastr.{{ Session::get('notification.type') }} ( "{{ Session::get('notification.text') }}", "{{ Session::get('notification.head') }}", lite );
         @endif
 
 	}, 1000);

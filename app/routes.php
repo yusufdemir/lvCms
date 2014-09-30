@@ -86,6 +86,9 @@ Route::group(array('before' => 'doLogin'), function() {
     Route::get('admin/post/trash/{id}', array('as' => 'post-recovery', 'uses' => 'PostController@postRecovery'));
     Route::resource('admin/post', 'PostController');
 
+
+    Route::resource('admin/teskilat', 'TeskilatController');
+
     /*
     |---------------------------------------------------------------------------------------------
     | Event
@@ -118,7 +121,7 @@ Route::filter('toLogin', function () {
     
     if (Auth::check()) {
         Session::flash('message',array('text'=>'Zaten Giriş Yapılmış.', 'type'=>'success'));
-    	return Redirect::route('admin');
+    	return Redirect::to('/admin');
     }
 });
 Route::filter('doLogin', function () {
