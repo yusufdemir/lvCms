@@ -42,6 +42,9 @@ Route::get('/gallery', array('uses' => 'HomeController@gallery'));
 Route::get('/gallery/view/{id?}/{slug?}', array('uses' => 'HomeController@galleryShow'));
 Route::get('bot', array('uses' => 'HomeController@hbkaleminden'));
 Route::get('event', array('as' => 'event-json', 'uses' => 'EventController@eventJson'));
+
+Route::controller('/newsslatter', 'NewsslatterController');
+
 App::missing(function($exception){
     return Response::view('btp.404', array(), 404);
 });

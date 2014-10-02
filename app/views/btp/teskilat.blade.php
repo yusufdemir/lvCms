@@ -5,6 +5,7 @@
   @stop
 
   @section('footer-js')
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
     <script src="{{ asset('btp/js/map/jquery.qtip.js') }}" type="text/javascript"></script>
     <script src="{{ asset('btp/js/map/jquery.maphilight.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript">

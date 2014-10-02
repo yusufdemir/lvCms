@@ -63,6 +63,21 @@ class EventController extends \BaseController {
 				$active->event_end=Input::get('event_end');
 			}
 			$active->save();
+			/*****************SEND MAİL******************/
+
+		$teskilatUsers=Teskilat::where('role','=','99')->get();
+		$getevetn=Active::first();
+		$link='<br><a href="'.$getevetn->link.'">'.$getevetn->name.'</a>';
+		$data=array('news'=> $link );
+		foreach ($teskilatUsers as $user) {
+			if ( filter_var($user->email, FILTER_VALIDATE_EMAIL) ){ 
+				Mail::later(600, 'emails.newsslatter', $data, function($message) use ($user){
+				    $message->from('info@btp.org.tr', 'BTP');
+					$message->to( $user->email , 'BTP Bildiri')->subject('BTP Bilgilendirme Servisi!');
+				});
+			}
+		}
+
 			return Redirect::to('admin/event');
 		}
 	}
